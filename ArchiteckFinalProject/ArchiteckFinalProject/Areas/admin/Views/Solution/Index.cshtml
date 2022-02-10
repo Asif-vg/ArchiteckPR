@@ -1,0 +1,104 @@
+﻿@model List<Solution>
+@inject IHttpContextAccessor HttpContextAccessor
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-page">
+    <div class="content">
+
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title-box">
+                        <div class="page-title-right">
+                            <ol class="breadcrumb m-0">
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Zircos</a></li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Solution </a></li>
+                            </ol>
+                        </div>
+                        <h4 class="page-title">Solution</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-12">
+                <a class="btn btn-primary mb-3" asp-area="Admin" asp-controller="Solution" asp-action="Create">Create</a>
+            </div>
+
+            <div class="col-lg-12">
+                @if (HttpContextAccessor.HttpContext.Session.GetString("NullIdError") != null)
+                {
+                    <div class="alert alert-danger">
+                        @HttpContextAccessor.HttpContext.Session.GetString("NullIdError")
+                    </div>
+                    HttpContextAccessor.HttpContext.Session.Remove("NullIdError");
+                }
+
+                @if (HttpContextAccessor.HttpContext.Session.GetString("NullDataError") != null)
+                {
+                    <div class="alert alert-danger">
+                        @HttpContextAccessor.HttpContext.Session.GetString("NullDataError")
+                    </div>
+                    HttpContextAccessor.HttpContext.Session.Remove("NullDataError");
+                }
+            </div>
+            <hr />
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card-box">
+                        <div class="table-responsive">
+                            <table class="table table-centered m-0">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th>Image</th>
+                                        <th>Title</th>
+                                        <th>Suptitle</th>
+                                        <th>Text</th>
+
+                                        <th></th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{
+                                        int i = 0;
+                                        foreach (var solution in Model)
+                                        {
+                                            i++;
+
+                                            <tr>
+                                                <td scope="row">@i</td>
+                                                <td><img class="rounded" alt="" src="~/Uploads/@solution.Image" style="width: 100px; height: 66px;"></td>
+                                                <td>@solution.Title</td>
+                                                <td>@solution.Suptitle</td>
+                                                <td>@Html.Raw(solution.Text)</td>
+
+                                                <td>
+                                                    <a asp-area="Admin" asp-controller="Solution" asp-action="Update" asp-route-id="@solution.Id" class="btn btn-warning">Update</a>
+                                                    <a asp-area="Admin" asp-controller="Solution" asp-action="Delete" asp-route-id="@solution.Id" class="btn btn-danger" id="sweet-delete">Delete</a>
+
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+

@@ -1,0 +1,20 @@
+﻿@model Banner
+
+
+<section class="banner">
+    <div class="opacityBanner"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h1>@Model.Title</h1>
+                <nav>
+                    <ol>
+                        <li><a asp-controller="Home" asp-action="Index"><i class="fas fa-home"></i>Home</a></li>
+                        <li><span>/</span></li>
+                        <li>@Model.Title</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>

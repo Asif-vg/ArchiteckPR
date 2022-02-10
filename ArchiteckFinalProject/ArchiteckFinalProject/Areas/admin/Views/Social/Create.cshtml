@@ -1,0 +1,65 @@
+﻿@model Social
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-page">
+    <div class="content">
+
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title-box">
+                        <div class="page-title-right">
+                            <ol class="breadcrumb m-0">
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Zircos</a></li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Social</a></li>
+                                <li class="breadcrumb-item active">Add / Edit Social</li>
+                            </ol>
+                        </div>
+                        <h4 class="page-title">Add / Edit Social </h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="card-box">
+                        <div class="">
+                            <form asp-area="Admin" asp-controller="Social" asp-action="Create" method="post">
+                                <div asp-validation-summary="All" class="text-danger"></div>
+
+                                <div class="form-group mb-4">
+                                    <label asp-for="@Model.Name">Name</label>
+                                    <input asp-for="@Model.Name" class="form-control">
+                                    <span asp-validation-for="@Model.Name" class="text-danger"></span>
+                                </div>
+
+
+                                <div class="form-group mb-4">
+                                    <label asp-for="@Model.Icon">Icon</label>
+                                    <input asp-for="@Model.Icon" class="form-control">
+                                    <span asp-validation-for="@Model.Icon" class="text-danger"></span>
+                                </div>
+
+
+                                <div class="form-group mb-4">
+                                    <label asp-for="@Model.Link">Link</label>
+                                    <input asp-for="@Model.Link" class="form-control">
+                                    <span asp-validation-for="@Model.Link" class="text-danger"></span>
+                                </div>
+
+                                <button type="submit" class="btn btn-success waves-effect waves-light " id="sweet-success">Create</button>
+                                <button asp-area="Admin" asp-controller="Social" asp-action="Index" type="submit" class="btn btn-primary waves-effect waves-light">Back to list</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+

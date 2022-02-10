@@ -1,0 +1,293 @@
+﻿@model VmTeam
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<partial name="_BannerPartial" model="@Model.Banner" />
+<section class="team" data-aos="fade-down" data-aos-once="true" data-aos-duration="1000" data-aos-delay="0">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="team-context">
+                    <div class="head-context">
+                        <span>Would Like To Hear From You!</span>
+                        <h2>Our Expert Team</h2>
+                        <p class="head-contextP">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="persons owl-carousel ">
+
+                @foreach (var team in Model.Teams)
+                {
+                    <div class="person-box">
+                        <div class="person-img">
+                            <img class="img-fluid" src="~/Uploads/@team.Image" alt="">
+                            <div class="person-social">
+                                <ul>
+                                    @foreach (var personSocial in team.PersonToSocials)
+                                    {
+                                        <li><a href="@personSocial.PersonSocial.Link"><i class="@personSocial.PersonSocial.Icon"></i></a></li>
+
+                                    }
+                              
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="person-info">
+                            <span>@team.PersonPosition.Name</span>
+                            <h5>@team.Name</h5>
+                        </div>
+                    </div>
+
+                }
+
+
+
+
+            </div>
+        </div>
+    </div>
+</section>
+<section class="counter">
+    <div class="solution-counter">
+        <div class="opacity-01"></div>
+        <div class="container-fluid">
+            <div class="row">
+
+                <div class="count-items" data-aos="fade-right" data-aos-once="true" data-aos-duration="1000" data-aos-delay="0">
+                    <div class="col-lg-3 col-sm-3">
+                        <div class="counter-context">
+                            <div class="counter-icon">
+                                <i class="fal fa-industry-alt"></i>
+
+                            </div>
+                            <div class="counter-info">
+                                <span class="odemeter odospan"></span>
+                                <p>Project Complated</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-3" data-aos="fade-right" data-aos-once="true" data-aos-duration="1000" data-aos-delay="100">
+                        <div class="counter-context">
+                            <div class="counter-icon">
+                                <i class="fal fa-drafting-compass"></i>
+                            </div>
+                            <div class="counter-info">
+                                <span class="odemeter odospan"></span>
+                                <p>Work Employed</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-3" data-aos="fade-right" data-aos-once="true" data-aos-duration="1000" data-aos-delay="200">
+                        <div class="counter-context">
+                            <div class="counter-icon">
+                                <i class="fal fa-user-hard-hat"></i>
+
+                            </div>
+                            <div class="counter-info">
+                                <span class="odemeter odospan"></span>
+                                <p>Happy Customers</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-3" data-aos="fade-right" data-aos-once="true" data-aos-duration="1000" data-aos-delay="300">
+                        <div class="counter-context">
+                            <div class="counter-icon">
+                                <i class="fal fa-cogs"></i>
+                            </div>
+                            <div class="counter-info">
+                                <span class="odemeter odospan"></span>
+                                <p>Painting Services</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<section class="services">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="services-context">
+                    <div class="head-context">
+                        <span>What We Offer</span>
+                        <h2>Architek Best Services</h2>
+                        <p class="head-contextP">There are many variations of passages of Lorem Ipsum available,but the majority have suffered alteration in some form believable.</p>
+                    </div>
+                    <div class="head-opacity">
+                        <h2>Services</h2>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="row" data-aos="fade-down" data-aos-once="true" data-aos-duration="1000" data-aos-delay="0">
+            <div class="col-lg-4 col-md-6">
+                <div class="service-box">
+                    <div class="service-img">
+                        <img class="img-fluid" src="./img/Home-img/blog-1.jpg" alt="">
+                        <div class="service-icon">
+                            <i class="fal fa-industry-alt"></i>
+                        </div>
+                    </div>
+                    <div class="service-context">
+                        <h4>Construction Management</h4>
+                        <p>Lorem Ipsum is simply dummy text of the printing Ipsum has been the standard .</p>
+                        <a href="./serviceDetail.html">
+                            <div class="button-box">
+                                <span class="line-left"></span>
+                                <span class="lineB">Read More</span>
+                                <span class="line-right"></span>
+                                <i class="fas fa-caret-right"></i>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="service-box">
+                    <div class="service-img">
+                        <img class="img-fluid" src="./img/Home-img/blog-2.jpg" alt="">
+                        <div class="service-icon">
+                            <i class="fal fa-robot"></i>
+                        </div>
+                    </div>
+                    <div class="service-context">
+                        <h4>Expert Mechanical</h4>
+                        <p>Lorem Ipsum is simply dummy text of the printing Ipsum has been the standard .</p>
+                        <a href="./serviceDetail.html">
+                            <div class="button-box">
+                                <span class="line-left"></span>
+                                <span class="lineB">Read More</span>
+                                <span class="line-right"></span>
+                                <i class="fas fa-caret-right"></i>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12">
+                <div class="service-box">
+                    <div class="service-img">
+                        <img class="img-fluid" src="./img/Home-img/blog-3.jpg" alt="">
+                        <div class="service-icon">
+                            <i class="fal fa-map-marker"></i>
+                        </div>
+                    </div>
+                    <div class="service-context">
+                        <h4>Architecture & Building </h4>
+                        <p>Lorem Ipsum is simply dummy text of the printing Ipsum has been the standard .</p>
+                        <a href="./serviceDetail.html">
+                            <div class="button-box">
+                                <span class="line-left"></span>
+                                <span class="lineB">Read More</span>
+                                <span class="line-right"></span>
+                                <i class="fas fa-caret-right"></i>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="service-box">
+                    <div class="service-img">
+                        <img class="img-fluid" src="./img/Home-img/blog-4.jpg" alt="">
+                        <div class="service-icon">
+                            <i class="fal fa-ruler-combined"></i>
+                        </div>
+                    </div>
+                    <div class="service-context">
+                        <h4>Tiling & Painiting</h4>
+                        <p>Lorem Ipsum is simply dummy text of the printing Ipsum has been the standard .</p>
+                        <a href="./serviceDetail.html">
+                            <div class="button-box">
+                                <span class="line-left"></span>
+                                <span class="lineB">Read More</span>
+                                <span class="line-right"></span>
+                                <i class="fas fa-caret-right"></i>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="service-box">
+                    <div class="service-img">
+                        <img class="img-fluid" src="./img/Home-img/blog-6.jpg" alt="">
+                        <div class="service-icon">
+                            <i class="fal fa-cog"></i>
+                        </div>
+                    </div>
+                    <div class="service-context">
+                        <h4>Apartment Design</h4>
+                        <p>Lorem Ipsum is simply dummy text of the printing Ipsum has been the standard .</p>
+                        <a href="./serviceDetail.html">
+                            <div class="button-box">
+                                <span class="line-left"></span>
+                                <span class="lineB">Read More</span>
+                                <span class="line-right"></span>
+                                <i class="fas fa-caret-right"></i>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12">
+                <div class="service-box">
+                    <div class="service-img">
+                        <img class="img-fluid" src="./img/Home-img/blog-7.jpg" alt="">
+                        <div class="service-icon">
+                            <i class="fal fa-tools"></i>
+                        </div>
+                    </div>
+                    <div class="service-context">
+                        <h4>Facade Engineering</h4>
+                        <p>Lorem Ipsum is simply dummy text of the printing Ipsum has been the standard .</p>
+                        <a href="./serviceDetail.html">
+                            <div class="button-box">
+                                <span class="line-left"></span>
+                                <span class="lineB">Read More</span>
+                                <span class="line-right"></span>
+                                <i class="fas fa-caret-right"></i>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="subscribe">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="subscribe-context">
+                    <div class="subscribe-img">
+                        <img class="img-fluid" src="./img/Home-img/mail.png" alt="">
+                    </div>
+                    <div class="subscribe-details">
+                        <h6>Sign Up to Get Latest Updates</h6>
+                        <p>It is a long established fact that a reader will be distracted by the</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <form action="">
+                    <input type="email" name="email" autocomplete="off" placeholder="Your email address">
+                    <button type="submit">Sign up</button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
