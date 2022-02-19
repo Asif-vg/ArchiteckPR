@@ -54,12 +54,21 @@
                                     <span asp-validation-for="@Model.Phone" class="text-danger"></span>
                                 </div>
 
-                             
-                                <div class="form-group mb-4">
-                                    <label asp-for="@Model.About">About</label>
-                                    <input asp-for="@Model.About" class="form-control">
+                                <div class="mb-3">
+                                    <label asp-for="@Model.About" class="form-label">About</label>
+                                    <input class="form-control" asp-for="@Model.About">
                                     <span asp-validation-for="@Model.About" class="text-danger"></span>
                                 </div>
+
+
+
+                                <label for="basic-url" asp-for="@Model.Map" class="form-label">Map URL</label>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text btn-info" id="basic-addon3">https://example.com/users/</span>
+                                    <input asp-for="@Model.Map" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                                    <span asp-validation-for="@Model.Map" class="text-danger"></span>
+                                </div>
+
 
                                 <div class="mb-3">
                                     <label asp-for="@Model.VideoFile" class="form-label">Video</label>
@@ -67,8 +76,10 @@
                                     <span asp-validation-for="@Model.VideoFile" class="text-danger"></span>
                                 </div>
 
+                                
+
                                 <button type="submit" class="btn btn-success waves-effect waves-light mr-1" id="sweet-success">Create</button>
-                                <button asp-area="Admin" asp-controller="Setting" asp-action="Index" type="submit" class="btn btn-primary waves-effect waves-light">Back to list</button>
+                                <button asp-area="Admin" asp-controller="Setting" asp-action="Index" type="submit" class="btn btn-secondary waves-effect waves-light">Cancel</button>
                             </form>
                         </div>
                     </div>

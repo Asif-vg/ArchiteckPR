@@ -61,6 +61,7 @@
                                         <th>ProcessHead</th>
                                         <th>ProcessText</th>
                                         <th>Icon</th>
+                                        <th></th>
 
                                     </tr>
                                 </thead>
@@ -76,14 +77,14 @@
 
                                                                             <td> <img class="rounded" alt="" src="~/Uploads/@process.Image" style="width: 100px; height: 66px;"> </td>
                                                                             <td>@process.ProcessHead</td>
-                                                                            <td>@process.ProcessText</td>
-                                                                            <td>@process.Icon</td>
+                                                                            <td>@Html.Raw(process.ProcessText != null && process.ProcessText.Length > 30 ? process.ProcessText.Substring(0, 30) + "..." :process.ProcessText)</td>
+                                                                            <td><i class="@process.Icon"></i></td>
 
 
-                                                                            <td>
-                                                                                <a asp-area="Admin" asp-controller="Process" asp-action="Update" asp-route-id="@process.Id" class="btn btn-success">Update</a>
+                                                                            <td class="d-flex">
+                                                                                <a asp-area="Admin" asp-controller="Process" asp-action="Update" asp-route-id="@process.Id" class="btn btn-warning mx-2">Update</a>
                                                                                 <br />
-                                                                                <a asp-area="Admin" asp-controller="Process" asp-action="Delete" asp-route-id="@process.Id" id="sweet-delete" class="btn btn-danger" width="79">Delete</a>
+                                                                                <a asp-area="Admin" asp-controller="Process" asp-action="Delete" asp-route-id="@process.Id" id="sweet-delete" class="btn btn-danger" >Delete</a>
 
                                                                             </td>
                                                                         </tr>

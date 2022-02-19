@@ -1,0 +1,132 @@
+﻿@*@model CustomUser*@
+@inject UserManager<IdentityUser> userManager
+@inject SignInManager<IdentityUser> signInManager
+@inject IWebHostEnvironment _webHostEnvironment
+@*I use AppdbContext beacuse User show profile photo*@
+@inject AppDbContext _context
+@{
+    ViewData["Title"] = "Profile";
+    Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-page">
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title-box">
+                        <div class="page-title-right">
+                            <ol class="breadcrumb m-0">
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Zircos</a></li>
+                                <li class="breadcrumb-item active">Profile</li>
+                            </ol>
+                        </div>
+                        <h4 class="page-title">Profile</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card-box">
+                        <div class="row">
+                            <div class="col-xl-3 col-md-4">
+                                <div class="text-center card-box shadow-none border border-secoundary">
+                                    <div class="member-card">
+                                        <div class="avatar-xl member-thumb mb-3 mx-auto d-block">
+                                            <img src="assets/images/users/avatar-1.jpg" class="rounded-circle img-thumbnail" alt="profile-image">
+                                            <i class="mdi mdi-star-circle member-star text-success" title="verified user"></i>
+                                        </div>
+
+                                        @if (signInManager.IsSignedIn(User))
+                                        {
+                                            string id = userManager.GetUserId(User);
+                                            CustomUser user = _context.CustomUsers.Find(id);
+                                            <div class="">
+                                                <h5 class="font-18 mb-1">@userManager.GetUserName(User)</h5>
+                                                <p class="text-muted mb-2">asifvg@code.edu.az</p>
+                                            </div>
+                                         } 
+
+                                            <hr />
+
+                                            <div class="text-left">
+
+                                                <p class="text-muted font-13"><strong>Mobile :</strong><span class="ml-4">(070) 238-99-45</span></p>
+
+                                            </div>
+
+                                            <ul class="social-links list-inline mt-4">
+
+                                                <li class="list-inline-item">
+                                                    <a title="" data-placement="top" data-toggle="tooltip" class="tooltips" href="https://github.com/" data-original-title="Github"><i class="fab fa-github"></i></a>
+                                                </li>
+                                            </ul>
+
+                                        </div>
+
+                                </div>
+                            </div>
+                            <div class="col-xl-9 col-md-8">
+                                <h5 class="header-title">Expertise</h5>
+
+                                <div class="row mt-3">
+                                    <div class="col-lg-3 col-sm-6 text-center">
+                                        <div class="pt-2" dir="ltr">
+                                            <input data-plugin="knob" data-width="120" data-height="120" data-linecap=round data-fgColor="#2abfcc" value="85" data-skin="tron" data-angleOffset="180" data-readOnly=true data-thickness=".1" />
+                                            <h6 class="text-muted mt-2">HTML5</h6>
+                                        </div>
+                                    </div>
+                                    <!-- end col-->
+
+                                    <div class="col-lg-3 col-sm-6 text-center">
+                                        <div class="pt-2" dir="ltr">
+                                            <input data-plugin="knob" data-width="120" data-height="120" data-linecap=round data-fgColor="#2abfcc" value="80" data-skin="tron" data-angleOffset="180" data-readOnly=true data-thickness=".1" />
+                                            <h6 class="text-muted mt-2">CSS3</h6>
+                                        </div>
+                                    </div>
+                                    <!-- end col-->
+
+                                    <div class="col-lg-3 col-sm-6 text-center">
+                                        <div class="pt-2" dir="ltr">
+                                            <input data-plugin="knob" data-width="120" data-height="120" data-linecap=round data-fgColor="#2abfcc" value="75" data-skin="tron" data-angleOffset="180" data-readOnly=true data-thickness=".1" />
+                                            <h6 class="text-muted mt-2">Javascript</h6>
+                                        </div>
+                                    </div>
+                                    <!-- end col-->
+
+                                    <div class="col-lg-3 col-sm-6 text-center">
+                                        <div class="pt-2" dir="ltr">
+                                            <input data-plugin="knob" data-width="120" data-height="120" data-linecap=round data-fgColor="#2abfcc" value="75" data-skin="tron" data-angleOffset="180" data-readOnly=true data-thickness=".1" />
+                                            <h6 class="text-muted mt-2">Asp.Net</h6>
+                                        </div>
+                                    </div>
+                                    <!-- end col-->
+
+                                </div>
+                                <hr />
+
+                                <div class="row">
+                                    <div class="col-xl-8">
+                                        <h5 class="header-title">Experience</h5>
+
+                                        <div class="">
+                                            <h5 class="font-16 mb-1">Senior Graphic Designer</h5>
+                                            <p class="mb-0">coderthemes.com</p>
+                                            <p><b>2007-2009</b></p>
+
+                                            <p class="sub-header">
+                                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+

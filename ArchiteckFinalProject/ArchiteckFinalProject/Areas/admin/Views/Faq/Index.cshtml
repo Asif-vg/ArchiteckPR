@@ -59,6 +59,7 @@
                                         <th>Image</th>
                                         <th>FaqHead</th>
                                         <th>FaqText</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -72,10 +73,10 @@
                                                 <td scope="row">@i</td>
                                                 <td> <img class="rounded" alt="" src="~/Uploads/@faq.Image" style="width: 100px; height: 66px;"> </td>
                                                 <td>@faq.FaqHead</td>
-                                                <td>@faq.FaqText</td>
+                                                <td>@Html.Raw(faq.FaqText != null && faq.FaqText.Length > 100 ? faq.FaqText.Substring(0, 100) + "..." : faq.FaqText)</td>
 
-                                                <td>
-                                                    <a asp-area="Admin" asp-controller="Faq" asp-action="Update" asp-route-id="@faq.Id" class="btn btn-success">Update</a>
+                                                <td class="d-flex">
+                                                    <a asp-area="Admin" asp-controller="Faq" asp-action="Update" asp-route-id="@faq.Id" class="btn btn-warning mx-2">Update</a>
                                                     <a asp-area="Admin" asp-controller="Faq" asp-action="Delete" asp-route-id="@faq.Id" id="sweet-delete" class="btn btn-danger">Delete</a>
 
                                                 </td>

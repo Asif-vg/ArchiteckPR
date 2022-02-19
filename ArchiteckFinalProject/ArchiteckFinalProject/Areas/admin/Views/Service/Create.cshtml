@@ -49,9 +49,6 @@
                                     <div class="col-sm-12">
                                         <div class="card-box">
                                             <h4 class="header-title mb-4">Default Editor</h4>
-                                            @*<div>
-                                                <h5>Hello Summernote</h5>
-                                            </div>*@
                                             <label asp-for="@Model.Text">Text</label>
                                             <textarea class="summernote" asp-for="@Model.Text" cols="30" rows="6"></textarea>
                                             <span asp-validation-for="@Model.Text" class="text-danger"></span>
@@ -80,7 +77,7 @@
 
 
                                 <button type="submit" class="btn btn-success waves-effect waves-light " id="sweet-success">Create</button>
-                                <button asp-area="Admin" asp-controller="Service" asp-action="Index" type="submit" class="btn btn-danger waves-effect waves-light">Back to list</button>
+                                <button asp-area="Admin" asp-controller="Service" asp-action="Index" type="submit" class="btn btn-primary waves-effect waves-light">Back to list</button>
                             </form>
                         </div>
                     </div>

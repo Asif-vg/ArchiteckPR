@@ -14,6 +14,10 @@ namespace ArchiteckFinalProject.Models
         public int Id { get; set; }
         [MaxLength(250)]
         public string Email { get; set; }
+        [NotMapped]
+        public string Controller { get; set; }
+
+        public DateTime CreatedDate { get; set; }
 
 
     }

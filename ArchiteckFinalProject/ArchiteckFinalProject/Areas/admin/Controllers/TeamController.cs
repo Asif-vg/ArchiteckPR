@@ -1,5 +1,6 @@
 ﻿using ArchiteckFinalProject.Data;
 using ArchiteckFinalProject.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -13,6 +14,7 @@ using System.Threading.Tasks;
 namespace ArchiteckFinalProject.Areas.admin.Controllers
 {
     [Area("admin")]
+    [Authorize]
     public class TeamController : Controller
     {
         private readonly AppDbContext _context;

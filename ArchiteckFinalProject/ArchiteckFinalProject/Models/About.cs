@@ -22,11 +22,7 @@ namespace ArchiteckFinalProject.Models
         public string Image { get; set; }
         [NotMapped]
         public IFormFile ImageFile { get; set; }
-        [MaxLength(250)]
-        public string SignImage { get; set; }
-        [NotMapped]
-        public IFormFile SignImageFile { get; set; }
-
+        
 
 
     }

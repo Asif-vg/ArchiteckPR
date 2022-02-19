@@ -10,6 +10,8 @@ namespace ArchiteckFinalProject.ViewModels
     {
         public About About { get; set; }
         public Solution Solution { get; set; }
+        public List<Team> Teams { get; set; }
+        public List<Service> Services { get; set; }
 
     }
 }

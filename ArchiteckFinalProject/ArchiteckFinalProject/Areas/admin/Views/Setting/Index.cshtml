@@ -66,8 +66,6 @@
                                         <th>Address</th>
                                         <th>Email</th>
                                         <th>Phone</th>
-                                        <th>About</th>
-                                        <th>Video</th>
 
 
                                         <th></th>
@@ -79,14 +77,12 @@
                                         int i = 1;
                                                                         <tr>
                                                                             <th scope="row">@i</th>
-                                                                            <td style=" background-color:black;width: 100px; height: 66px;"><img src="~/Uploads/@Model.Logo" /></td>
+                                                                            <td> <img  class="rounded"  alt="" src="~/Uploads/@Model.Logo" style="width: 100px; height: 66px ; background-color: black;"> </td>
                                                                             <td>@Model.Address</td>
                                                                             <td>@Model.Email</td>
                                                                             <td>@Model.Phone</td>
-                                                                            <td>@Model.About</td>
-                                                                            <td>@Model.VideoFile</td>
-                                                                            <td>
-                                                                                <a asp-area="Admin" asp-controller="Setting" asp-action="Update" asp-route-id="@Model.Id" class="btn btn-warning">Update</a>
+                                                                            <td class="d-flex">
+                                                                                <a asp-area="Admin" asp-controller="Setting" asp-action="Update" asp-route-id="@Model.Id" class="btn btn-warning mx-2" >Update</a>
                                                                                 <a asp-area="Admin" asp-controller="Setting" asp-action="Delete" asp-route-id="@Model.Id" id="sweet-delete" class="btn btn-danger">Delete</a>
 
                                                                             </td>

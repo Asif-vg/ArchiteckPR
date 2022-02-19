@@ -33,7 +33,7 @@ namespace ArchiteckFinalProject
             });
             services.AddControllersWithViews();
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Architeck")));
-            //services.AddIdentity<IdentityUser, IdentityRole>();
+            services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         }
 
@@ -56,6 +56,8 @@ namespace ArchiteckFinalProject
 
             app.UseRouting();
 
+            //app.UseAuthorization();
+
             app.UseAuthentication();
             app.UseAuthorization();
 
@@ -64,7 +66,7 @@ namespace ArchiteckFinalProject
                 endpoints.MapAreaControllerRoute(
                   name: "areas",
                   areaName: "admin",
-                  pattern: "admin/{controller=Home}/{action=Index}/{id?}"
+                  pattern: "admin/{controller=Account}/{action=Login}/{id?}"
 
                   );
 

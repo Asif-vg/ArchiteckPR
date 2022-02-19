@@ -1,6 +1,7 @@
 ﻿using ArchiteckFinalProject.Data;
 using ArchiteckFinalProject.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +25,10 @@ namespace ArchiteckFinalProject.Controllers
                 Socials = _context.Socials.ToList(),
                 About = _context.Abouts.FirstOrDefault(),
                 Solution =_context.Solutions.FirstOrDefault(),
-                Banner=_context.Banners.FirstOrDefault(b => b.Page == "about")
+                Banner=_context.Banners.FirstOrDefault(b => b.Page == "about"),
+                Teams = _context.Teams.Include(pp => pp.PersonPosition).Include(pts => pts.PersonToSocials).ThenInclude(ps => ps.PersonSocial).ToList(),
+                Services = _context.Services.Include(sc => sc.ServiceCatagory).ToList()
+
 
             };
             return View(model);

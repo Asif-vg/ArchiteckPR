@@ -10,27 +10,22 @@
         <div class="row">
             <div class="col-lg-6 col-md-12" data-aos="fade-right" data-aos-once="true" data-aos-duration="1000" data-aos-delay="0">
                 <div class="need-img">
-                    <img class="img-fluid" src="./img/About-img/@Model.About.Image" alt="">
+                    <img class="img-fluid" src="~/Uploads/@Model.About.Image" alt="">
                 </div>
             </div>
             <div class="col-lg-6 col-md-12">
                 <div class="need-text">
                     <div class="need-context">
-                        <span></span>
-                        <h2></h2>
-                        <p>@Model.About.Text</p>
+                        <span>Construction Experience</span>
+                        <h2>We Building Everything Best That You Needed</h2>
                     </div>
-                    <ul>
-                        <li><i class="fas fa-check"></i>Lorem ipsum dolor sit amet,consectetur adipiscing elit.</li>
-                        <li><i class="fas fa-check"></i>Integer egestas metus blandit sagittis vestibulum.</li>
-                        <li><i class="fas fa-check"></i>Nunc iaculis libero in ipsum molestie fermentum,a molestie nulla aliquet.</li>
-                        <li><i class="fas fa-check"></i>Integer eget massa malesuada,semper metus in,mattis diam.</li>
-                    </ul>
+                    <p>@Html.Raw(Model.About.Text)</p>
+
                     <div class="row">
 
                         <div class="person-info">
                             <div class="need-sign">
-                                <img class="img-fluid" src="./img/About-img/@Model.About.SignImage" alt="">
+                                <img class="img-fluid" src="./img/About-img/sign.png" alt="">
                             </div>
 
 
@@ -89,141 +84,34 @@
             </div>
 
         </div>
-        <div class="row" data-aos="fade-up" data-aos-once="true" data-aos-duration="1000" data-aos-delay="0">
-            <div class="col-lg-4 col-md-6">
-                <div class="service-box">
-                    <div class="service-img">
-                        <img class="img-fluid" src="./img/Home-img/blog-1.jpg" alt="">
-                        <div class="service-icon">
-                            <i class="fal fa-industry-alt"></i>
+        <div class="row" data-aos="fade-down" data-aos-once="true" data-aos-duration="1000" data-aos-delay="0">
+            @foreach (var service in Model.Services)
+            {
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-box">
+                        <div class="service-img">
+                            <img class="img-fluid" src="~/Uploads/@service.ServiceImage" alt="">
+                            <div class="service-icon">
+                                <i class="@service.Icon"></i>
+                            </div>
+                        </div>
+                        <div class="service-context">
+                            <h4>@service.Name</h4>
+                            <p>@Html.Raw(service.Text.Length > 220 ? service.Text.Substring(0, 220) + "..." : service.Text)</p>
+                            <a asp-controller="Service" asp-action="Detail" asp-route-id="@service.Id">
+                                <div class="button-box">
+                                    <span class="line-left"></span>
+                                    <span class="lineB">Read More</span>
+                                    <span class="line-right"></span>
+                                    <i class="fas fa-caret-right"></i>
+                                </div>
+                            </a>
                         </div>
                     </div>
-                    <div class="service-context">
-                        <h4>Construction Management</h4>
-                        <p>Lorem Ipsum is simply dummy text of the printing Ipsum has been the standard .</p>
-                        <a href="./serviceDetail.html">
-                            <div class="button-box">
-                                <span class="line-left"></span>
-                                <span class="lineB">Read More</span>
-                                <span class="line-right"></span>
-                                <i class="fas fa-caret-right"></i>
-                            </div>
-                        </a>
-                    </div>
                 </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="service-box">
-                    <div class="service-img">
-                        <img class="img-fluid" src="./img/Home-img/blog-2.jpg" alt="">
-                        <div class="service-icon">
-                            <i class="fal fa-robot"></i>
-                        </div>
-                    </div>
-                    <div class="service-context">
-                        <h4>Expert Mechanical</h4>
-                        <p>Lorem Ipsum is simply dummy text of the printing Ipsum has been the standard .</p>
-                        <a href="./serviceDetail.html">
-                            <div class="button-box">
-                                <span class="line-left"></span>
-                                <span class="lineB">Read More</span>
-                                <span class="line-right"></span>
-                                <i class="fas fa-caret-right"></i>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-12">
-                <div class="service-box">
-                    <div class="service-img">
-                        <img class="img-fluid" src="./img/Home-img/blog-3.jpg" alt="">
-                        <div class="service-icon">
-                            <i class="fal fa-map-marker"></i>
-                        </div>
-                    </div>
-                    <div class="service-context">
-                        <h4>Architecture & Building </h4>
-                        <p>Lorem Ipsum is simply dummy text of the printing Ipsum has been the standard .</p>
-                        <a href="./serviceDetail.html">
-                            <div class="button-box">
-                                <span class="line-left"></span>
-                                <span class="lineB">Read More</span>
-                                <span class="line-right"></span>
-                                <i class="fas fa-caret-right"></i>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="service-box">
-                    <div class="service-img">
-                        <img class="img-fluid" src="./img/Home-img/blog-4.jpg" alt="">
-                        <div class="service-icon">
-                            <i class="fal fa-ruler-combined"></i>
-                        </div>
-                    </div>
-                    <div class="service-context">
-                        <h4>Tiling & Painiting</h4>
-                        <p>Lorem Ipsum is simply dummy text of the printing Ipsum has been the standard .</p>
-                        <a href="./serviceDetail.html">
-                            <div class="button-box">
-                                <span class="line-left"></span>
-                                <span class="lineB">Read More</span>
-                                <span class="line-right"></span>
-                                <i class="fas fa-caret-right"></i>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="service-box">
-                    <div class="service-img">
-                        <img class="img-fluid" src="./img/Home-img/blog-6.jpg" alt="">
-                        <div class="service-icon">
-                            <i class="fal fa-cog"></i>
-                        </div>
-                    </div>
-                    <div class="service-context">
-                        <h4>Apartment Design</h4>
-                        <p>Lorem Ipsum is simply dummy text of the printing Ipsum has been the standard .</p>
-                        <a href="./serviceDetail.html">
-                            <div class="button-box">
-                                <span class="line-left"></span>
-                                <span class="lineB">Read More</span>
-                                <span class="line-right"></span>
-                                <i class="fas fa-caret-right"></i>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-12">
-                <div class="service-box">
-                    <div class="service-img">
-                        <img class="img-fluid" src="./img/Home-img/blog-7.jpg" alt="">
-                        <div class="service-icon">
-                            <i class="fal fa-tools"></i>
-                        </div>
-                    </div>
-                    <div class="service-context">
-                        <h4>Facade Engineering</h4>
-                        <p>Lorem Ipsum is simply dummy text of the printing Ipsum has been the standard .</p>
-                        <a href="./serviceDetail.html">
-                            <div class="button-box">
-                                <span class="line-left"></span>
-                                <span class="lineB">Read More</span>
-                                <span class="line-right"></span>
-                                <i class="fas fa-caret-right"></i>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
+            }
+
         </div>
-    </div>
 </section>
 <section class="solutions">
     <div class="opacity-01"></div>
@@ -237,19 +125,12 @@
 
                     </div>
                     <p>@Html.Raw(Model.Solution.Text)</p>
-                    @*<ul>
-            <li><i class="fas fa-check"></i>Lorem ipsum dolor sit amet,consectetur adipiscing elit.</li>
-            <li><i class="fas fa-check"></i>Integer egestas metus blandit sagittis vestibulum.</li>
-            <li><i class="fas fa-check"></i>Nunc iaculis libero in ipsum molestie fermentum,a molestie nulla aliquet.</li>
-            <li><i class="fas fa-check"></i>Integer eget massa malesuada,semper metus in,mattis diam.</li>
-        </ul>*@
-
                 </div>
 
             </div>
             <div class="col-xl-6  mt-5 d-flex  " data-aos="fade-right" data-aos-once="true" data-aos-duration="1000" data-aos-delay="0">
                 <div class="solution-img">
-                    <img class="img-fluid" src="./img/About-img/demo-7.jpg" alt="">
+                    <img class="img-fluid" src="~/Uploads/@Model.Solution.Image" alt="">
                 </div>
             </div>
 
@@ -272,106 +153,32 @@
         <div class="row">
             <div class="persons owl-carousel ">
 
-                <div class="person-box">
-                    <div class="person-img">
-                        <img class="img-fluid" src="./img/Home-img/02.jpg" alt="">
-                        <div class="person-social">
-                            <ul>
-                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-                                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                            </ul>
+                @foreach (var team in Model.Teams)
+                {
+                    <div class="person-box">
+                        <div class="person-img">
+                            <img class="img-fluid" src="~/Uploads/@team.Image" alt="">
+                            <div class="person-social">
+                                <ul>
+                                    @foreach (var personSocial in team.PersonToSocials)
+                                    {
+                                        <li><a href="@personSocial.PersonSocial.Link"><i class="@personSocial.PersonSocial.Icon"></i></a></li>
+
+                                    }
+
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="person-info">
+                            <span>@team.PersonPosition.Name</span>
+                            <h5>@team.Name</h5>
                         </div>
                     </div>
-                    <div class="person-info">
-                        <span>Project Head</span>
-                        <h5>Robert Anderson</h5>
-                    </div>
-                </div>
 
-
-                <div class="person-box">
-                    <div class="person-img">
-                        <img class="img-fluid" src="./img/Home-img/03.jpg" alt="">
-                        <div class="person-social">
-                            <ul>
-                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-                                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="person-info">
-                        <span>Creative Head</span>
-                        <h5>Iliena Brown</h5>
-                    </div>
-
-                </div>
-
-                <div class="person-box">
-                    <div class="person-img">
-                        <img class="img-fluid" src="./img/Home-img/04.jpg" alt="">
-                        <div class="person-social">
-                            <ul>
-                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-                                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="person-info">
-                        <span>Creative Direction</span>
-                        <h5>Michal Smart</h5>
-                    </div>
-                </div>
-
-
-                <div class="person-box">
-                    <div class="person-img">
-                        <img class="img-fluid" src="./img/Home-img/05.jpg" alt="">
-                        <div class="person-social">
-                            <ul>
-                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-                                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="person-info">
-                        <span>Stock Market</span>
-                        <h5>Danial Frankie</h5>
-                    </div>
-                </div>
+                }
 
             </div>
         </div>
     </div>
 </section>
-<section class="subscribe">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="subscribe-context">
-                    <div class="subscribe-img">
-                        <img class="img-fluid" src="./img/Home-img/mail.png" alt="">
-                    </div>
-                    <div class="subscribe-details">
-                        <h6>Sign Up to Get Latest Updates</h6>
-                        <p>It is a long established fact that a reader will be distracted by the</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <form action="">
-                    <input type="email" name="email" autocomplete="off" placeholder="Your email address">
-                    <button type="submit">Sign up</button>
 
-                </form>
-            </div>
-        </div>
-    </div>
-</section>

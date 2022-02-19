@@ -1,26 +1,11 @@
-﻿
+﻿@model VmClient
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<section class="banner">
-    <div class="opacityBanner"></div>
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
-                <h1>Our Clients</h1>
-                <nav>
-                    <ol>
-                        <li><a href="./index.html"><i class="fas fa-home"></i>Home</a></li>
-                        <li><span>/</span></li>
-                        <li>Our clients</li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
-    </div>
-</section>
+<partial name="_BannerPartial" model="@Model.Banner" />
+
 <section class="clients">
     <div class="container">
         <div class="row" data-aos="fade-up" data-aos-once="true" data-aos-duration="1000" data-aos-delay="0">
@@ -31,78 +16,18 @@
             </div>
         </div>
         <div class="row" data-aos="fade-right" data-aos-once="true" data-aos-duration="1000" data-aos-delay="0">
-            <div class="col-lg-3 col-md-4">
-                <div class="client-img">
-                    <img class="img-fluid main-img" src="./img/Client-img/cc-1.png" alt="">
-                    <img class="client-hover img-fluid" src="./img/Home-img/008.png" alt="">
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4">
-                <div class="client-img">
-                    <img class="img-fluid main-img" src="./img/Client-img/cc-2.png" alt="">
-                    <img class="client-hover img-fluid" src="./img/Client-img/ccc-8.png" alt="">
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4">
-                <div class="client-img">
-                    <img class="img-fluid main-img" src="./img/Client-img/cc-3.png" alt="">
-                    <img class="client-hover img-fluid" src="./img/Home-img/001.png" alt="">
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4">
-                <div class="client-img">
-                    <img class="img-fluid main-img" src="./img/Client-img/cc-4.png" alt="">
-                    <img class="client-hover img-fluid" src="./img/Home-img/002.png" alt="">
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4">
-                <div class="client-img">
-                    <img class="img-fluid main-img" src="./img/Client-img/cc-5.png" alt="">
-                    <img class="client-hover img-fluid" src="./img/Home-img/003.png" alt="">
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4">
-                <div class="client-img">
-                    <img class="img-fluid main-img" src="./img/Client-img/cc-6.png" alt="">
-                    <img class="client-hover img-fluid" src="./img/Home-img/004.png" alt="">
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4">
-                <div class="client-img">
-                    <img class="img-fluid main-img" src="./img/Client-img/cc-7.png" alt="">
-                    <img class="client-hover img-fluid" src="./img/Home-img/005.png" alt="">
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4">
-                <div class="client-img">
-                    <img class="img-fluid main-img" src="./img/Client-img/cc-9.png" alt="">
-                    <img class="client-hover img-fluid" src="./img/Home-img/007.png" alt="">
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<section class="subscribe">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="subscribe-context">
-                    <div class="subscribe-img">
-                        <img class="img-fluid" src="./img/Home-img/mail.png" alt="">
-                    </div>
-                    <div class="subscribe-details">
-                        <h6>Sign Up to Get Latest Updates</h6>
-                        <p>It is a long established fact that a reader will be distracted by the</p>
+            @foreach (var client in Model.Clients)
+            {
+                <div class="col-lg-3 col-md-4">
+                    <div class="client-img">
+                        <img class="img-fluid main-img" src="~/Uploads/@client.ClientImages.FirstOrDefault().Image" alt="">
+                        <img class="client-hover img-fluid" src="./img/Home-img/008.png" alt="">
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-6">
-                <form action="">
-                    <input type="email" name="email" autocomplete="off" placeholder="Your email address">
-                    <button type="submit">Sign up</button>
+            }
 
-                </form>
-            </div>
+   
         </div>
     </div>
 </section>
+

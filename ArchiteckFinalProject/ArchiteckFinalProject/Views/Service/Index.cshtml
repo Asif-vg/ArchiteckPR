@@ -37,7 +37,7 @@
                         </div>
                         <div class="service-context">
                             <h4>@service.Name</h4>
-                            <p>@Html.Raw(service.Text.Length > 150 ? service.Text.Substring(0, 150) + "..." : service.Text)</p>
+                            <p>@Html.Raw(service.Text.Length > 220 ? service.Text.Substring(0, 220) + "..." : service.Text)</p>
                             <a asp-controller="Service" asp-action="Detail" asp-route-id="@service.Id">
                                 <div class="button-box">
                                     <span class="line-left"></span>
@@ -67,7 +67,7 @@
             </div>
             <div class="col-lg-6 d-xl-flex  project-button">
                 <div class=" go-about">
-                    <a href="./project.html">
+                    <a asp-controller="Project" asp-action="Index">
                         <div class="button-box">
                             <span class="line-left"></span>
                             <span class="lineB">Veiw More</span>
@@ -80,116 +80,29 @@
         </div>
         <div class="row">
             <div class="project-body owl-carousel">
-                <div class="project-text">
-                    <div class="project-img">
-                        <div class="opacity-img"></div>
-                        <img class=img-fluid class="img-fluid" src="./img/Home-img/01 (1).jpg" alt="">
-                        <a href="./projectDetail.html">
-                            <i class="fal fa-plus"></i>
-                        </a>
-                    </div>
-                    <div class="project-content">
-                        <span>Designer Exteririon</span>
-                        <a href="./projectDetail.html">Whitney Architecture</a>
+                @foreach (var project in Model.Projects)
+                {
+                    <div class="project-text">
+                        <div class="project-img">
+                            <div class="opacity-img"></div>
+                            <img class=img-fluid src="~/Uploads/@project.Image" alt="">
+                            <a asp-controller="Project" asp-action="Detail" asp-route-id="@project.Id">
+                                <i class="fal fa-plus"></i>
+                            </a>
+                        </div>
+                        <div class="project-content">
+                            <span>@project.ProjectArchiteck.Name</span>
+                            <a href="./projectDetail.html">@project.Name</a>
+                        </div>
+
                     </div>
 
-                </div>
-                <div class="project-text">
-                    <div class="project-img">
-                        <img class=img-fluid class="img-fluid" src="./img/Home-img/09.jpg" alt="">
-                        <a href="./projectDetail.html">
-                            <i class="fal fa-plus"></i>
-                        </a>
-                    </div>
-                    <div class="project-content">
-                        <span>Designer Designer</span>
-                        <a href="./projectDetail.html">Catalyst Architects</a>
-                    </div>
-
-                </div>
-                <div class="project-text">
-                    <div class="project-img">
-                        <img class=img-fluid class="img-fluid" src="./img/Home-img/04 (1).jpg" alt="">
-                        <a href="./projectDetail.html">
-                            <i class="fal fa-plus"></i>
-                        </a>
-                    </div>
-                    <div class="project-content">
-                        <span>Designer Furniture</span>
-                        <a href="./projectDetail.html">Studio Architecture</a>
-                    </div>
-
-                </div>
-                <div class="project-text">
-                    <div class="project-img">
-                        <img class=img-fluid class="img-fluid" src="./img/Home-img/05 (1).jpg" alt="">
-                        <a href="./projectDetail.html">
-                            <i class="fal fa-plus"></i>
-                        </a>
-                    </div>
-                    <div class="project-content">
-                        <span> Exteririon</span>
-                        <a href="./projectDetail.html">Benoit Architecture</a>
-                    </div>
-
-                </div>
-                <div class="project-text">
-                    <div class="project-img">
-                        <img class=img-fluid class="img-fluid" src="./img/Home-img/06.jpg" alt="">
-                        <a href="./projectDetail.html">
-                            <i class="fal fa-plus"></i>
-                        </a>
-                    </div>
-                    <div class="project-content">
-                        <span>Designer </span>
-                        <a href="./projectDetail.html">Jiang Architecture</a>
-                    </div>
-
-                </div>
-                <div class="project-text">
-                    <div class="project-img">
-                        <img class=img-fluid class="img-fluid" src="./img/Home-img/07.jpg" alt="">
-                        <a href="./projectDetail.html">
-                            <i class="fal fa-plus"></i>
-                        </a>
-                    </div>
-                    <div class="project-content">
-                        <span> Furniture</span>
-                        <a href="./projectDetail.html">Nenan Expansion</a>
-                    </div>
-
-                </div>
-                <div class="project-text">
-                    <div class="project-img">
-                        <img class=img-fluid class="img-fluid" src="./img/Home-img/09.jpg" alt="">
-                        <a href="./projectDetail.html">
-                            <i class="fal fa-plus"></i>
-                        </a>
-                    </div>
-                    <div class="project-content">
-                        <span>Designer</span>
-                        <a href="./projectDetail.html">Mechanical Trim</a>
-                    </div>
-
-                </div>
-                <div class="project-text">
-                    <div class="project-img">
-                        <img class=img-fluid class="img-fluid" src="./img/Home-img/06.jpg" alt="">
-                        <a href="./projectDetail.html">
-                            <i class="fal fa-plus"></i>
-                        </a>
-                    </div>
-                    <div class="project-content">
-                        <span>Designer Exteririon</span>
-                        <a href="./projectDetail.html">Whitney Architecture</a>
-                    </div>
-
-                </div>
-
+                }
+               
             </div>
 
         </div>
-        <div class="watch" data-aos="fade-down" data-aos-once="true" data-aos-duration="1000" data-aos-delay="0">
+        <div class="watch" data-aos="fade-up" data-aos-once="true" data-aos-duration="1000" data-aos-delay="0">
             <h2 class="watch-title">Our Work</h2>
         </div>
     </div>
@@ -213,82 +126,43 @@
             </div>
 
         </div>
-        <div class="row" data-aos="fade-down" data-aos-once="true" data-aos-duration="1000" data-aos-delay="0">
+        <div class="row" data-aos="fade-up" data-aos-once="true" data-aos-duration="1000" data-aos-delay="0">
+            @{ int i = 0;
 
-            <div class="col-lg-4  col-md-6">
-                <div class="works">
-                    <div class="img-arrow">
-                        <img src="./img/Home-img/arrow-2.png" alt="arrow">
-                    </div>
-                    <div class="works-icon">
-                        <i class="fal fa-calculator"></i>
-                        <span>1</span>
-                    </div>
-                    <div class="work-context">
-                        <h3>Project Planing </h3>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                    </div>
 
-                </div>
-            </div>
-            <div class="col-lg-4  col-md-6">
-                <div class="works">
-                    <div class="img-arrow">
-                        <img src="./img/Home-img/arrow-1.png" alt="arrow">
-                    </div>
-                    <div class="works-icon">
-                        <i class="fal fa-presentation"></i>
-                        <span>2</span>
-                    </div>
-                    <div class="work-context">
-                        <h3>General Contract </h3>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                    </div>
+                foreach (var process in Model.Processes)
+                {
+                    i++;
 
-                </div>
-            </div>
-            <div class="col-lg-4  col-md-12">
-                <div class="works">
-                    <div class="works-icon">
-                        <i class="fal fa-pencil-ruler"></i>
-                        <span>3</span>
-                    </div>
-                    <div class="work-context">
-                        <h3>Interior Design</h3>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                    </div>
+                    <div class="col-lg-4  col-md-6">
+                        <div class="works">
+                            <div class="img-arrow">
+                                <img src="./img/Home-img/arrow-2.png" alt="arrow">
+                            </div>
+                            <div class="works-icon">
+                                <i class="@process.Icon"></i>
 
-                </div>
-            </div>
+                                <span>@(i)</span>
+
+
+                            </div>
+                            <div class="work-context">
+                                <h3>@process.ProcessHead </h3>
+                                <p>@process.ProcessText</p>
+                            </div>
+
+                        </div>
+                    </div>
+                }
+            }
+
+
         </div>
         <div class="img-tractor">
-            <img class="tractor1" src="./img/Home-img/unnamed-1.png" alt="tractor" data-aos="fade-down" data-aos-once="true" data-aos-duration="1000" data-aos-delay="0">
+            <img class="tractor1" src="./img/Home-img/unnamed-1.png" alt="tractor" data-aos="fade-right" data-aos-once="true" data-aos-duration="1000" data-aos-delay="0">
         </div>
     </div>
 
 </section>
-<section class="subscribe">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="subscribe-context">
-                    <div class="subscribe-img">
-                        <img class="img-fluid" src="./img/Home-img/mail.png" alt="">
-                    </div>
-                    <div class="subscribe-details">
-                        <h6>Sign Up to Get Latest Updates</h6>
-                        <p>It is a long established fact that a reader will be distracted by the</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <form action="">
-                    <input type="email" name="email" autocomplete="off" placeholder="Your email address">
-                    <button type="submit">Sign up</button>
 
-                </form>
-            </div>
-        </div>
-    </div>
-</section>
 

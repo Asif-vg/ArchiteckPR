@@ -26,7 +26,7 @@
 <body>
     <div class="page-loader">
         <div class="loading">
-            <img src="./img/Loader/loder.gif" alt="">
+            <img src="~/img/Loader/loder.gif" alt="">
         </div>
     </div>
 
@@ -34,9 +34,12 @@
 
         <div class="custom-navs">
             <div class="search-box">
-                <form class="forms">
+                <form class="forms" asp-controller="Project" asp-action="Index" method="get">
                     <div>
-                        <input type="text" class="form-control search-home" placeholder="Search...">
+                        <label for="" name="search"></label>
+                        <input asp-for="@Model.Search.searchData" class="form-control search-home" placeholder="Search...">
+                        <input asp-for="@Model.Search arcId" hidden />
+
                     </div>
 
                     <button type="submit"><i class="far fa-search"></i></button>
@@ -46,7 +49,7 @@
                 <div class="row">
                     <div class="col-lg-2 col-md-4">
                         <div class="site-logo">
-                            <a class="logo" asp-controller="Home" asp-action="Index"><img src="" alt="Architeck"></a>
+                            <a class="logo" asp-controller="Home" asp-action="Index"><img src="~/Uploads/@Model.Setting.Logo" alt="Architeck"></a>
                         </div>
                     </div>
                     <div class="col-lg-10 col-md-8">
@@ -57,7 +60,7 @@
                                         <ul>
                                             @foreach (var social in Model.Socials)
                                             {
-                                                <li><a target="_blank" href=""><i class=""></i> </a></li>
+                                                <li><a target="_blank" href="@social.Link"><i class="@social.Icon"></i> </a></li>
                                             }
                                         </ul>
                                     </div>
@@ -65,8 +68,8 @@
                                 <div class="col-lg-9">
                                     <div class="contact-header">
                                         <ul>
-                                            <li><a href="tel:+1800-001-658"><i class="fas fa-phone"></i><span></span></a></li>
-                                            <li><a href="mailto:info@peacefulthemes.com"><i class="fas fa-envelope"></i><span></span></a></li>
+                                            <li><a href="tel:+1800-001-658"><i class="fas fa-phone"></i><span></span>@Model.Setting.Phone</a></li>
+                                            <li><a href="mailto:info@peacefulthemes.com"><i class="fas fa-envelope"></i><span></span>@Model.Setting.Email</a></li>
                                             <li><a href="#"><i class="far fa-clock"></i><span>Mon - Sat 8:00 - 7:30, Sunday - CLOSED</span></a></li>
                                         </ul>
                                     </div>
@@ -130,18 +133,43 @@
     </header>
 
     <main>
-      @RenderBody()
+        @RenderBody()
+        <section class="subscribe">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="subscribe-context">
+                            <div class="subscribe-img">
+                                <img class="img-fluid" src="~/img/Home-img/mail.png" alt="">
+                            </div>
+                            <div class="subscribe-details">
+                                <h6>Sign Up to Get Latest Updates</h6>
+                                <p>It is a long established fact that a reader will be distracted by the</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <form id="mc4wp-form-1" class="mc4wp-form mc4wp-form-7" asp-controller="home" asp-action="Subscribe" method="post" style="position:relative;">
+                            <input type="email" name="email" class="email" autocomplete="off" placeholder="Your email address">
+                            <div class="alert alert-success" style="display: none; position: absolute; top: 53px; width: 100%;"></div>
+                            <div class="alert alert-warning" style="display: none; position: absolute; top: 53px; width: 100%;"></div>
+                            <button type="submit" class="submit" id="submitBtn" value="subscribe">Sign up</button>
 
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
     <footer>
         <div class="main-footer">
             <div class="row">
                 <div class="col-lg-3 col-md-6">
                     <div class="footer-logo">
-                        <img class="img-fluid" src="" alt="">
+                        <img class="img-fluid" src="~/Uploads/@Model.Setting.Logo" alt="">
                     </div>
                     <div class="foot-about">
-                        <p></p>
+                        <p>@Model.Setting.About</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
@@ -160,13 +188,18 @@
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <div class="foot-head">
-                        <h4>Our serive</h4>
+                        <h4>Our service</h4>
                     </div>
                     <div class="foot-choose">
                         <ul>
-                            <li><a href="#">Visualizing Architecture</a></li>
-                            <li><a href="#">Daily Dose of Architecture</a></li>
-                            <li><a href="#">Architizer Architecture</a></li>
+                            <li><a href="#">Construction Management</a></li>
+                            <li><a href="#">Expert Mechanical</a></li>
+                            <li><a href="#">Architecture & Building</a></li>
+                            <li><a href="#">Tiling & Painiting</a></li>
+                            <li><a href="#">Apartment Design</a></li>
+                            <li><a href="#">Facade Engineering</a></li>
+
+
                         </ul>
                     </div>
                 </div>
@@ -178,20 +211,20 @@
                         <ul class="differentCol">
                             <li class="d-flex">
                                 <i class="fas fa-map-marker-alt"></i>
-                                <span class="mail-foot"></span>
+                                <span class="mail-foot">@Model.Setting.Address</span>
                             </li>
                             <li>
                                 <i class="fas fa-phone"></i>
                                 <a href="tel:+1800001658">
 
-                                    <span class="mail-foot"></span>
+                                    <span class="mail-foot">@Model.Setting.Phone</span>
                                 </a>
                             </li>
                             <li>
                                 <i class="fas fa-envelope"></i>
                                 <a href="mailto:info@peacefulthemes.com">
 
-                                    <span class="mail-foot"></span>
+                                    <span class="mail-foot">@Model.Setting.Email</span>
                                 </a>
                             </li>
                         </ul>
@@ -206,7 +239,7 @@
                         <ul>
                             @foreach (var social in Model.Socials)
                             {
-                                <li><a target="_blank" href=""><i class=""></i> </a></li>
+                                <li><a target="_blank" href="@social.Link"><i class="@social.Icon"></i> </a></li>
                             }
 
                         </ul>
@@ -240,5 +273,5 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 <script src="~/js/script.js"></script>
-
+<script src="~/js/subscribe.js"></script>
 </html>

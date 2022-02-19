@@ -143,16 +143,6 @@ $(document).ready(function() {
         }
 
     });
-
-    $('.selectTwo').select2();
-
-    ClassicEditor
-        .create(document.querySelector('#editor'))
-        .catch(error => {
-            console.error(error);
-        });
-
-
     let odospan = document.querySelectorAll(".odospan");
 
     for (let i = 0; i < odospan.length; i++) {
@@ -273,4 +263,16 @@ window.addEventListener("load", function() {
 })
 
 
+let reply = document.querySelector(".reply");
+let replyMessage = document.querySelector(".replyDisplay");
+let cancelReply = document.querySelector(".cancelReply");
 
+reply.addEventListener("click", function(e) {
+    e.preventDefault();
+    replyMessage.style.display = "block ";
+})
+
+cancelReply.addEventListener("click", function(e) {
+    e.preventDefault();
+    replyMessage.style.display = "none"
+})

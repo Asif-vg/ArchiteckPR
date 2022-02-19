@@ -1,0 +1,82 @@
+﻿@model About
+@{
+    ViewData["Title"] = "Update";
+    Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-page">
+    <div class="content">
+
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title-box">
+                        <div class="page-title-right">
+                            <ol class="breadcrumb m-0">
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Zircos</a></li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">About</a></li>
+                                <li class="breadcrumb-item active">Add / Edit About</li>
+                            </ol>
+                        </div>
+                        <h4 class="page-title">Add / Edit About </h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="card-box">
+                        <div class="">
+                            <form asp-area="Admin" asp-controller="About" asp-action="Update" method="post" enctype="multipart/form-data">
+                                <div asp-validation-summary="All" class="text-danger"></div>
+                                <div class="form-group mb-4">
+                                    <label asp-for="@Model.ImageFile">Image</label>
+                                    <img src="~/Uploads/@Model.Image" alt="Alternate text" width="100" />
+                                    <input class="form-control " asp-for="@Model.ImageFile" />
+                                    <span asp-validation-for="@Model.ImageFile" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group mb-4">
+                                    <label asp-for="@Model.FounderName">Founder Name</label>
+                                    <input asp-for="@Model.FounderName" class="form-control">
+                                    <span asp-validation-for="@Model.FounderName" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group mb-4">
+                                    <label asp-for="@Model.Position">Position</label>
+                                    <input asp-for="@Model.Position" class="form-control">
+                                    <span asp-validation-for="@Model.Position" class="text-danger"></span>
+                                </div>
+
+
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="card-box">
+                                            <h4 class="header-title mb-4">Default Editor</h4>
+
+                                            <label asp-for="@Model.Text">Text</label>
+                                            <textarea class="summernote" asp-for="@Model.Text" cols="6" rows="30"></textarea>
+                                            <span asp-validation-for="@Model.Text" class="text-danger"></span>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <input type="hidden" asp-for="@Model.Id" />
+                                <input type="hidden" asp-for="@Model.Image" />
+
+
+                                <button type="submit" class="btn btn-warning waves-effect waves-light mr-1">Update</button>
+                                <button asp-area="Admin" asp-controller="About" asp-action="Index" type="submit" class="btn btn-secondary waves-effect waves-light">Cancel</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+

@@ -1,5 +1,6 @@
 ﻿using ArchiteckFinalProject.Data;
 using ArchiteckFinalProject.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,8 @@ using System.Threading.Tasks;
 namespace ArchiteckFinalProject.Areas.admin.Controllers
 {
     [Area("admin")]
+    [Authorize]
+
     public class CategoryController : Controller
     {
         private readonly AppDbContext _context;

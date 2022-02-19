@@ -23,21 +23,6 @@
             </div>
             <!-- end page title -->
 
-            <div class="row">
-                <div class="col-xl-3 col-sm-6">
-                    <div class="card-box widget-box-three">
-                        <div class="media">
-                            <div class="avatar-lg bg-icon rounded-circle align-self-center">
-                                <i class="ti-image font-30 text-muted avatar-title"></i>
-                            </div>
-                            <div class="wigdet-two-content media-body text-right">
-                                <p class="mt-1 text-uppercase font-weight-medium">Total Post</p>
-                                <h2 class="mb-2"><span data-plugin="counterup">2,562</span></h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
             <!-- end row -->
 
@@ -76,12 +61,11 @@
 
                                                                             </td>
                                                                             <td>@service.Name</td>
-                                                                            <td>@Html.Raw(service.Text)</td>
-                                                                            <td>@service.Icon</td>
+                                                                            <td>@Html.Raw(service.Text!=null && service.Text.Length > 220 ? service.Text.Substring(0, 220) + "..." : service.Text)</td>
+                                                                            <td><i class="@service.Icon"></i></td>
                                                                             <td>@service.ServiceCatagory.Name </td>
-                                                                            @*<td>@service.Text</td>*@
-                                                                            <td>
-                                                                                <a asp-area="Admin" asp-controller="Service" asp-action="Update" asp-route-id="@service.Id" class="btn btn-warning">Update</a>
+                                                                            <td class="d-flex">
+                                                                                <a asp-area="Admin" asp-controller="Service" asp-action="Update" asp-route-id="@service.Id" class="btn btn-warning mx-2">Update</a>
                                                                                 <a asp-area="Admin" asp-controller="Service" asp-action="Delete" asp-route-id="@service.Id" id="sweet-delete" class="btn btn-danger">Delete</a>
 
                                                                             </td>
@@ -95,13 +79,8 @@
                     </div>
                 </div>
             </div>
-            <!-- end row -->
-
         </div>
-        <!-- end container-fluid -->
-
     </div>
-    <!-- end content -->
 </div>
 
 

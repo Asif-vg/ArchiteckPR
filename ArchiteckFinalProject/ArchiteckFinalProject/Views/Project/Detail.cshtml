@@ -1,0 +1,89 @@
+﻿@model VmProject
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<partial name="_BannerPartial" model="@Model.Banner" />
+<section class="project-detail">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-8" data-aos="fade-right" data-aos-once="true" data-aos-duration="1000" data-aos-delay="0">
+                <div class="detail-img">
+                    <img class="img-fluid" src="~/Uploads/@Model.Project.Image" alt="">
+                </div>
+            </div>
+            <div class="col-xl-4" data-aos="fade-up" data-aos-once="true" data-aos-duration="1000" data-aos-delay="0">
+                <div class="detail-content">
+                    <h3>Project Details</h3>
+                    <p>Here are many variations of passages of Lorem Ipsum available.</p>
+                    <ul>
+                        <li>
+                            <h5>Client</h5>
+                            <span>@Model.Project.Client</span>
+                        </li>
+                        <li class="pt-3">
+                            <h5>Architect</h5>
+                            <span>@Model.Project.ProjectArchiteck.Name</span>
+                        </li>
+                        <li class="pt-3">
+                            <h5>Our Role</h5>
+                            <span>@Model.Project.OurRole</span>
+                        </li>
+                        <li class="pt-3">
+                            <h5>Contractor</h5>
+                            <span>@Model.Project.Contractor</span>
+                        </li>
+                        <li class="pt-3">
+                            <h5>Delivery Date</h5>
+                            <span>@Model.Project.CreatedDate.ToString("yyyy")</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row ml-1" data-aos="fade-down" data-aos-once="true" data-aos-duration="1000" data-aos-delay="0">
+                <div class="col-lg-12">
+                    <div class="detail-summary">
+                        <h3>@Html.Raw(Model.Project.Text)</h3>
+                      
+                    </div>
+                </div>
+            </div>
+     
+        </div>
+    </div>
+</section>
+<section class="projects-2">
+    <div class="container">
+        <div class="row">
+            <div class="project-box">
+                <span>Our Work</span>
+                <h2>Explore Recent Projects</h2>
+                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="project-body owl-carousel">
+                @foreach (var project in Model.Projects)
+                {
+                    <div class="project-text">
+                        <div class="project-img">
+                            <img class=img-fluid class="img-fluid" src="~/Uploads/@project.Image" alt="">
+                           
+                        </div>
+                        <div class="project-content">
+                            <span>@project.ProjectArchiteck.Name</span>
+                            <a asp-controller="Project" asp-action="Detail" asp-route-id="@project.Id">@project.Name</a>
+                        </div>
+
+                    </div>
+
+                }
+              
+
+            </div>
+
+        </div>
+
+    </div>
+</section>

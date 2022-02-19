@@ -18,23 +18,38 @@ namespace ArchiteckFinalProject.Controllers
         {
             _context = context;
         }
-        public IActionResult Index()
+        public IActionResult Index(VmSearch search)
         {
-            VmService model = new VmService()
+            VmService vmservice = new VmService()
             {
                 Setting = _context.Settings.FirstOrDefault(),
                 Socials = _context.Socials.ToList(),
                 Services = _context.Services.ToList(),
+                Projects = _context.Projects.Include(pa => pa.ProjectArchiteck).ToList(),
+                Processes = _context.Processes.ToList(),
                 Service = _context.Services.FirstOrDefault(),
                 Banner = _context.Banners.FirstOrDefault(b => b.Page == "service")
             };
-            return View(model);
+
+            vmservice.Services = _context.Services.Include(sc => sc.ServiceCatagory)
+
+                                   .Where(b => (search.searchData != null ? b.Name.Contains(search.searchData) : true) &&
+                                              (search.catId != null ? b.CategoryId == search.catId : true)
+                                               ).ToList();
+
+            vmservice.ServiceCatagories = _context.ServiceCatagories.ToList();
+
+            return View(vmservice);
         }
 
         public IActionResult Detail(int? id)
         {
+            if (id == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
             Service service = null;
-           
+
             Setting setting = _context.Settings.FirstOrDefault();
             List<Social> socials = _context.Socials.ToList();
             Banner banner = _context.Banners.FirstOrDefault(b => b.Page == "sdetail");
@@ -51,12 +66,16 @@ namespace ArchiteckFinalProject.Controllers
                 Socials = socials,
                 Setting = setting,
                 Service = service,
-                Services =_context.Services.Include(sc => sc.ServiceCatagory).ToList(), 
+                //Services =_context.Services.Include(sc => sc.ServiceCatagory).ToList(), 
                 ServiceComments = serviceComments,
                 Banner = banner,
                 ReplyComments = replyComments
             };
+
+            vmservice.ServiceCatagories = _context.ServiceCatagories.ToList();
+
             return View(vmservice);
+            
         }
 
         [HttpPost]
@@ -93,5 +112,33 @@ namespace ArchiteckFinalProject.Controllers
 
             return View("detail", vmService1);
         }
+
+        [HttpPost]
+        public IActionResult Reply(VmService vmService)
+        {
+            Setting setting = _context.Settings.FirstOrDefault();
+            List<Social> socials = _context.Socials.ToList();
+            List<Service> services = _context.Services.ToList();
+
+            if (ModelState.IsValid)
+            {
+
+                vmService.ServiceComment.CreatedDate = DateTime.Now;
+                _context.ServiceComments.Add(vmService.ServiceComment);
+                _context.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            VmService vmService1 = new VmService()
+            {
+                Socials = socials,
+                Setting = setting,
+                ServiceComment = vmService.ServiceComment,
+                Service = vmService.Service,
+                Services = services
+            };
+            return View("Index", vmService1);
+        }
+
     }
 }

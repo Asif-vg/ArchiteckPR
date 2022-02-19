@@ -1,5 +1,6 @@
 ﻿using ArchiteckFinalProject.Data;
 using ArchiteckFinalProject.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -13,6 +14,8 @@ using System.Threading.Tasks;
 namespace ArchiteckFinalProject.Areas.admin.Controllers
 {
     [Area("admin")]
+    //[Authorize]
+
     public class ServiceController : Controller
     {
         private readonly AppDbContext _context;
@@ -68,12 +71,16 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
                     else
                     {
                         ModelState.AddModelError("", "You can upload only less than 2 mb");
+                        ViewBag.Category = _context.ServiceCatagories.ToList();
+
                         return View(model);
                     }
                 }
                 else
                 {
                     ModelState.AddModelError("", "You can upload only .jpeg, .jpg and .png");
+                    ViewBag.Category = _context.ServiceCatagories.ToList();
+
                     return View(model);
                 }
 

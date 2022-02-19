@@ -1,0 +1,100 @@
+﻿@model Project
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-page">
+    <div class="content">
+
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title-box">
+                        <div class="page-title-right">
+                            <ol class="breadcrumb m-0">
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Zircos</a></li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Project</a></li>
+                                <li class="breadcrumb-item active">Add / Edit Project</li>
+                            </ol>
+                        </div>
+                        <h4 class="page-title">Add / Edit Project </h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="card-box">
+                        <div class="">
+                            <form asp-area="Admin" asp-controller="Project" asp-action="Create" method="post" enctype="multipart/form-data">
+                                <div asp-validation-summary="All" class="text-danger"></div>
+                                <div class="form-group mb-4">
+                                    <label asp-for="@Model.ImageFile">Image</label>
+                                    <input class="form-control " asp-for="@Model.ImageFile" />
+                                    <span asp-validation-for="@Model.ImageFile" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group mb-4">
+                                    <label asp-for="@Model.Name">Name</label>
+                                    <input asp-for="@Model.Name" class="form-control">
+                                    <span asp-validation-for="@Model.Name" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group mb-4">
+                                    <label asp-for="@Model.ProjectArchiteckId">Architeck</label>
+                                    <select class="select2 form-control select2-multiple" data-placeholder="Choose ..." asp-for="@Model.ProjectArchiteckId">
+                                        @foreach (var item in ViewBag.Architeck)
+                                        {
+                                            <option value="@item.Id">@item.Name</option>
+                                        }
+
+
+                                    </select>
+                                </div>
+
+
+                                <div class="mb-3">
+                                    <label asp-for="@Model.Client" class="form-label">Client</label>
+                                    <input class="form-control" asp-for="@Model.Client">
+                                    <span asp-validation-for="@Model.Client" class="text-danger"></span>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label asp-for="@Model.Contractor" class="form-label">Contractor</label>
+                                    <input class="form-control" asp-for="@Model.Contractor">
+                                    <span asp-validation-for="@Model.Contractor" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group mb-4">
+                                    <label asp-for="@Model.OurRole">Our Role</label>
+                                    <input asp-for="@Model.OurRole" class="form-control">
+                                    <span asp-validation-for="@Model.OurRole" class="text-danger"></span>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="card-box">
+                                            <h4 class="header-title mb-4">Default Editor</h4>
+                                            <label asp-for="@Model.Text">Text</label>
+                                            <textarea class="summernote" asp-for="@Model.Text" cols="30" rows="6"></textarea>
+                                            <span asp-validation-for="@Model.Text" class="text-danger"></span>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <button type="submit" class="btn btn-success waves-effect waves-light mr-1" id="sweet-success">Create</button>
+                                <button asp-area="Admin" asp-controller="Project" asp-action="Index" type="submit" class="btn btn-primary waves-effect waves-light">Back to list</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+

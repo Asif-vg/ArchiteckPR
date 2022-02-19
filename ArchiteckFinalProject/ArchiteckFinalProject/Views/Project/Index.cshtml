@@ -1,27 +1,186 @@
-﻿
+﻿@model VmProject
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<section class="banner">
-    <div class="opacityBanner"></div>
+<partial name="_BannerPartial" model="@Model.Banner" />
+<section class="projects-main">
     <div class="container">
         <div class="row">
-            <div class="col-sm-12">
-                <h1>Our Project</h1>
-                <nav>
-                    <ol>
-                        <li><a href="./index.html"><i class="fas fa-home"></i>Home</a></li>
-                        <li><span>/</span></li>
-                        <li>Our project</li>
-                    </ol>
-                </nav>
+
+
+            <div class="col-lg-12">
+                <div class="portfolioFilter project-filter">
+                    <ul>
+                        <li> <a href="#" data-filter="*" class="current waves-effect waves-light">All</a></li>
+                        <li> <a href="#" data-filter=".commercial" class="waves-effect waves-light">Commercial</a></li>
+                        <li> <a href="#" data-filter=".designer" class="waves-effect waves-light">Designer</a></li>
+                        <li><a href="#" data-filter=".exteririon" class="waves-effect waves-light">Exteririon</a></li>
+                        <li><a href="#" data-filter=".furniture" class="waves-effect waves-light">Furniture</a></li>
+                        <li> <a href="#" data-filter=".interior" class="waves-effect waves-light">Interior</a></li>
+                    </ul>
+
+
+
+
+
+                </div>
             </div>
+
+            <div class="port mb-3">
+                <div class="portfolioContainer row">
+                    <div class="col-lg-4 col-md-6 col-sm-12 commercial">
+                        <div class="gallery-box project-box">
+                            <div class="project-box-img">
+                                <img class="img-fluid" src="./img/Home-img/09.jpg" alt="">
+                            </div>
+                            <div class="gal-detail  project-box-info">
+                                <span>Commercial</span>
+                                <h5>Membrane Structure</h5>
+                                <a href="./projectDetail.html">
+                                    <div class="button-box">
+                                        <span class="line-left"></span>
+                                        <span class="lineB">Read More</span>
+                                        <span class="line-right"></span>
+                                        <i class="fas fa-caret-right"></i>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 col-sm-12 furniture">
+                        <div class="gallery-box project-box">
+                            <div class="project-box-img">
+                                <img class="img-fluid" src="./img/Home-img/01 (1).jpg" alt="">
+                            </div>
+                            <div class="gal-detail project-box-info">
+                                <span>Furniture</span>
+                                <h5>Museum Architecture</h5>
+                                <a href="./projectDetail.html">
+                                    <div class="button-box">
+                                        <span class="line-left"></span>
+                                        <span class="lineB">Read More</span>
+                                        <span class="line-right"></span>
+                                        <i class="fas fa-caret-right"></i>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 col-sm-12 commercial">
+                        <div class="gallery-box project-box">
+                            <div class="project-box-img">
+                                <img class="img-fluid" src="./img/Home-img/07.jpg" alt="">
+                            </div>
+                            <div class="gal-detail project-box-info">
+                                <span>Commercial</span>
+                                <h5>Gregory Barber</h5>
+                                <a href="./projectDetail.html">
+                                    <div class="button-box">
+                                        <span class="line-left"></span>
+                                        <span class="lineB">Read More</span>
+                                        <span class="line-right"></span>
+                                        <i class="fas fa-caret-right"></i>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-4 col-md-6 col-sm-12 designer">
+                        <div class="gallery-box project-box">
+                            <div class="project-box-img">
+                                <img class="img-fluid" src="./img/Home-img/06.jpg" alt="">
+                            </div>
+                            <div class="gal-detail project-box-info">
+                                <span>Designer</span>
+                                <h5>Catalyst Architects</h5>
+                                <a href="./projectDetail.html">
+                                    <div class="button-box">
+                                        <span class="line-left"></span>
+                                        <span class="lineB">Read More</span>
+                                        <span class="line-right"></span>
+                                        <i class="fas fa-caret-right"></i>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 col-sm-12 exteririon">
+                        <div class="gallery-box project-box">
+                            <div class="project-box-img">
+                                <img class="img-fluid" src="./img/Home-img/05 (1).jpg" alt="">
+                            </div>
+                            <div class="gal-detail project-box-info">
+                                <span>Exteririon</span>
+                                <h5>Benoit Architecture</h5>
+                                <a href="./projectDetail.html">
+                                    <div class="button-box">
+                                        <span class="line-left"></span>
+                                        <span class="lineB">Read More</span>
+                                        <span class="line-right"></span>
+                                        <i class="fas fa-caret-right"></i>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 col-sm-12 designer">
+                        <div class="gallery-box project-box">
+                            <div class="project-box-img">
+                                <img class="img-fluid" src="./img/Home-img/04 (1).jpg" alt="">
+                            </div>
+                            <div class="gal-detail project-box-info">
+                                <span>Designer</span>
+                                <h5>Tyler Architecture</h5>
+                                <a href="./projectDetail.html">
+                                    <div class="button-box">
+                                        <span class="line-left"></span>
+                                        <span class="lineB">Read More</span>
+                                        <span class="line-right"></span>
+                                        <i class="fas fa-caret-right"></i>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 col-sm-12 interior">
+                        <div class="gallery-box project-box">
+                            <div class="project-box-img">
+                                <img class="img-fluid" src="./img/Home-img/09.jpg" alt="">
+                            </div>
+                            <div class="gal-detail project-box-info">
+                                <span>Interior</span>
+                                <h5>Bart Architecture</h5>
+                                <a href="./projectDetail.html">
+                                    <div class="button-box">
+                                        <span class="line-left"></span>
+                                        <span class="lineB">Read More</span>
+                                        <span class="line-right"></span>
+                                        <i class="fas fa-caret-right"></i>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+
         </div>
     </div>
 </section>
-<section class="projects-main">
+@*<section class="projects-main">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -171,29 +330,6 @@
             </div>
         </div>
     </div>
-</section>
-<section class="subscribe">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="subscribe-context">
-                    <div class="subscribe-img">
-                        <img class="img-fluid" src="./img/Home-img/mail.png" alt="">
-                    </div>
-                    <div class="subscribe-details">
-                        <h6>Sign Up to Get Latest Updates</h6>
-                        <p>It is a long established fact that a reader will be distracted by the</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <form action="">
-                    <input type="email" name="email" autocomplete="off" placeholder="Your email address">
-                    <button type="submit">Sign up</button>
+</section>*@
 
-                </form>
-            </div>
-        </div>
-    </div>
-</section>
 

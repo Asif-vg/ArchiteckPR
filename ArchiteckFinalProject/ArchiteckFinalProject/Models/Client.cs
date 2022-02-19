@@ -12,10 +12,10 @@ namespace ArchiteckFinalProject.Models
     {
         [Key]
         public int Id { get; set; }
-        [MaxLength(250)]
-        public string ClientImage { get; set; }
         [NotMapped]
-        public IFormFile ClientImageFile { get; set; }
+        public List<IFormFile> ClientImageFile { get; set; }
+
+        public List<ClientImage> ClientImages { get; set; }
 
 
 

@@ -16,8 +16,6 @@ namespace ArchiteckFinalProject.Models
         public string Name { get; set; }
         [Column(TypeName = "ntext")]
         public string Text { get; set; }
-        [MaxLength(100)]
-        public string Architeck { get; set; }
         [MaxLength(250)]
         public string Client { get; set; }
         [MaxLength(250)]
@@ -29,5 +27,9 @@ namespace ArchiteckFinalProject.Models
         public string Image { get; set; }
         [NotMapped]
         public IFormFile ImageFile { get; set; }
+
+        [ForeignKey("ProjectArchiteck")]
+        public int ProjectArchiteckId { get; set; }
+        public ProjectArchiteck ProjectArchiteck { get; set; }
     }
 }

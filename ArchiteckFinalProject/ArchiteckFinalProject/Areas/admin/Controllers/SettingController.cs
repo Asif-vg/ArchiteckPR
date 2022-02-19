@@ -1,5 +1,6 @@
 ﻿using ArchiteckFinalProject.Data;
 using ArchiteckFinalProject.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -11,6 +12,8 @@ using System.Threading.Tasks;
 namespace ArchiteckFinalProject.Areas.admin.Controllers
 {
     [Area("admin")]
+    //[Authorize]
+
     public class SettingController : Controller
     {
         private readonly AppDbContext _context;
@@ -74,37 +77,7 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
                     }
                 }
 
-                if (setting.VideoFile != null)
-                {
-                    if (setting.VideoFile.ContentType == "video/mp4" || setting.VideoFile.ContentType == "video/mp3")
-                    {
-                        if (setting.VideoFile.Length < 200000000)
-                        {
-                            string filename = Guid.NewGuid() + "-" + DateTime.Now.ToString("yyyyMMddHHmmSS") + "-" + setting.VideoFile.FileName;
-                            string path = Path.Combine(_webHostEnvironment.WebRootPath, "Uploads", filename);
-                            using (var stream = new FileStream(path, FileMode.Create))
-                            {
-                                setting.LogoFile.CopyTo(stream);
-                            }
-                            setting.Video = filename;
-
-                            _context.Settings.Add(setting);
-                            _context.SaveChanges();
-                            return RedirectToAction("Index");
-                        }
-                        else
-                        {
-                            ModelState.AddModelError("", "Video must be then less 17mb");
-                            return RedirectToAction("Index");
-                        }
-                    }
-                    else
-                    {
-                        ModelState.AddModelError("", "video must be mp4 or mp3 format");
-                        return RedirectToAction("Index");
-                    }
-                }
-            }
+                           }
             return View(setting);
         }
         public IActionResult Update(int? id)
@@ -115,69 +88,76 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
         [HttpPost]
         public IActionResult Update(Setting setting)
         {
-
             if (ModelState.IsValid)
             {
-                if (setting.LogoFile != null)
+                if (setting.LogoFile != null && setting.VideoFile  != null)
                 {
-                    if (setting.LogoFile.ContentType == "image/png" || setting.LogoFile.ContentType == "image/jpeg")
+                    if (setting.VideoFile.ContentType == "image/png" || setting.LogoFile.ContentType == "image/jpeg" 
+                        && setting.VideoFile.ContentType == "video/mp4")
                     {
+
                         if (setting.LogoFile.Length < 2097152)
                         {
-
-                            string oldPathFile = Path.Combine(_webHostEnvironment.WebRootPath, "Uploads", setting.Logo);
-
-                            if (System.IO.File.Exists(oldPathFile))
+                            if (setting.VideoFile.Length < 20000000)
                             {
-                                System.IO.File.Delete(oldPathFile);
-                            }
 
-                            string filename = Guid.NewGuid() + "-" + DateTime.Now.ToString("yyyyMMddHHmmSS") + "-" + setting.LogoFile.FileName;
-                            string path = Path.Combine(_webHostEnvironment.WebRootPath, "Uploads", filename);
-                            using (var stream = new FileStream(path, FileMode.Create))
-                            {
-                                setting.LogoFile.CopyTo(stream);
-                            }
+                                if (!string.IsNullOrEmpty(setting.Logo))
+                                {
+                                    string pathFileImage = Path.Combine(_webHostEnvironment.WebRootPath, "Uploads", setting.Logo);
+                                    if (System.IO.File.Exists(pathFileImage))
+                                    {
+                                        System.IO.File.Delete(pathFileImage);
+                                    }
+                                }
 
-                            _context.Settings.Update(setting);
-                            _context.SaveChanges();
-                            return RedirectToAction("Index");
+                                string fileName = Guid.NewGuid() + "-" + DateTime.Now.ToString("yyyyMMddHHmmSS") + "-" + setting.LogoFile.FileName;
+                                string pathName = Path.Combine(_webHostEnvironment.WebRootPath, "Uploads", fileName);
+
+                                using (var stream = new FileStream(pathName, FileMode.Create))
+                                {
+                                    setting.LogoFile.CopyTo(stream);
+
+                                }
+
+                                if (!string.IsNullOrEmpty(setting.Video))
+                                {
+                                    string pathFileVideo = Path.Combine(_webHostEnvironment.WebRootPath, "Uploads", setting.Video);
+                                    if (System.IO.File.Exists(pathFileVideo))
+                                    {
+                                        System.IO.File.Delete(pathFileVideo);
+                                    }
+                                }
+
+                                string videoFileName = Guid.NewGuid() + "-" + DateTime.Now.ToString("yyyyMMddHHmmSS") + "-" + setting.LogoFile.FileName;
+                                string pathvideoName = Path.Combine(_webHostEnvironment.WebRootPath, "Uploads", videoFileName);
+
+                                using (var stream = new FileStream(pathvideoName, FileMode.Create))
+                                {
+                                    setting.VideoFile.CopyTo(stream);
+
+                                }
+
+                                setting.Logo = fileName;
+                                setting.Video = videoFileName;
+                                _context.Settings.Update(setting);
+                                _context.SaveChanges();
+                                return RedirectToAction("Index");
+                            }
                         }
                     }
                 }
-
-                if (setting.VideoFile != null)
+                else
                 {
-                    if (setting.VideoFile.ContentType == "video/mp4" || setting.LogoFile.ContentType == "video/mp3")
-                    {
-                        if (setting.VideoFile.Length < 200000000)
-                        {
-
-                            string oldPathFile = Path.Combine(_webHostEnvironment.WebRootPath, "Uploads", setting.Video);
-
-                            if (System.IO.File.Exists(oldPathFile))
-                            {
-                                System.IO.File.Delete(oldPathFile);
-                            }
-
-                            string filename = Guid.NewGuid() + "-" + DateTime.Now.ToString("yyyyMMddHHmmSS") + "-" + setting.VideoFile.FileName;
-                            string path = Path.Combine(_webHostEnvironment.WebRootPath, "Uploads", filename);
-                            using (var stream = new FileStream(path, FileMode.Create))
-                            {
-                                setting.LogoFile.CopyTo(stream);
-                            }
-
-                            _context.Settings.Update(setting);
-                            _context.SaveChanges();
-                            return RedirectToAction("Index");
-                        }
-                    }
+                   
+                    
+                    _context.Settings.Update(setting);
+                    _context.SaveChanges();
+                    return RedirectToAction("Index");
                 }
             }
-
             return View(setting);
         }
-
+      
         public IActionResult Delete(int? id)
         {
             Setting setting = null;

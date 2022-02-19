@@ -2,6 +2,7 @@
 using ArchiteckFinalProject.Models;
 using ArchiteckFinalProject.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +26,8 @@ namespace ArchiteckFinalProject.Controllers
                 Socials = _context.Socials.ToList(),
                 Banner  = _context.Banners.FirstOrDefault(b => b.Page == "faq"),
                 Faq=_context.Faqs.FirstOrDefault(),
-                Faqs=faqs
+                Faqs=faqs,
+                Services=_context.Services.Include(sc => sc.ServiceCatagory).ToList()
 
             };
             return View(vmFaq);

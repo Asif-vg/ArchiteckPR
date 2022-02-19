@@ -77,7 +77,7 @@
                                                 <td><img class="rounded" alt="" src="~/Uploads/@solution.Image" style="width: 100px; height: 66px;"></td>
                                                 <td>@solution.Title</td>
                                                 <td>@solution.Suptitle</td>
-                                                <td>@Html.Raw(solution.Text)</td>
+                                                <td style="background-color:black;">@Html.Raw(solution.Text)</td>
 
                                                 <td>
                                                     <a asp-area="Admin" asp-controller="Solution" asp-action="Update" asp-route-id="@solution.Id" class="btn btn-warning">Update</a>

@@ -59,10 +59,10 @@
                                         <th>Image</th>
                                         <th>Address</th>
                                         <th>Location</th>
-                                        <th>Phone1</th>
-                                        <th>Phone2</th>
-                                        <th>Email1</th>
-                                        <th>Email2</th>
+                                        <th>Phone</th>
+                                        <th>Email</th>
+                                       
+                                        <th></th>
 
                                     </tr>
                                 </thead>
@@ -79,12 +79,11 @@
                                                                             <td>@office.Address</td>
                                                                             <td>@office.Location</td>
                                                                             <td style="padding:0;">@office.Phone1</td>
-                                                                            <td>@office.Phone2</td>
                                                                             <td>@office.Email1</td>
-                                                                            <td style="padding:0;">@office.Email2</td>
+                                                                          
 
-                                                                            <td>
-                                                                                <a asp-area="Admin" asp-controller="Office" asp-action="Update" asp-route-id="@office.Id" class="btn btn-success">Update</a>
+                                                                            <td class="d-flex ">
+                                                                                <a asp-area="Admin" asp-controller="Office" asp-action="Update" asp-route-id="@office.Id" class="btn btn-warning mx-2">Update</a>
                                                                                 <a asp-area="Admin" asp-controller="Office" asp-action="Delete" asp-route-id="@office.Id" id="sweet-delete" class="btn btn-danger">Delete</a>
 
                                                                             </td>

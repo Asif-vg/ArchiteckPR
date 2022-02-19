@@ -1,35 +1,45 @@
-﻿@{
+﻿@model VmHome
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <section class="home-architeck" data-aos="fade-up" data-aos-once="true" data-aos-duration="1000" data-aos-delay="0">
     <div class="custom-slider d-flex owl-carousel">
+        @{
+            int b = 0;
+            //int a = 1;
+            foreach (var banner in Model.HomeBanners)
+            {
+                b++;
+                <div class="col-lg-12">
+                    <div class="architeck-solution">
 
-        <div class="col-lg-12">
-            <div class="architeck-solution">
-                <img class="img-fluid" src="./img/Home-img/bg-21.jpg" alt="">
-                <div class="enginer-text2">
-                    <div class="col-lg-6">
-                        <div class="architeck-context">
-                            <span>
-                                Great Experience in
-                                Bulding.
-                            </span>
-                            <h2>
-                                Build A Better World
-                            </h2>
-                            <p>
-                                It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
-                            </p>
+                        <img class="img-fluid" src="~/Uploads/@banner.BgImage" alt="">
+                      
+                        <div class="enginer-text2">
+                            <div class="col-lg-6">
+                                <div class="architeck-context">
+                                    <span>
+                                        @banner.Suptitle
+                                    </span>
+                                    <h2>
+                                        @banner.Title
+                                    </h2>
+                                    <p>
+                                        @banner.Text
+                                    </p>
 
-                            <a class="explore" href="#">Explore More</a>
-                            <a class="touch mx-3" href="#">Get In Touch</a>
+                                    <a class="explore" href="#">Explore More</a>
+                                    <a class="touch mx-3" href="#">Get In Touch</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="col-lg-12">
+            }
+
+        }
+        @*<div class="col-lg-12">
             <div class="architeck-solution">
                 <img class="img-fluid" src="./img/Home-img/bg-3343.jpg" alt="">
                 <div class="enginer-text3">
@@ -77,7 +87,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>*@
 
 
     </div>
@@ -96,16 +106,12 @@
 
                     <span>Where Can We Help You</span>
                     <h2>Welcome To Construction Real Solutions.</h2>
-                    <p>There are many variations of passages of Lorem Ipsum available,but the majority have suffered alteration in some form,by injected humour,or randomised words which don’t look even slightly believable.</p>
                 </div>
-                <ul>
-                    <li><i class="fas fa-check"></i>Lorem ipsum dolor sit amet,consectetur adipiscing elit.</li>
-                    <li><i class="fas fa-check"></i>Integer egestas metus blandit sagittis vestibulum.</li>
-                    <li><i class="fas fa-check"></i>Nunc iaculis libero in ipsum molestie fermentum,a molestie nulla aliquet.</li>
-                    <li><i class="fas fa-check"></i>Integer eget massa malesuada,semper metus in,mattis diam.</li>
-                </ul>
+                <p>@Html.Raw(Model.About.Text)</p>
+
+
                 <div class="mt-5 go-about">
-                    <a href="./about.html">
+                    <a asp-controller="About" asp-action="Index">
                         <div class="button-box">
                             <span class="line-left"></span>
                             <span class="lineB">Read More</span>
@@ -123,7 +129,7 @@
                             <div class="bilmirem">
                                 <div class="about-right-img">
                                     <img class="img-fluid" src="./img/Home-img/demo-1.jpg" alt="about1">
-                                    <div class="geden"></div>
+                                    @*<div class="geden"></div>*@
 
                                 </div>
                             </div>
@@ -196,7 +202,7 @@
             </div>
             <div class="col-lg-6 d-xl-flex  project-button">
                 <div class=" go-about">
-                    <a href="./project.html">
+                    <a asp-controller="Project" asp-action="Index">
                         <div class="button-box">
                             <span class="line-left"></span>
                             <span class="lineB">Veiw More</span>
@@ -209,111 +215,115 @@
         </div>
         <div class="row">
             <div class="project-body owl-carousel">
-                <div class="project-text">
-                    <div class="project-img">
-                        <div class="opacity-img"></div>
-                        <img class=img-fluid class="img-fluid" src="./img/Home-img/01 (1).jpg" alt="">
-                        <a href="./projectDetail.html">
-                            <i class="fal fa-plus"></i>
-                        </a>
-                    </div>
-                    <div class="project-content">
-                        <span>Designer Exteririon</span>
-                        <a href="./projectDetail.html">Whitney Architecture</a>
+                @foreach (var project in Model.Projects)
+                {
+                    <div class="project-text">
+                        <div class="project-img">
+                            <div class="opacity-img"></div>
+                            <img class=img-fluid src="~/Uploads/@project.Image" alt="">
+                            <a asp-controller="Project" asp-action="Detail" asp-route-id="@project.Id">
+                                <i class="fal fa-plus"></i>
+                            </a>
+                        </div>
+                        <div class="project-content">
+                            <span>@project.ProjectArchiteck.Name</span>
+                            <a href="./projectDetail.html">@project.Name</a>
+                        </div>
+
                     </div>
 
-                </div>
-                <div class="project-text">
-                    <div class="project-img">
-                        <img class=img-fluid class="img-fluid" src="./img/Home-img/09.jpg" alt="">
-                        <a href="./projectDetail.html">
-                            <i class="fal fa-plus"></i>
-                        </a>
-                    </div>
-                    <div class="project-content">
-                        <span>Designer Designer</span>
-                        <a href="./projectDetail.html">Catalyst Architects</a>
-                    </div>
+                }
+                @*<div class="project-text">
+                        <div class="project-img">
+                            <img class=img-fluid class="img-fluid" src="./img/Home-img/09.jpg" alt="">
+                            <a href="./projectDetail.html">
+                                <i class="fal fa-plus"></i>
+                            </a>
+                        </div>
+                        <div class="project-content">
+                            <span>Designer Designer</span>
+                            <a href="./projectDetail.html">Catalyst Architects</a>
+                        </div>
 
-                </div>
-                <div class="project-text">
-                    <div class="project-img">
-                        <img class=img-fluid class="img-fluid" src="./img/Home-img/04 (1).jpg" alt="">
-                        <a href="./projectDetail.html">
-                            <i class="fal fa-plus"></i>
-                        </a>
                     </div>
-                    <div class="project-content">
-                        <span>Designer Furniture</span>
-                        <a href="./projectDetail.html">Studio Architecture</a>
-                    </div>
+                    <div class="project-text">
+                        <div class="project-img">
+                            <img class=img-fluid class="img-fluid" src="./img/Home-img/04 (1).jpg" alt="">
+                            <a href="./projectDetail.html">
+                                <i class="fal fa-plus"></i>
+                            </a>
+                        </div>
+                        <div class="project-content">
+                            <span>Designer Furniture</span>
+                            <a href="./projectDetail.html">Studio Architecture</a>
+                        </div>
 
-                </div>
-                <div class="project-text">
-                    <div class="project-img">
-                        <img class=img-fluid class="img-fluid" src="./img/Home-img/05 (1).jpg" alt="">
-                        <a href="./projectDetail.html">
-                            <i class="fal fa-plus"></i>
-                        </a>
                     </div>
-                    <div class="project-content">
-                        <span> Exteririon</span>
-                        <a href="./projectDetail.html">Benoit Architecture</a>
-                    </div>
+                    <div class="project-text">
+                        <div class="project-img">
+                            <img class=img-fluid class="img-fluid" src="./img/Home-img/05 (1).jpg" alt="">
+                            <a href="./projectDetail.html">
+                                <i class="fal fa-plus"></i>
+                            </a>
+                        </div>
+                        <div class="project-content">
+                            <span> Exteririon</span>
+                            <a href="./projectDetail.html">Benoit Architecture</a>
+                        </div>
 
-                </div>
-                <div class="project-text">
-                    <div class="project-img">
-                        <img class=img-fluid class="img-fluid" src="./img/Home-img/06.jpg" alt="">
-                        <a href="./projectDetail.html">
-                            <i class="fal fa-plus"></i>
-                        </a>
                     </div>
-                    <div class="project-content">
-                        <span>Designer </span>
-                        <a href="./projectDetail.html">Jiang Architecture</a>
-                    </div>
+                    <div class="project-text">
+                        <div class="project-img">
+                            <img class=img-fluid class="img-fluid" src="./img/Home-img/06.jpg" alt="">
+                            <a href="./projectDetail.html">
+                                <i class="fal fa-plus"></i>
+                            </a>
+                        </div>
+                        <div class="project-content">
+                            <span>Designer </span>
+                            <a href="./projectDetail.html">Jiang Architecture</a>
+                        </div>
 
-                </div>
-                <div class="project-text">
-                    <div class="project-img">
-                        <img class=img-fluid class="img-fluid" src="./img/Home-img/07.jpg" alt="">
-                        <a href="./projectDetail.html">
-                            <i class="fal fa-plus"></i>
-                        </a>
                     </div>
-                    <div class="project-content">
-                        <span> Furniture</span>
-                        <a href="./projectDetail.html">Nenan Expansion</a>
-                    </div>
+                    <div class="project-text">
+                        <div class="project-img">
+                            <img class=img-fluid class="img-fluid" src="./img/Home-img/07.jpg" alt="">
+                            <a href="./projectDetail.html">
+                                <i class="fal fa-plus"></i>
+                            </a>
+                        </div>
+                        <div class="project-content">
+                            <span> Furniture</span>
+                            <a href="./projectDetail.html">Nenan Expansion</a>
+                        </div>
 
-                </div>
-                <div class="project-text">
-                    <div class="project-img">
-                        <img class=img-fluid class="img-fluid" src="./img/Home-img/09.jpg" alt="">
-                        <a href="./projectDetail.html">
-                            <i class="fal fa-plus"></i>
-                        </a>
                     </div>
-                    <div class="project-content">
-                        <span>Designer</span>
-                        <a href="./projectDetail.html">Mechanical Trim</a>
-                    </div>
+                    <div class="project-text">
+                        <div class="project-img">
+                            <img class=img-fluid class="img-fluid" src="./img/Home-img/09.jpg" alt="">
+                            <a href="./projectDetail.html">
+                                <i class="fal fa-plus"></i>
+                            </a>
+                        </div>
+                        <div class="project-content">
+                            <span>Designer</span>
+                            <a href="./projectDetail.html">Mechanical Trim</a>
+                        </div>
 
-                </div>
-                <div class="project-text">
-                    <div class="project-img">
-                        <img class=img-fluid class="img-fluid" src="./img/Home-img/06.jpg" alt="">
-                        <a href="./projectDetail.html">
-                            <i class="fal fa-plus"></i>
-                        </a>
                     </div>
-                    <div class="project-content">
-                        <span>Designer Exteririon</span>
-                        <a href="./projectDetail.html">Whitney Architecture</a>
-                    </div>
+                    <div class="project-text">
+                        <div class="project-img">
+                            <img class=img-fluid class="img-fluid" src="./img/Home-img/06.jpg" alt="">
+                            <a href="./projectDetail.html">
+                                <i class="fal fa-plus"></i>
+                            </a>
+                        </div>
+                        <div class="project-content">
+                            <span>Designer Exteririon</span>
+                            <a href="./projectDetail.html">Whitney Architecture</a>
+                        </div>
 
-                </div>
+                    </div>*@
 
             </div>
 
@@ -323,7 +333,7 @@
         </div>
     </div>
 </section>
-<section class="work-process ">
+<section class="work-process">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -342,57 +352,48 @@
             </div>
 
         </div>
-        <div class="row" data-aos="fade-down" data-aos-once="true" data-aos-duration="1000" data-aos-delay="0">
+        <div class="row" data-aos="fade-up" data-aos-once="true" data-aos-duration="1000" data-aos-delay="0">
+            @{ int i = 0;
 
-            <div class="col-lg-4  col-md-6">
-                <div class="works">
-                    <div class="img-arrow">
-                        <img src="./img/Home-img/arrow-2.png" alt="arrow">
-                    </div>
-                    <div class="works-icon">
-                        <i class="fal fa-calculator"></i>
-                        <span>1</span>
-                    </div>
-                    <div class="work-context">
-                        <h3>Project Planing </h3>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                    </div>
+                bool arrow=true;
+                foreach (var process in Model.Processes)
+                {
 
-                </div>
-            </div>
-            <div class="col-lg-4  col-md-6">
-                <div class="works">
-                    <div class="img-arrow">
-                        <img src="./img/Home-img/arrow-1.png" alt="arrow">
-                    </div>
-                    <div class="works-icon">
-                        <i class="fal fa-presentation"></i>
-                        <span>2</span>
-                    </div>
-                    <div class="work-context">
-                        <h3>General Contract </h3>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                    </div>
+                    if (i==2)
+                    {
+                        arrow = false;
+                    }
+                    i++;
+                    <div class="col-lg-4  col-md-6">
+                                    <div class="works">
+                                        @if (arrow)
+                                        {
+                                            <div class="img-arrow">
+                                                <img src="./img/Home-img/arrow-2.png" alt="arrow">
+                                            </div>
+                                        }
 
-                </div>
-            </div>
-            <div class="col-lg-4  col-md-12">
-                <div class="works">
-                    <div class="works-icon">
-                        <i class="fal fa-pencil-ruler"></i>
-                        <span>3</span>
-                    </div>
-                    <div class="work-context">
-                        <h3>Interior Design</h3>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                    </div>
+                                        <div class="works-icon">
+                                            <i class="@process.Icon"></i>
 
-                </div>
-            </div>
+                                            <span>@(i)</span>
+
+
+                                        </div>
+                                        <div class="work-context">
+                                            <h3>@process.ProcessHead </h3>
+                                            <p>@process.ProcessText</p>
+                                        </div>
+
+                                    </div>
+                    </div>
+                }
+            }
+
+
         </div>
-        <div class="img-tractor ">
-
-            <img class="tractor1" data-aos="fade-right" data-aos-once="true" data-aos-duration="1000" data-aos-delay="0" src="./img/Home-img/unnamed-1.png" alt="tractor">
+        <div class="img-tractor">
+            <img class="tractor1" src="./img/Home-img/unnamed-1.png" alt="tractor" data-aos="fade-right" data-aos-once="true" data-aos-duration="1000" data-aos-delay="0">
         </div>
     </div>
 
@@ -403,7 +404,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="modal-video">
-                    <a class="play-btn video-play-btn" href="https://www.youtube.com/watch?v=nymZ3dD-VWE">
+                    <a class="play-btn video-play-btn" href="@Model.Setting.Video">
                         <i class="fas fa-play"></i>
                     </a>
                 </div>
@@ -436,140 +437,33 @@
 
         </div>
         <div class="row" data-aos="fade-down" data-aos-once="true" data-aos-duration="1000" data-aos-delay="0">
-            <div class="col-lg-4 col-md-6">
-                <div class="service-box">
-                    <div class="service-img">
-                        <img class="img-fluid" src="./img/Home-img/blog-1.jpg" alt="">
-                        <div class="service-icon">
-                            <i class="fal fa-industry-alt"></i>
+            @foreach (var service in Model.Services)
+            {
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-box">
+                        <div class="service-img">
+                            <img class="img-fluid" src="~/Uploads/@service.ServiceImage" alt="">
+                            <div class="service-icon">
+                                <i class="@service.Icon"></i>
+                            </div>
+                        </div>
+                        <div class="service-context">
+                            <h4>@service.Name</h4>
+                            <p>@Html.Raw(service.Text.Length > 220 ? service.Text.Substring(0, 220) + "..." : service.Text)</p>
+                            <a asp-controller="Service" asp-action="Detail" asp-route-id="@service.Id">
+                                <div class="button-box">
+                                    <span class="line-left"></span>
+                                    <span class="lineB">Read More</span>
+                                    <span class="line-right"></span>
+                                    <i class="fas fa-caret-right"></i>
+                                </div>
+                            </a>
                         </div>
                     </div>
-                    <div class="service-context">
-                        <h4>Construction Management</h4>
-                        <p>Lorem Ipsum is simply dummy text of the printing Ipsum has been the standard .</p>
-                        <a href="./serviceDetail.html">
-                            <div class="button-box">
-                                <span class="line-left"></span>
-                                <span class="lineB">Read More</span>
-                                <span class="line-right"></span>
-                                <i class="fas fa-caret-right"></i>
-                            </div>
-                        </a>
-                    </div>
                 </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="service-box">
-                    <div class="service-img">
-                        <img class="img-fluid" src="./img/Home-img/blog-2.jpg" alt="">
-                        <div class="service-icon">
-                            <i class="fal fa-robot"></i>
-                        </div>
-                    </div>
-                    <div class="service-context">
-                        <h4>Expert Mechanical</h4>
-                        <p>Lorem Ipsum is simply dummy text of the printing Ipsum has been the standard .</p>
-                        <a href="./serviceDetail.html">
-                            <div class="button-box">
-                                <span class="line-left"></span>
-                                <span class="lineB">Read More</span>
-                                <span class="line-right"></span>
-                                <i class="fas fa-caret-right"></i>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-12">
-                <div class="service-box">
-                    <div class="service-img">
-                        <img class="img-fluid" src="./img/Home-img/blog-3.jpg" alt="">
-                        <div class="service-icon">
-                            <i class="fal fa-map-marker"></i>
-                        </div>
-                    </div>
-                    <div class="service-context">
-                        <h4>Architecture & Building </h4>
-                        <p>Lorem Ipsum is simply dummy text of the printing Ipsum has been the standard .</p>
-                        <a href="./serviceDetail.html">
-                            <div class="button-box">
-                                <span class="line-left"></span>
-                                <span class="lineB">Read More</span>
-                                <span class="line-right"></span>
-                                <i class="fas fa-caret-right"></i>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="service-box">
-                    <div class="service-img">
-                        <img class="img-fluid" src="./img/Home-img/blog-4.jpg" alt="">
-                        <div class="service-icon">
-                            <i class="fal fa-ruler-combined"></i>
-                        </div>
-                    </div>
-                    <div class="service-context">
-                        <h4>Tiling & Painiting</h4>
-                        <p>Lorem Ipsum is simply dummy text of the printing Ipsum has been the standard .</p>
-                        <a href="./serviceDetail.html">
-                            <div class="button-box">
-                                <span class="line-left"></span>
-                                <span class="lineB">Read More</span>
-                                <span class="line-right"></span>
-                                <i class="fas fa-caret-right"></i>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="service-box">
-                    <div class="service-img">
-                        <img class="img-fluid" src="./img/Home-img/blog-6.jpg" alt="">
-                        <div class="service-icon">
-                            <i class="fal fa-cog"></i>
-                        </div>
-                    </div>
-                    <div class="service-context">
-                        <h4>Apartment Design</h4>
-                        <p>Lorem Ipsum is simply dummy text of the printing Ipsum has been the standard .</p>
-                        <a href="./serviceDetail.html">
-                            <div class="button-box">
-                                <span class="line-left"></span>
-                                <span class="lineB">Read More</span>
-                                <span class="line-right"></span>
-                                <i class="fas fa-caret-right"></i>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-12">
-                <div class="service-box">
-                    <div class="service-img">
-                        <img class="img-fluid" src="./img/Home-img/blog-7.jpg" alt="">
-                        <div class="service-icon">
-                            <i class="fal fa-tools"></i>
-                        </div>
-                    </div>
-                    <div class="service-context">
-                        <h4>Facade Engineering</h4>
-                        <p>Lorem Ipsum is simply dummy text of the printing Ipsum has been the standard .</p>
-                        <a href="./serviceDetail.html">
-                            <div class="button-box">
-                                <span class="line-left"></span>
-                                <span class="lineB">Read More</span>
-                                <span class="line-right"></span>
-                                <i class="fas fa-caret-right"></i>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
+            }
         </div>
-    </div>
+        </div>
 </section>
 <section class="solutions">
     <div class="opacity-01"></div>
@@ -578,18 +472,13 @@
             <div class="col-xl-6" data-aos="fade-down" data-aos-once="true" data-aos-duration="1000" data-aos-delay="0">
                 <div class="all-solution">
                     <div class="solution-box">
-                        <span>Working With Excellent</span>
-                        <h2>Construction & Engineering Real Solutions.</h2>
-                        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+                        <span>@Model.Solution.Suptitle</span>
+                        <h2>@Model.Solution.Title</h2>
+
                     </div>
-                    <ul>
-                        <li><i class="fas fa-check"></i>Lorem ipsum dolor sit amet,consectetur adipiscing elit.</li>
-                        <li><i class="fas fa-check"></i>Integer egestas metus blandit sagittis vestibulum.</li>
-                        <li><i class="fas fa-check"></i>Nunc iaculis libero in ipsum molestie fermentum,a molestie nulla aliquet.</li>
-                        <li><i class="fas fa-check"></i>Integer eget massa malesuada,semper metus in,mattis diam.</li>
-                    </ul>
+                    <p>@Html.Raw(Model.Solution.Text)</p>
                     <div class="mt-5 go-about">
-                        <a href="./about.html">
+                        <a asp-controller="About" asp-action="Index">
                             <div class="button-box">
                                 <span class="line-left"></span>
                                 <span class="lineB">Veiw More</span>
@@ -603,8 +492,7 @@
             </div>
             <div class="col-xl-6  mt-5 d-flex  ">
                 <div class="solution-img">
-                    <img class="img-fluid" src="./img/Home-img/demo-6.jpg" alt="" data-aos="fade-right" data-aos-once="true" data-aos-duration="6000" data-aos-delay="600">
-                    <div class="orange" data-aos="fade-right" data-aos-once="true" data-aos-duration="4000" data-aos-delay="400"></div>
+                    <img class="img-fluid" src="~/Uploads/@Model.Solution.Image" alt="" data-aos="fade-right" data-aos-once="true" data-aos-duration="6000" data-aos-delay="600">
 
                 </div>
             </div>
@@ -685,81 +573,85 @@
         </div>
         <div class="row">
             <div class="persons owl-carousel ">
+                @foreach (var team in Model.Teams)
+                {
+                    <div class="person-box">
+                        <div class="person-img">
+                            <img class="img-fluid" src="~/Uploads/@team.Image" alt="">
+                            <div class="person-social">
+                                <ul>
+                                    @foreach (var personSocial in team.PersonToSocials)
+                                    {
+                                        <li><a href="@personSocial.PersonSocial.Link"><i class="@personSocial.PersonSocial.Icon"></i></a></li>
 
-                <div class="person-box">
-                    <div class="person-img">
-                        <img class="img-fluid" src="./img/Home-img/02.jpg" alt="">
-                        <div class="person-social">
-                            <ul>
-                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-                                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                            </ul>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="person-info">
+                            <span>@team.PersonPosition.Name</span>
+                            <h5>@team.Name</h5>
                         </div>
                     </div>
-                    <div class="person-info">
-                        <span>Project Head</span>
-                        <h5>Robert Anderson</h5>
+
+                }
+
+
+                @*<div class="person-box">
+                        <div class="person-img">
+                            <img class="img-fluid" src="./img/Home-img/03.jpg" alt="">
+                            <div class="person-social">
+                                <ul>
+                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="person-info">
+                            <span>Creative Head</span>
+                            <h5>Iliena Brown</h5>
+                        </div>
+
                     </div>
-                </div>
 
-
-                <div class="person-box">
-                    <div class="person-img">
-                        <img class="img-fluid" src="./img/Home-img/03.jpg" alt="">
-                        <div class="person-social">
-                            <ul>
-                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-                                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                            </ul>
+                    <div class="person-box">
+                        <div class="person-img">
+                            <img class="img-fluid" src="./img/Home-img/04.jpg" alt="">
+                            <div class="person-social">
+                                <ul>
+                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="person-info">
+                            <span>Creative Direction</span>
+                            <h5>Michal Smart</h5>
                         </div>
                     </div>
-                    <div class="person-info">
-                        <span>Creative Head</span>
-                        <h5>Iliena Brown</h5>
-                    </div>
 
-                </div>
 
-                <div class="person-box">
-                    <div class="person-img">
-                        <img class="img-fluid" src="./img/Home-img/04.jpg" alt="">
-                        <div class="person-social">
-                            <ul>
-                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-                                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                            </ul>
+                    <div class="person-box">
+                        <div class="person-img">
+                            <img class="img-fluid" src="./img/Home-img/05.jpg" alt="">
+                            <div class="person-social">
+                                <ul>
+                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                    <div class="person-info">
-                        <span>Creative Direction</span>
-                        <h5>Michal Smart</h5>
-                    </div>
-                </div>
-
-
-                <div class="person-box">
-                    <div class="person-img">
-                        <img class="img-fluid" src="./img/Home-img/05.jpg" alt="">
-                        <div class="person-social">
-                            <ul>
-                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-                                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                            </ul>
+                        <div class="person-info">
+                            <span>Stock Market</span>
+                            <h5>Danial Frankie</h5>
                         </div>
-                    </div>
-                    <div class="person-info">
-                        <span>Stock Market</span>
-                        <h5>Danial Frankie</h5>
-                    </div>
-                </div>
+                    </div>*@
 
             </div>
         </div>
@@ -778,141 +670,145 @@
         </div>
         <div class="row">
             <div class="said-body owl-carousel">
-                <div class="said-text">
-                    <div class="said-img">
-                        <img class="img-fluid" src="./img/Home-img/05.jpg" alt="">
-                        <div class="client-info">
-                            <h5>Steven Smith</h5>
-                            <p>CEO at Envato</p>
+                @foreach (var comment in Model.ServiceComments)
+                {
+                    <div class="said-text">
+                        <div class="said-img">
+                            <img class="img-fluid" src="./img/Home-img/05.jpg" alt="">
+                            <div class="client-info">
+                                <h5>@comment.Name</h5>
+                                <p>@comment.Subject</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="said-star">
+                        <div class="said-star">
 
-                        <div class="said-icon">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
+                            <div class="said-icon">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+
+                        </div>
+                        <div class="said-content">
+                            <div class="said-quote">
+                                <i class="fas fa-quote-right"></i>
+                            </div>
+                            <p>@(comment.Context!=null && comment.Context.Length > 70 ? comment.Context.Substring(0, 70) + "..." : comment.Context)</p>
                         </div>
 
                     </div>
-                    <div class="said-content">
-                        <div class="said-quote">
-                            <i class="fas fa-quote-right"></i>
-                        </div>
-                        <p>Contrary to popular belief,Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC,making it over 2000 years old.</p>
-                    </div>
 
+                }
+                @*<div class="said-text">
+            <div class="said-img">
+                <img class="img-fluid" src="./img/Home-img/04.jpg" alt="">
+                <div class="client-info">
+                    <h5>Steven Smith</h5>
+                    <p>CEO at Envato</p>
                 </div>
-                <div class="said-text">
-                    <div class="said-img">
-                        <img class="img-fluid" src="./img/Home-img/04.jpg" alt="">
-                        <div class="client-info">
-                            <h5>Steven Smith</h5>
-                            <p>CEO at Envato</p>
-                        </div>
-                    </div>
-                    <div class="said-star">
+            </div>
+            <div class="said-star">
 
-                        <div class="said-icon">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-
-                    </div>
-                    <div class="said-content">
-                        <div class="said-quote">
-                            <i class="fas fa-quote-right"></i>
-                        </div>
-                        <p>Contrary to popular belief,Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC,making it over 2000 years old.</p>
-                    </div>
-
+                <div class="said-icon">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
                 </div>
-                <div class="said-text">
-                    <div class="said-img">
-                        <img class="img-fluid" src="./img/Home-img/01.jpg" alt="">
-                        <div class="client-info">
-                            <h5>Steven Smith</h5>
-                            <p>CEO at Envato</p>
-                        </div>
-                    </div>
-                    <div class="said-star">
 
-                        <div class="said-icon">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-
-                    </div>
-                    <div class="said-content">
-                        <div class="said-quote">
-                            <i class="fas fa-quote-right"></i>
-                        </div>
-                        <p>Contrary to popular belief,Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC,making it over 2000 years old.</p>
-                    </div>
-
+            </div>
+            <div class="said-content">
+                <div class="said-quote">
+                    <i class="fas fa-quote-right"></i>
                 </div>
-                <div class="said-text">
-                    <div class="said-img">
-                        <img class="img-fluid" src="./img/Home-img/02.jpg" alt="">
-                        <div class="client-info">
-                            <h5>Steven Smith</h5>
-                            <p>CEO at Envato</p>
-                        </div>
-                    </div>
-                    <div class="said-star">
+                <p>Contrary to popular belief,Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC,making it over 2000 years old.</p>
+            </div>
 
-                        <div class="said-icon">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-
-                    </div>
-                    <div class="said-content">
-                        <div class="said-quote">
-                            <i class="fas fa-quote-right"></i>
-                        </div>
-                        <p>Contrary to popular belief,Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC,making it over 2000 years old.</p>
-                    </div>
-
+        </div>
+        <div class="said-text">
+            <div class="said-img">
+                <img class="img-fluid" src="./img/Home-img/01.jpg" alt="">
+                <div class="client-info">
+                    <h5>Steven Smith</h5>
+                    <p>CEO at Envato</p>
                 </div>
-                <div class="said-text">
-                    <div class="said-img">
-                        <img class="img-fluid" src="./img/Home-img/03.jpg" alt="">
-                        <div class="client-info">
-                            <h5>Steven Smith</h5>
-                            <p>CEO at Envato</p>
-                        </div>
-                    </div>
-                    <div class="said-star">
+            </div>
+            <div class="said-star">
 
-                        <div class="said-icon">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-
-                    </div>
-                    <div class="said-content">
-                        <div class="said-quote">
-                            <i class="fas fa-quote-right"></i>
-                        </div>
-                        <p>Contrary to popular belief,Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC,making it over 2000 years old.</p>
-                    </div>
-
+                <div class="said-icon">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
                 </div>
+
+            </div>
+            <div class="said-content">
+                <div class="said-quote">
+                    <i class="fas fa-quote-right"></i>
+                </div>
+                <p>Contrary to popular belief,Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC,making it over 2000 years old.</p>
+            </div>
+
+        </div>
+        <div class="said-text">
+            <div class="said-img">
+                <img class="img-fluid" src="./img/Home-img/02.jpg" alt="">
+                <div class="client-info">
+                    <h5>Steven Smith</h5>
+                    <p>CEO at Envato</p>
+                </div>
+            </div>
+            <div class="said-star">
+
+                <div class="said-icon">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+
+            </div>
+            <div class="said-content">
+                <div class="said-quote">
+                    <i class="fas fa-quote-right"></i>
+                </div>
+                <p>Contrary to popular belief,Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC,making it over 2000 years old.</p>
+            </div>
+
+        </div>
+        <div class="said-text">
+            <div class="said-img">
+                <img class="img-fluid" src="./img/Home-img/03.jpg" alt="">
+                <div class="client-info">
+                    <h5>Steven Smith</h5>
+                    <p>CEO at Envato</p>
+                </div>
+            </div>
+            <div class="said-star">
+
+                <div class="said-icon">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+
+            </div>
+            <div class="said-content">
+                <div class="said-quote">
+                    <i class="fas fa-quote-right"></i>
+                </div>
+                <p>Contrary to popular belief,Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC,making it over 2000 years old.</p>
+            </div>
+
+        </div>*@
 
             </div>
 
@@ -935,72 +831,17 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="client-items owl-carousel">
-                    <div class="client-item">
-                        <img class="img-fluid" src="./img/Client-img/cc-1.png" alt="">
-                        <img class="client-hover" src="./img/Home-img/008.png" alt="">
+                    @foreach (var client in Model.Clients)
+                    {
+                        <div class="client-item">
+                            <img class="img-fluid" src="~/Uploads/@client.ClientImages" alt="">
+                            @*<img class="client-hover" src="~/Uploads/@client.ClientImages.Image" alt="">s*@
 
-                    </div>
-                    <div class="client-item">
-                        <img class="img-fluid" src="./img/Client-img/cc-2.png" alt="">
-                        <img class="client-hover" src="./img/Client-img/ccc-8.png" alt="">
+                        </div>
 
-                    </div>
-                    <div class="client-item">
-                        <img class="img-fluid" src="./img/Client-img/cc-3.png" alt="">
-                        <img class="client-hover" src="./img/Home-img/001.png" alt="">
+                    }
 
-                    </div>
-                    <div class="client-item">
-                        <img class="img-fluid" src="./img/Client-img/cc-4.png" alt="">
-                        <img class="client-hover" src="./img/Home-img/002.png" alt="">
-
-                    </div>
-                    <div class="client-item">
-                        <img class="img-fluid" src="./img/Client-img/cc-5.png" alt="">
-                        <img class="client-hover" src="./img/Home-img/003.png" alt="">
-
-                    </div>
-                    <div class="client-item">
-                        <img class="img-fluid" src="./img/Client-img/cc-6.png" alt="">
-                        <img class="client-hover" src="./img/Home-img/004.png" alt="">
-
-                    </div>
-                    <div class="client-item">
-                        <img class="img-fluid" src="./img/Client-img/cc-7.png" alt="">
-                        <img class="client-hover" src="./img/Home-img/005.png" alt="">
-
-                    </div>
-
-                    <div class="client-item">
-                        <img class="img-fluid" src="./img/Client-img/cc-9.png" alt="">
-                        <img class="client-hover" src="./img/Home-img/007.png" alt="">
-
-                    </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</section>
-<section class="subscribe">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="subscribe-context">
-                    <div class="subscribe-img">
-                        <img class="img-fluid" src="./img/Home-img/mail.png" alt="">
-                    </div>
-                    <div class="subscribe-details">
-                        <h6>Sign Up to Get Latest Updates</h6>
-                        <p>It is a long established fact that a reader will be distracted by the</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <form action="">
-                    <input type="email" name="email" autocomplete="off" placeholder="Your email address">
-                    <button type="submit">Sign up</button>
-
-                </form>
             </div>
         </div>
     </div>

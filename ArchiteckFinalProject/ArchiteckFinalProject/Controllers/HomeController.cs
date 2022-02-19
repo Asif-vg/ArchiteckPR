@@ -2,6 +2,7 @@
 using ArchiteckFinalProject.Models;
 using ArchiteckFinalProject.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -21,14 +22,54 @@ namespace ArchiteckFinalProject.Controllers
         }
         public IActionResult Index()
         {
-            VmLayout vmLayout = new VmLayout() {
+            VmHome vmHome = new VmHome() {
                 Setting = _context.Settings.FirstOrDefault(),
-                Socials = _context.Socials.ToList()
+                Socials = _context.Socials.ToList(),
+                About=_context.Abouts.FirstOrDefault(),
+                Services=_context.Services.Include(sc => sc.ServiceCatagory).Include(sc => sc.ServiceComments).ToList(),
+                Projects = _context.Projects.Include(pa => pa.ProjectArchiteck).ToList(),
+                Processes = _context.Processes.ToList(),
+                Solution = _context.Solutions.FirstOrDefault(),
+                Teams=_context.Teams.Include(pp => pp.PersonPosition).Include(pts => pts.PersonToSocials).ThenInclude(ps => ps.PersonSocial).ToList(),
+                Clients=_context.Clients.ToList(),
+                HomeBanners=_context.HomeBanners.ToList(),
+                ServiceComments=_context.ServiceComments.ToList()
+
             };
 
-            return View(vmLayout);
+            return View(vmHome);
         }
 
-     
+        public IActionResult Subscribe(string email)
+        {
+            VmSubscribeResponse response = new VmSubscribeResponse();
+
+            if (string.IsNullOrEmpty(email))
+            {
+                response.Status = false;
+                response.Message = "Subscription failed! You must enter your email";
+                return Json(response);
+            }
+
+            bool isExist = _context.Subscribes.Any(s => s.Email == email);
+
+            if (isExist)
+            {
+                response.Status = false;
+                response.Message = "Your have already subscribed!";
+                return Json(response);
+            }
+
+            Subscribe subscribe = new Subscribe();
+            subscribe.CreatedDate = DateTime.Now;
+            subscribe.Email = email;
+            _context.Subscribes.Add(subscribe);
+            _context.SaveChanges();
+
+            response.Status = true;
+            response.Message = "You subscribe successfully!";
+            return Json(response);
+        }
+
     }
 }
