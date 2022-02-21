@@ -43,7 +43,7 @@
                         <div class="card-body">
 
                             <form asp-area="Admin" asp-controller="Account" asp-action="Login" method="post">
-                                <div asp-validation-summary="All" class="text-danger"></div>
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
                                 <div class="form-group">
                                     <input class="form-control" type="email" asp-for="@Model.Email" required placeholder="Email">
@@ -55,7 +55,7 @@
 
                                 <div class="form-group">
                                     <div class="custom-control custom-checkbox checkbox-success">
-                                        <input type="checkbox" class="custom-control-input" id="checkbox-signin" checked>
+                                        <input type="checkbox" class="custom-control-input" id="checkbox-signin" />
                                         <label class="custom-control-label" for="checkbox-signin">Remember me</label>
                                     </div>
                                 </div>

@@ -670,145 +670,141 @@
         </div>
         <div class="row">
             <div class="said-body owl-carousel">
-                @foreach (var comment in Model.ServiceComments)
-                {
-                    <div class="said-text">
-                        <div class="said-img">
-                            <img class="img-fluid" src="./img/Home-img/05.jpg" alt="">
-                            <div class="client-info">
-                                <h5>@comment.Name</h5>
-                                <p>@comment.Subject</p>
-                            </div>
+                <div class="said-text">
+                    <div class="said-img">
+                        <img class="img-fluid" src="./img/Home-img/05.jpg" alt="">
+                        <div class="client-info">
+                            <h5>Steven Smith</h5>
+                            <p>CEO at Envato</p>
                         </div>
-                        <div class="said-star">
+                    </div>
+                    <div class="said-star">
 
-                            <div class="said-icon">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-
-                        </div>
-                        <div class="said-content">
-                            <div class="said-quote">
-                                <i class="fas fa-quote-right"></i>
-                            </div>
-                            <p>@(comment.Context!=null && comment.Context.Length > 70 ? comment.Context.Substring(0, 70) + "..." : comment.Context)</p>
+                        <div class="said-icon">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
                         </div>
 
                     </div>
+                    <div class="said-content">
+                        <div class="said-quote">
+                            <i class="fas fa-quote-right"></i>
+                        </div>
+                        <p>Contrary to popular belief,Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC,making it over 2000 years old.</p>
+                    </div>
 
-                }
-                @*<div class="said-text">
-            <div class="said-img">
-                <img class="img-fluid" src="./img/Home-img/04.jpg" alt="">
-                <div class="client-info">
-                    <h5>Steven Smith</h5>
-                    <p>CEO at Envato</p>
                 </div>
-            </div>
-            <div class="said-star">
+                <div class="said-text">
+                    <div class="said-img">
+                        <img class="img-fluid" src="./img/Home-img/04.jpg" alt="">
+                        <div class="client-info">
+                            <h5>Steven Smith</h5>
+                            <p>CEO at Envato</p>
+                        </div>
+                    </div>
+                    <div class="said-star">
 
-                <div class="said-icon">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
+                        <div class="said-icon">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+
+                    </div>
+                    <div class="said-content">
+                        <div class="said-quote">
+                            <i class="fas fa-quote-right"></i>
+                        </div>
+                        <p>Contrary to popular belief,Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC,making it over 2000 years old.</p>
+                    </div>
+
                 </div>
+                <div class="said-text">
+                    <div class="said-img">
+                        <img class="img-fluid" src="./img/Home-img/01.jpg" alt="">
+                        <div class="client-info">
+                            <h5>Steven Smith</h5>
+                            <p>CEO at Envato</p>
+                        </div>
+                    </div>
+                    <div class="said-star">
 
-            </div>
-            <div class="said-content">
-                <div class="said-quote">
-                    <i class="fas fa-quote-right"></i>
+                        <div class="said-icon">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+
+                    </div>
+                    <div class="said-content">
+                        <div class="said-quote">
+                            <i class="fas fa-quote-right"></i>
+                        </div>
+                        <p>Contrary to popular belief,Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC,making it over 2000 years old.</p>
+                    </div>
+
                 </div>
-                <p>Contrary to popular belief,Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC,making it over 2000 years old.</p>
-            </div>
+                <div class="said-text">
+                    <div class="said-img">
+                        <img class="img-fluid" src="./img/Home-img/02.jpg" alt="">
+                        <div class="client-info">
+                            <h5>Steven Smith</h5>
+                            <p>CEO at Envato</p>
+                        </div>
+                    </div>
+                    <div class="said-star">
 
-        </div>
-        <div class="said-text">
-            <div class="said-img">
-                <img class="img-fluid" src="./img/Home-img/01.jpg" alt="">
-                <div class="client-info">
-                    <h5>Steven Smith</h5>
-                    <p>CEO at Envato</p>
+                        <div class="said-icon">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+
+                    </div>
+                    <div class="said-content">
+                        <div class="said-quote">
+                            <i class="fas fa-quote-right"></i>
+                        </div>
+                        <p>Contrary to popular belief,Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC,making it over 2000 years old.</p>
+                    </div>
+
                 </div>
-            </div>
-            <div class="said-star">
+                <div class="said-text">
+                    <div class="said-img">
+                        <img class="img-fluid" src="./img/Home-img/03.jpg" alt="">
+                        <div class="client-info">
+                            <h5>Steven Smith</h5>
+                            <p>CEO at Envato</p>
+                        </div>
+                    </div>
+                    <div class="said-star">
 
-                <div class="said-icon">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
+                        <div class="said-icon">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+
+                    </div>
+                    <div class="said-content">
+                        <div class="said-quote">
+                            <i class="fas fa-quote-right"></i>
+                        </div>
+                        <p>Contrary to popular belief,Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC,making it over 2000 years old.</p>
+                    </div>
+
                 </div>
-
-            </div>
-            <div class="said-content">
-                <div class="said-quote">
-                    <i class="fas fa-quote-right"></i>
-                </div>
-                <p>Contrary to popular belief,Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC,making it over 2000 years old.</p>
-            </div>
-
-        </div>
-        <div class="said-text">
-            <div class="said-img">
-                <img class="img-fluid" src="./img/Home-img/02.jpg" alt="">
-                <div class="client-info">
-                    <h5>Steven Smith</h5>
-                    <p>CEO at Envato</p>
-                </div>
-            </div>
-            <div class="said-star">
-
-                <div class="said-icon">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-
-            </div>
-            <div class="said-content">
-                <div class="said-quote">
-                    <i class="fas fa-quote-right"></i>
-                </div>
-                <p>Contrary to popular belief,Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC,making it over 2000 years old.</p>
-            </div>
-
-        </div>
-        <div class="said-text">
-            <div class="said-img">
-                <img class="img-fluid" src="./img/Home-img/03.jpg" alt="">
-                <div class="client-info">
-                    <h5>Steven Smith</h5>
-                    <p>CEO at Envato</p>
-                </div>
-            </div>
-            <div class="said-star">
-
-                <div class="said-icon">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-
-            </div>
-            <div class="said-content">
-                <div class="said-quote">
-                    <i class="fas fa-quote-right"></i>
-                </div>
-                <p>Contrary to popular belief,Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC,making it over 2000 years old.</p>
-            </div>
-
-        </div>*@
 
             </div>
 
@@ -833,11 +829,25 @@
                 <div class="client-items owl-carousel">
                     @foreach (var client in Model.Clients)
                     {
-                        <div class="client-item">
-                            <img class="img-fluid" src="~/Uploads/@client.ClientImages" alt="">
-                            @*<img class="client-hover" src="~/Uploads/@client.ClientImages.Image" alt="">s*@
+                        int c = 0;
+                    <div class="client-item">
+                        @foreach (var image in client.ClientImages)
+                        {
+                            if (c == 1)
+                            {
+                                <img class="img-fluid" src="~/Uploads/@image.Image" alt="">
 
-                        </div>
+                            }
+                            if (c == 0)
+                            {
+                                <img class="client-hover" src="~/Uploads/@image.Image" alt="">
+
+                            }
+                            c++;
+                        }
+
+                        @*client.ClientImages*@
+                    </div>
 
                     }
 

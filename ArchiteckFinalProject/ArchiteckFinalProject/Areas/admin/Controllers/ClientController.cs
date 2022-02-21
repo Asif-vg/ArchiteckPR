@@ -83,55 +83,9 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
             }
 
 
-
-
-
-
-            //if (ModelState.IsValid)
-            //{
-            //    if (client.ClientImageFile != null)
-            //    {
-            //        if (client.ClientImageFile.ContentType == "image/png" || client.ClientImageFile.ContentType == "image/jpeg")
-            //        {
-            //            if (client.ClientImageFile.Length <= 2097152)
-            //            {
-            //                string fileName = Guid.NewGuid() + "-" + DateTime.Now.ToString("yyyyMMddHHmmSS") + "-" + client.ClientImageFile.FileName;
-            //                string pathName = Path.Combine(_webHostEnvironment.WebRootPath, "Uploads", fileName);
-
-            //                using (var stream = new FileStream(pathName, FileMode.Create))
-            //                {
-            //                    client.ClientImageFile.CopyTo(stream);
-
-            //                }
-            //                client.ClientImage = fileName;
-
-            //                _context.Clients.Add(client);
-            //                _context.SaveChanges();
-            //                return RedirectToAction("Index");
-            //            }
-            //            else
-            //            {
-            //                ModelState.AddModelError("", "You can upload only less than 2mb");
-            //                return View(client);
-            //            }
-            //        }
-            //        else
-            //        {
-            //            ModelState.AddModelError("", "You can upload only .jpeg , .jpg and .png");
-            //            return View(client);
-            //        }
-            //    }
-            //    else
-            //    {
-            //        ModelState.AddModelError("", "Please all data enter");
-
-            //        return View(client);
-
-            //    }
-            //}
-            //ModelState.AddModelError("", "Please all data enter");
-
             return View(client);
+
+
         }
         //public IActionResult Update(int? id)
         //{

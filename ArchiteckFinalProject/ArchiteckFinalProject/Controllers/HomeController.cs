@@ -31,7 +31,7 @@ namespace ArchiteckFinalProject.Controllers
                 Processes = _context.Processes.ToList(),
                 Solution = _context.Solutions.FirstOrDefault(),
                 Teams=_context.Teams.Include(pp => pp.PersonPosition).Include(pts => pts.PersonToSocials).ThenInclude(ps => ps.PersonSocial).ToList(),
-                Clients=_context.Clients.ToList(),
+                Clients=_context.Clients.Include(ci => ci.ClientImages).ToList(),
                 HomeBanners=_context.HomeBanners.ToList(),
                 ServiceComments=_context.ServiceComments.ToList()
 

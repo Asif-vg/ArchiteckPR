@@ -117,6 +117,9 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
 
             return View(vmRegister);
         }
+
+     
+
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
@@ -231,35 +234,7 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
             return RedirectToAction("Roles");
         }
 
-        public IActionResult ForgotPassword()
-        {
-            return View();
-        }
+   
 
-        [HttpPost]
-        public IActionResult ForgotPassword(CustomUser model)
-        {
-            try
-            {
-                var query = _context.CustomUsers.Where(m => m.Email == model.Email).SingleOrDefault();
-                if (query != null)
-                {
-                    query.Email = model.Email;
-                    query.PasswordHash = model.Password;
-                    _context.SaveChanges();
-                    return RedirectToAction("Login");
-                }
-                else
-                {
-                    TempData["msg"] = "Account not updated";
-                }
-            }
-            catch (Exception ex)
-            {
-                TempData["msg"] = ex;
-            }
-           
-            return View(model);
-        }
     }
 }

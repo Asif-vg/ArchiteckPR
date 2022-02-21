@@ -14,6 +14,7 @@ namespace ArchiteckFinalProject.ViewModels
         public List<Project> Projects { get; set; }
         public List<Team> Teams { get; set; }
         public List<Client> Clients { get; set; }
+        public List<ClientImage> ClientImages { get; set; }
         public About About { get; set; }
         public Solution Solution { get; set; }
         public List<HomeBanner> HomeBanners { get; set; }
