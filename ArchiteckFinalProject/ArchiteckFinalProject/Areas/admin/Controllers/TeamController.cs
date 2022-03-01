@@ -14,7 +14,8 @@ using System.Threading.Tasks;
 namespace ArchiteckFinalProject.Areas.admin.Controllers
 {
     [Area("admin")]
-    [Authorize]
+    [Authorize(Roles = "Admin")]
+
     public class TeamController : Controller
     {
         private readonly AppDbContext _context;
@@ -25,6 +26,8 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
             _context = context;
             _webHostEnvironment = webHostEnvironment;
         }
+        //[AllowAnonymous]
+
         public IActionResult Index()
         {
             return View(_context.Teams
@@ -32,6 +35,7 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
                                       .Include(pts=> pts.PersonToSocials)
                                       .ThenInclude(ps => ps.PersonSocial).ToList());
         }
+        //[AllowAnonymous]
 
         public IActionResult Create()
         {
@@ -41,6 +45,8 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
             return View();
         }
         [HttpPost]
+        //[AllowAnonymous]
+
         public IActionResult Create(Team team)
         {
 
@@ -114,6 +120,7 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
 
             return View(team);
         }
+        //[AllowAnonymous]
 
         public IActionResult Update(int? id)
         {
@@ -125,6 +132,8 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
         }
 
         [HttpPost]
+        //[AllowAnonymous]
+
         public IActionResult Update(Team team)
         {
             if (ModelState.IsValid)
@@ -206,6 +215,7 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
             return View(team);
         }
 
+        //[AllowAnonymous]
 
         public IActionResult Delete(int? id)
         {

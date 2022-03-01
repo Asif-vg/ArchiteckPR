@@ -18,10 +18,24 @@
         <div class="row" data-aos="fade-right" data-aos-once="true" data-aos-duration="1000" data-aos-delay="0">
             @foreach (var client in Model.Clients)
             {
+                int c = 0;
                 <div class="col-lg-3 col-md-4">
                     <div class="client-img">
-                        <img class="img-fluid main-img" src="~/Uploads/@client.ClientImages.FirstOrDefault().Image" alt="">
-                        <img class="client-hover img-fluid" src="./img/Home-img/008.png" alt="">
+                        @foreach (var image in client.ClientImages)
+                        {
+                            if (c == 1)
+                            {
+                                <img class="img-fluid" src="~/Uploads/@image.Image" alt="">
+
+                            }
+                            if (c == 0)
+                            {
+                                <img class="client-hover" src="~/Uploads/@image.Image" alt="">
+
+                            }
+                            c++;
+                        }
+
                     </div>
                 </div>
             }

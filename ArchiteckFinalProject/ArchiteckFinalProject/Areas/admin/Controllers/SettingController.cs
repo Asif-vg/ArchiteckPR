@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace ArchiteckFinalProject.Areas.admin.Controllers
 {
     [Area("admin")]
-    //[Authorize]
+    [Authorize]
 
     public class SettingController : Controller
     {
@@ -24,6 +24,8 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
             _context = context;
             _webHostEnvironment = webHostEnvironment;
         }
+        [AllowAnonymous]
+
         public IActionResult Index()
         {
             int i = 0;
@@ -37,32 +39,47 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
 
             return View(setting);
         }
+        [AllowAnonymous]
+
         public IActionResult Create()
         {
             return View();
         }
         [HttpPost]
+        [AllowAnonymous]
+
         public IActionResult Create(Setting setting)
         {
             if (ModelState.IsValid)
             {
-                if (setting.LogoFile != null)
+                if (setting.LogoFile != null && setting.VideoFile != null)
                 {
-                    if (setting.LogoFile.ContentType == "image/png" || setting.LogoFile.ContentType == "image/jpeg")
+                    if (setting.LogoFile.ContentType == "image/png" || setting.LogoFile.ContentType == "image/jpeg" && setting.VideoFile.ContentType == "video/mp4")
                     {
                         if (setting.LogoFile.Length < 2097152)
                         {
-                            string filename = Guid.NewGuid() + "-" + DateTime.Now.ToString("yyyyMMddHHmmSS") + "-" + setting.LogoFile.FileName;
-                            string path = Path.Combine(_webHostEnvironment.WebRootPath, "Uploads", filename);
-                            using (var stream = new FileStream(path, FileMode.Create))
+                            if (setting.VideoFile.Length < 2000000000)
                             {
-                                setting.LogoFile.CopyTo(stream);
-                            }
-                            setting.Logo = filename;
+                                string filename = Guid.NewGuid() + "-" + DateTime.Now.ToString("yyyyMMddHHmmSS") + "-" + setting.LogoFile.FileName;
+                                string path = Path.Combine(_webHostEnvironment.WebRootPath, "Uploads", filename);
+                                using (var stream = new FileStream(path, FileMode.Create))
+                                {
+                                    setting.LogoFile.CopyTo(stream);
+                                }
 
-                            _context.Settings.Add(setting);
-                            _context.SaveChanges();
-                            return RedirectToAction("Index");
+                                string videofilename = Guid.NewGuid() + "-" + DateTime.Now.ToString("yyyyMMddHHmmSS") + "-" + setting.VideoFile.FileName;
+                                string videopath = Path.Combine(_webHostEnvironment.WebRootPath, "Uploads", videofilename);
+                                using (var stream = new FileStream(videopath, FileMode.Create))
+                                {
+                                    setting.VideoFile.CopyTo(stream);
+                                }
+                                setting.Logo = filename;
+                                setting.Video = videofilename;
+
+                                _context.Settings.Add(setting);
+                                _context.SaveChanges();
+                                return RedirectToAction("Index");
+                            }
                         }
                         else
                         {
@@ -80,12 +97,16 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
                            }
             return View(setting);
         }
+        [AllowAnonymous]
+
         public IActionResult Update(int? id)
         {
             Setting setting = _context.Settings.FirstOrDefault(i => i.Id == id);
             return View(setting);
         }
         [HttpPost]
+        [AllowAnonymous]
+
         public IActionResult Update(Setting setting)
         {
             if (ModelState.IsValid)
@@ -98,7 +119,7 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
 
                         if (setting.LogoFile.Length < 2097152)
                         {
-                            if (setting.VideoFile.Length < 20000000)
+                            if (setting.VideoFile.Length < 200000000)
                             {
 
                                 if (!string.IsNullOrEmpty(setting.Logo))
@@ -157,7 +178,8 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
             }
             return View(setting);
         }
-      
+        [AllowAnonymous]
+
         public IActionResult Delete(int? id)
         {
             Setting setting = null;

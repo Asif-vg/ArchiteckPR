@@ -56,10 +56,10 @@
                                
                                 <div class="service-comment replyDisplay">
 
-                                    @foreach (var item2 in Model.ReplyComments)
+                                    @*@foreach (var item2 in Model.ReplyComments)
                                     {
                                         if (item2.ParentId == comment.Id)
-                                        {
+                                        {*@
 
                                             <h3 class="mt-4">Reply to @comment.Name</h3>
                                             <a href="#" class="cancelReply">Cancel reply</a>
@@ -96,8 +96,8 @@
                                             </form>
 
 
-                                        }
-                                    }
+                                        @*}
+                                    }*@
                                 </div>
                            
 

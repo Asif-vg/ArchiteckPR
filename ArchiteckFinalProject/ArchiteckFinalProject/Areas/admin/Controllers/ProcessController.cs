@@ -25,16 +25,22 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
             _context = context;
             _webHostEnvironment = webHostEnvironment;
         }
+        [AllowAnonymous]
+
         public IActionResult Index()
         {
             return View(_context.Processes.ToList());
         }
-       
+        [AllowAnonymous]
+
+
         public IActionResult Create()
         {
             return View();
         }
         [HttpPost]
+        [AllowAnonymous]
+
         public IActionResult Create(Process process)
         {
 
@@ -86,6 +92,7 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
 
 
 
+        [AllowAnonymous]
 
         public IActionResult Update(int? id)
         {
@@ -94,6 +101,8 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
+
         public IActionResult Update(Process process)
         {
             if (ModelState.IsValid)
@@ -140,6 +149,7 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
 
             return View(process);
         }
+        [AllowAnonymous]
 
         public IActionResult Delete(int? id)
         {

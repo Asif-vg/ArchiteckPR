@@ -2,6 +2,7 @@
 using ArchiteckFinalProject.Models;
 using ArchiteckFinalProject.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +26,7 @@ namespace ArchiteckFinalProject.Controllers
                 Setting = _context.Settings.FirstOrDefault(),
                 Socials = _context.Socials.ToList(),
                 Banner = _context.Banners.FirstOrDefault(b => b.Page == "client"),
-                Clients=_context.Clients.ToList()
+                Clients=_context.Clients.Include(ci =>ci.ClientImages).ToList()
                 
             };
             return View(client);

@@ -24,7 +24,7 @@ namespace ArchiteckFinalProject.Models
         public string Logo { get; set; }
         [NotMapped]
         public IFormFile LogoFile { get; set; }
-        [MaxLength(250)]
+        //[MaxLength(250)]
         public string Video { get; set; }
         [NotMapped]
         public IFormFile VideoFile { get; set; }

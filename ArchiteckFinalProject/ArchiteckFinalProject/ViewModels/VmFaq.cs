@@ -12,5 +12,6 @@ namespace ArchiteckFinalProject.ViewModels
         public Faq Faq { get; set; }
 
         public List<Service> Services { get; set; }
+        public List<CompanyIndicator> CompanyIndicators { get; set; }
     }
 }

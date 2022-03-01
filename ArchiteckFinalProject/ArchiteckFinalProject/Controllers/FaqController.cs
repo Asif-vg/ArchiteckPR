@@ -27,7 +27,8 @@ namespace ArchiteckFinalProject.Controllers
                 Banner  = _context.Banners.FirstOrDefault(b => b.Page == "faq"),
                 Faq=_context.Faqs.FirstOrDefault(),
                 Faqs=faqs,
-                Services=_context.Services.Include(sc => sc.ServiceCatagory).ToList()
+                Services=_context.Services.Include(sc => sc.ServiceCatagory).ToList(),
+                CompanyIndicators=_context.CompanyIndicators.ToList()
 
             };
             return View(vmFaq);

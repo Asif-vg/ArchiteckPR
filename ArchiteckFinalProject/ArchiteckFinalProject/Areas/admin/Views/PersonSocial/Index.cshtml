@@ -73,12 +73,12 @@
                                                                         <tr>
                                                                             <td scope="row">@i</td>
                                                                             <td>@personSocial.Name</td>
-                                                                            <td>@personSocial.Icon</td>
+                                                                            <td><i class="@personSocial.Icon"></i></td>
                                                                             <td>@personSocial.Link</td>
 
 
                                                                             <td>
-                                                                                <a asp-area="Admin" asp-controller="PersonSocial" asp-action="Update" asp-route-id="@personSocial.Id" class="btn btn-success">Update</a>
+                                                                                <a asp-area="Admin" asp-controller="PersonSocial" asp-action="Update" asp-route-id="@personSocial.Id" class="btn btn-warning">Update</a>
                                                                                 <a asp-area="Admin" asp-controller="PersonSocial" asp-action="Delete" asp-route-id="@personSocial.Id" id="sweet-delete" class="btn btn-danger">Delete</a>
 
                                                                             </td>

@@ -75,7 +75,7 @@
 
                                             <tr>
                                                 <td scope="row">@i</td>
-                                                <td> <img class="rounded" alt="" src="~/Uploads/@team.Image" style="width: 100px; height: 66px;"> </td>
+                                                <td> <img class="rounded" alt="" src="~/Uploads/@team.Image" style="width: 100px;"> </td>
                                                 <td>@team.Name</td>
                                                 <td>@team.PersonPosition.Name</td>
                                                 <td>
@@ -87,7 +87,8 @@
 
                                                                 if (persontosocial.PersonSocial != null)
                                                                 {
-                                                                    <span>@persontosocial.PersonSocial.Name</span>
+                                                                    <i class="@persontosocial.PersonSocial.Icon"></i>
+                                                                    @*<span></span>*@
                                                                 }
                                                             }
                                                         }

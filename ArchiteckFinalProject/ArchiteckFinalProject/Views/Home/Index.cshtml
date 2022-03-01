@@ -7,16 +7,17 @@
     <div class="custom-slider d-flex owl-carousel">
         @{
             int b = 0;
-            //int a = 1;
+            int a = 0;
             foreach (var banner in Model.HomeBanners)
             {
                 b++;
+                a++;
                 <div class="col-lg-12">
                     <div class="architeck-solution">
 
                         <img class="img-fluid" src="~/Uploads/@banner.BgImage" alt="">
-                      
-                        <div class="enginer-text2">
+
+                        <div class="enginer-text@(a)">
                             <div class="col-lg-6">
                                 <div class="architeck-context">
                                     <span>
@@ -29,8 +30,8 @@
                                         @banner.Text
                                     </p>
 
-                                    <a class="explore" href="#">Explore More</a>
-                                    <a class="touch mx-3" href="#">Get In Touch</a>
+                                    <a class="explore" asp-controller="About" asp-action="Index">Explore More</a>
+                                    <a class="touch mx-3" asp-controller="Project" asp-action="Index">Get In Touch</a>
                                 </div>
                             </div>
                         </div>
@@ -39,57 +40,6 @@
             }
 
         }
-        @*<div class="col-lg-12">
-            <div class="architeck-solution">
-                <img class="img-fluid" src="./img/Home-img/bg-3343.jpg" alt="">
-                <div class="enginer-text3">
-                    <div class="col-lg-6">
-                        <div class="architeck-context">
-                            <span>
-                                Great Experience in
-                                Bulding.
-                            </span>
-                            <h2>
-                                We Are Best Builders
-                            </h2>
-                            <h2> In The World</h2>
-                            <p>
-                                It is a long established fact that a reader will be distracted by the readable content of a page when looking at its .
-                            </p>
-
-                            <a class="explore" href="#">Explore More</a>
-                            <a class="touch mx-3" href="#">Get In Touch</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-12">
-            <div class="architeck-solution">
-                <img class="img-fluid" src="./img/Home-img/bg-333.jpg" alt="">
-                <div class="enginer-text">
-                    <div class="col-lg-6">
-                        <div class="architeck-context">
-                            <span>
-                                Great Experience in
-                                Bulding.
-                            </span>
-                            <h2>
-                                Provide Effective Solutions.
-                            </h2>
-                            <p>
-                                It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
-                            </p>
-
-                            <a class="explore" href="#">Explore More</a>
-                            <a class="touch mx-3" href="#">Get In Touch</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>*@
-
-
     </div>
 </section>
 <section class="aboutUs">
@@ -144,7 +94,7 @@
                             </div>
                         </div>
                         <div class="count-about">
-                            <h5>25</h5>
+                            <h5 class="countfect" data-num="25"></h5>
                             <span>+</span>
                             <span>YEARS EXPERIENCE</span>
                         </div>
@@ -173,8 +123,8 @@
                         <p>There are many variations of passages of Lorem Ipsum available,but the majority have suffered alteration in some form,by injected humour,or randomised words which don’t look even slightly believable.</p>
                     </div>
                     <div class="mt-5 go-about">
-                        <a href="./project.html">
-                            <div class="button-box">
+                        <a asp-controller="Project" asp-action="Index">
+                            <div class="button-box ">
                                 <span class="line-left"></span>
                                 <span class="lineB">Read More</span>
                                 <span class="line-right"></span>
@@ -233,98 +183,7 @@
                     </div>
 
                 }
-                @*<div class="project-text">
-                        <div class="project-img">
-                            <img class=img-fluid class="img-fluid" src="./img/Home-img/09.jpg" alt="">
-                            <a href="./projectDetail.html">
-                                <i class="fal fa-plus"></i>
-                            </a>
-                        </div>
-                        <div class="project-content">
-                            <span>Designer Designer</span>
-                            <a href="./projectDetail.html">Catalyst Architects</a>
-                        </div>
-
-                    </div>
-                    <div class="project-text">
-                        <div class="project-img">
-                            <img class=img-fluid class="img-fluid" src="./img/Home-img/04 (1).jpg" alt="">
-                            <a href="./projectDetail.html">
-                                <i class="fal fa-plus"></i>
-                            </a>
-                        </div>
-                        <div class="project-content">
-                            <span>Designer Furniture</span>
-                            <a href="./projectDetail.html">Studio Architecture</a>
-                        </div>
-
-                    </div>
-                    <div class="project-text">
-                        <div class="project-img">
-                            <img class=img-fluid class="img-fluid" src="./img/Home-img/05 (1).jpg" alt="">
-                            <a href="./projectDetail.html">
-                                <i class="fal fa-plus"></i>
-                            </a>
-                        </div>
-                        <div class="project-content">
-                            <span> Exteririon</span>
-                            <a href="./projectDetail.html">Benoit Architecture</a>
-                        </div>
-
-                    </div>
-                    <div class="project-text">
-                        <div class="project-img">
-                            <img class=img-fluid class="img-fluid" src="./img/Home-img/06.jpg" alt="">
-                            <a href="./projectDetail.html">
-                                <i class="fal fa-plus"></i>
-                            </a>
-                        </div>
-                        <div class="project-content">
-                            <span>Designer </span>
-                            <a href="./projectDetail.html">Jiang Architecture</a>
-                        </div>
-
-                    </div>
-                    <div class="project-text">
-                        <div class="project-img">
-                            <img class=img-fluid class="img-fluid" src="./img/Home-img/07.jpg" alt="">
-                            <a href="./projectDetail.html">
-                                <i class="fal fa-plus"></i>
-                            </a>
-                        </div>
-                        <div class="project-content">
-                            <span> Furniture</span>
-                            <a href="./projectDetail.html">Nenan Expansion</a>
-                        </div>
-
-                    </div>
-                    <div class="project-text">
-                        <div class="project-img">
-                            <img class=img-fluid class="img-fluid" src="./img/Home-img/09.jpg" alt="">
-                            <a href="./projectDetail.html">
-                                <i class="fal fa-plus"></i>
-                            </a>
-                        </div>
-                        <div class="project-content">
-                            <span>Designer</span>
-                            <a href="./projectDetail.html">Mechanical Trim</a>
-                        </div>
-
-                    </div>
-                    <div class="project-text">
-                        <div class="project-img">
-                            <img class=img-fluid class="img-fluid" src="./img/Home-img/06.jpg" alt="">
-                            <a href="./projectDetail.html">
-                                <i class="fal fa-plus"></i>
-                            </a>
-                        </div>
-                        <div class="project-content">
-                            <span>Designer Exteririon</span>
-                            <a href="./projectDetail.html">Whitney Architecture</a>
-                        </div>
-
-                    </div>*@
-
+              
             </div>
 
         </div>
@@ -355,11 +214,11 @@
         <div class="row" data-aos="fade-up" data-aos-once="true" data-aos-duration="1000" data-aos-delay="0">
             @{ int i = 0;
 
-                bool arrow=true;
+                bool arrow = true;
                 foreach (var process in Model.Processes)
                 {
 
-                    if (i==2)
+                    if (i == 2)
                     {
                         arrow = false;
                     }
@@ -404,7 +263,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="modal-video">
-                    <a class="play-btn video-play-btn" href="@Model.Setting.Video">
+                    <a class="play-btn video-play-btn" href="~/Uploads/@Model.Setting.Video">
                         <i class="fas fa-play"></i>
                     </a>
                 </div>
@@ -492,7 +351,7 @@
             </div>
             <div class="col-xl-6  mt-5 d-flex  ">
                 <div class="solution-img">
-                    <img class="img-fluid" src="~/Uploads/@Model.Solution.Image" alt="" data-aos="fade-right" data-aos-once="true" data-aos-duration="6000" data-aos-delay="600">
+                    <img class="img-fluid" src="~/img/Home-img/demo-6.jpg" alt="" data-aos="fade-right" data-aos-once="true" data-aos-duration="6000" data-aos-delay="600">
 
                 </div>
             </div>
@@ -501,53 +360,30 @@
                 <div class="container">
                     <div class="row">
                         <div class="count-items" data-aos="fade-right" data-aos-once="true" data-aos-duration="1000" data-aos-delay="0">
-                            <div class="col-lg-3 col-sm-3">
-                                <div class="counter-context">
-                                    <div class="counter-icon">
-                                        <i class="fal fa-industry-alt"></i>
-                                    </div>
-                                    <div class="counter-info">
-                                        <!-- <span class="odemeter odospan"></span> -->
-                                        <span class="countfect" data-num="2400"></span>
+                            @{ 
+                                int n = 0;
 
-                                        <p>Project Complated</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-sm-3" data-aos="fade-right" data-aos-once="true" data-aos-duration="1000" data-aos-delay="100">
-                                <div class="counter-context">
-                                    <div class="counter-icon">
-                                        <i class="fal fa-drafting-compass"></i>
-                                    </div>
-                                    <div class="counter-info">
-                                        <span class="odemeter odospan"></span>
-                                        <p>Work Employed</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-sm-3" data-aos="fade-right" data-aos-once="true" data-aos-duration="1000" data-aos-delay="200">
-                                <div class="counter-context">
-                                    <div class="counter-icon">
-                                        <i class="fal fa-user-hard-hat"></i>
+                                foreach (var count in Model.Indicators)
+                                {
+                                    n++;
 
+                                    <div class="col-lg-3 col-sm-3" data-aos="fade-right" data-aos-once="true" data-aos-duration="1000" data-aos-delay="@(n)00">
+                                        <div class="counter-context">
+                                            <div class="counter-icon">
+                                                <i class="@count.Icon"></i>
+                                            </div>
+                                            <div class="counter-info">
+                                                <span class="countfect" data-num="@count.Count"></span>
+
+                                                <p>@count.Title </p>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="counter-info">
-                                        <span class="odemeter odospan"></span>
-                                        <p>Happy Customers</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-sm-3" data-aos="fade-right" data-aos-once="true" data-aos-duration="1000" data-aos-delay="300">
-                                <div class="counter-context">
-                                    <div class="counter-icon">
-                                        <i class="fal fa-cogs"></i>
-                                    </div>
-                                    <div class="counter-info">
-                                        <span class="odemeter odospan"></span>
-                                        <p>Painting Services</p>
-                                    </div>
-                                </div>
-                            </div>
+
+
+                               }
+
+                        }
                         </div>
                     </div>
                 </div>
@@ -809,17 +645,7 @@
             </div>
 
         </div>
-        <!-- <div class="next-prev">
-            <button type="button">
-                <i class="fal fa-chevron-left"></i>
-                <span>Prev</span>
-            </button>
-            <button type="button">
-
-                <span>Next</span>
-                <i class="fal fa-chevron-right"></i>
-            </button>
-        </div> -->
+       
     </div>
 </section>
 <section class="sponsor py-4 mb-5">
@@ -846,7 +672,6 @@
                             c++;
                         }
 
-                        @*client.ClientImages*@
                     </div>
 
                     }

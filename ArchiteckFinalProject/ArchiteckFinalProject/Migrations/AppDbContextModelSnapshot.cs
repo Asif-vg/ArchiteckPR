@@ -882,6 +882,10 @@ namespace ArchiteckFinalProject.Migrations
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
 
+                    b.Property<string>("ResetPasswordCode")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
                     b.HasDiscriminator().HasValue("CustomUser");
                 });
 

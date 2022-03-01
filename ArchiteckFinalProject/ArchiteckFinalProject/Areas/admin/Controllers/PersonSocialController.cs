@@ -20,15 +20,22 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
         {
             _context = context;
         }
+        [AllowAnonymous]
+
         public IActionResult Index()
         {
             return View(_context.PersonSocials.ToList());
         }
+
+        [AllowAnonymous]
+
         public IActionResult Create()
         {
             return View();
         }
         [HttpPost]
+        [AllowAnonymous]
+
         public IActionResult Create(PersonSocial personSocial)
         {
             if (ModelState.IsValid)
@@ -49,6 +56,8 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
             ModelState.AddModelError("", "Please all data enter");
             return View(personSocial);
         }
+        [AllowAnonymous]
+
         public IActionResult Update(int? id)
         {
             PersonSocial personSocial = null;
@@ -67,6 +76,8 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
 
         }
         [HttpPost]
+        [AllowAnonymous]
+
         public IActionResult Update(PersonSocial personSocial)
         {
             if (ModelState.IsValid)
@@ -77,6 +88,7 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
             }
             return View(personSocial);
         }
+        [AllowAnonymous]
 
         public IActionResult Delete(int? id)
         {

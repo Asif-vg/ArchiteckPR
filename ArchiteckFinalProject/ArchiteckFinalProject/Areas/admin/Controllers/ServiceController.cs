@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 namespace ArchiteckFinalProject.Areas.admin.Controllers
 {
     [Area("admin")]
-    //[Authorize]
+    [Authorize]
 
     public class ServiceController : Controller
     {
@@ -26,6 +26,8 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
             _context = context;
             _webHostEnvironment = webHostEnvironment;
         }
+        [AllowAnonymous]
+
         public IActionResult Index()
         {
             List<Service> model =_context.Services.OrderByDescending(o => o.CreatedDate)
@@ -34,6 +36,7 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
                                                   .ToList();
             return View(model);
         }
+        [AllowAnonymous]
 
         public IActionResult Create()
         {
@@ -42,6 +45,8 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
+
         public IActionResult Create(Service model)
         {
             if (ModelState.IsValid)
@@ -90,6 +95,7 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
             return View(model);
         }
 
+        [AllowAnonymous]
 
         public IActionResult Update(int? id)
         {
@@ -100,6 +106,8 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
+
         public IActionResult Update(Service service)
         {
             if (ModelState.IsValid)
@@ -144,9 +152,10 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
                         return View(service);
                     }
                 }
+                _context.Entry(service).State = EntityState.Modified;
+                _context.Entry(service).Property("CreatedDate").IsModified = false;
 
-
-                _context.Services.Update(service);
+                //_context.Services.Update(service);
                 _context.SaveChanges();
 
                
@@ -158,6 +167,7 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
             return View(service);
         }
 
+        [AllowAnonymous]
 
         public IActionResult Delete(int? id)
         {

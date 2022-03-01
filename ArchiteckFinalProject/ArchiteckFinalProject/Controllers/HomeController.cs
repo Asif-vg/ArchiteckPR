@@ -33,7 +33,8 @@ namespace ArchiteckFinalProject.Controllers
                 Teams=_context.Teams.Include(pp => pp.PersonPosition).Include(pts => pts.PersonToSocials).ThenInclude(ps => ps.PersonSocial).ToList(),
                 Clients=_context.Clients.Include(ci => ci.ClientImages).ToList(),
                 HomeBanners=_context.HomeBanners.ToList(),
-                ServiceComments=_context.ServiceComments.ToList()
+                ServiceComments=_context.ServiceComments.ToList(),
+                Indicators=_context.Indicators.ToList()
 
             };
 

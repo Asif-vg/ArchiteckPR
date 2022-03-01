@@ -12,7 +12,7 @@ $(document).ready(function () {
         warning.css("display", "none");
 
         $.ajax({
-            url:  "Home/Subscribe",
+            url: "Home/Subscribe",
             type: "get",
             dataType: "json",
             data: {

@@ -32,18 +32,22 @@
                                 <div asp-validation-summary="All" class="text-danger"></div>
                                 <div class="form-group mb-4">
                                     <label asp-for="@Model.ClientImageFile">Image</label>
-                                   @* <img src="~/Uploads/@Model.ClientImage" alt="Alternate text" width="100" />*@
+                                    @foreach (var image in Model.ClientImages)
+                                    {
+                                        <img src="~/Uploads/@image.Image" alt="Alternate text" width="100" />
+
+                                    }
                                     <input class="form-control " asp-for="@Model.ClientImageFile" />
                                     <span asp-validation-for="@Model.ClientImageFile" class="text-danger"></span>
                                 </div>
 
 
                                 <input type="hidden" asp-for="@Model.Id" />
-                                @*<input type="hidden" asp-for="@Model.ClientImage" />*@
+                                <input type="hidden" asp-for="@Model.ClientImages" />
 
 
                                 <button type="submit" class="btn btn-warning waves-effect waves-light mr-1">Update</button>
-                                <button asp-area="Admin" asp-controller="Client" asp-action="Index" type="submit" class="btn btn-primary waves-effect waves-light">Back to list</button>
+                                <button asp-area="Admin" asp-controller="Client" asp-action="Index" type="submit" style="margin-left:666px;" class="btn btn-secondary waves-effect waves-light">Cancel</button>
                             </form>
                         </div>
                     </div>

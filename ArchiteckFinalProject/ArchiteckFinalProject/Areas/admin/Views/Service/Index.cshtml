@@ -61,7 +61,7 @@
 
                                                                             </td>
                                                                             <td>@service.Name</td>
-                                                                            <td>@Html.Raw(service.Text!=null && service.Text.Length > 220 ? service.Text.Substring(0, 220) + "..." : service.Text)</td>
+                                                                            <td>@Html.Raw(service.Text!=null && service.Text.Length > 220 ? service.Text.Substring(0, 220) + " ..." : service.Text)</td>
                                                                             <td><i class="@service.Icon"></i></td>
                                                                             <td>@service.ServiceCatagory.Name </td>
                                                                             <td class="d-flex">

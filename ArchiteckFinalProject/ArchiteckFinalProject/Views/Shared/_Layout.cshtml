@@ -18,6 +18,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.7/themes/odometer-theme-minimal.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css">
+    <link rel="icon" type="image/png" href="./img/FaviconLogo/favicon.ico">
+
     <link rel="stylesheet" href="~/css/style.css">
 
     <title>Architeck</title>
@@ -36,7 +38,7 @@
             <div class="search-box">
                 <form class="forms" asp-controller="Project" asp-action="Index" method="get">
                     <div>
-                        <label for="" name="search"></label>
+                        @*<label for="" name="search"></label>*@
                         <input asp-for="@Model.Search.searchData" class="form-control search-home" placeholder="Search...">
                         <input asp-for="@Model.Search arcId" hidden />
 
@@ -83,7 +85,7 @@
                                         <div class="custom-nav">
                                             <div class="header-page">
                                                 <ul>
-                                                    <li><a asp-controller="Home" asp-action="Index" >Home</a></li>
+                                                    <li><a asp-controller="Home" asp-action="Index">Home</a></li>
                                                     <li><a asp-controller="About" asp-action="Index">About</a></li>
                                                     <li><a asp-controller="Project" asp-action="Index">Projects</a></li>
                                                     <li><a asp-controller="Process" asp-action="Index">Process</a></li>
@@ -179,10 +181,10 @@
                     <div class="foot-choose">
                         <ul>
                             <li><a asp-controller="Process" asp-action="Index">Our Process</a></li>
-                            <li><a  asp-controller="Team" asp-action="Index">Our Team</a></li>
-                            <li><a  asp-controller="Contact" asp-action="Index">Contact Us</a></li>
-                            <li><a  asp-controller="Client" asp-action="Index">Our Clients</a></li>
-                            <li><a  asp-controller="About" asp-action="Index">About Us</a></li>
+                            <li><a asp-controller="Team" asp-action="Index">Our Team</a></li>
+                            <li><a asp-controller="Contact" asp-action="Index">Contact Us</a></li>
+                            <li><a asp-controller="Client" asp-action="Index">Our Clients</a></li>
+                            <li><a asp-controller="About" asp-action="Index">About Us</a></li>
                         </ul>
                     </div>
                 </div>
@@ -264,7 +266,15 @@
 <!-- <script src="/path/to/cdn/jquery.min.js"></script> -->
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.5/odometer.min.js"></script>
+@*<script src="https://cdnjs.cloudflare.com/ajax/libs/odometer.js/0.4.5/odometer.min.js"></script>
+*@
+<script src="~/increasing-counter-effect/src/countfect.min.js"></script>
+
+<script src="~/isotope/isotope.pkgd.min.js"></script>
+<script src="~/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script src="~/js/gallery.init.js"></script>
+
+
 <!-- <script src="/increasing-counter-effect/src/countfect.min.js"></script> -->
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 <script>

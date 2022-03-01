@@ -23,8 +23,11 @@
     <link href="~/Areas/assets/libs/dropify/dropify.min.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link href="~/Areas/assets/libs/switchery/switchery.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     <link href="~/Areas/assets/libs/multiselect/multi-select.css" rel="stylesheet" type="text/css" />
-    <link href="~/Areas/assets/libs/select2/select2.min.css" rel="stylesheet" type="text/css" />
+    @* <link href="~/Areas/assets/libs/select2/select2.min.css" rel="stylesheet" type="text/css" />*@
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <link href="~/Areas/assets/libs/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" type="text/css" />
     <link href="~/Areas/assets/libs/bootstrap-touchspin/jquery.bootstrap-touchspin.css" rel="stylesheet" type="text/css" />
     @*    <link rel="stylesheet" href="sweetalert2.min.css">*@
@@ -132,9 +135,9 @@
                         </li>
 
                         <li>
-                            <a asp-area="Admin" asp-controller="Category" asp-action="Index" class="waves-effect waves-light">
+                            <a asp-area="Admin" asp-controller="Account" asp-action="ChangePassword" class="waves-effect waves-light">
                                 <i class=" mdi mdi-tag"></i>
-                                <span>  Service Category  </span>
+                                <span>  ChangePassword  </span>
                             </a>
                         </li>
                         <li>
@@ -294,7 +297,8 @@
     <script src="~/Areas/assets/libs/switchery/switchery.min.js"></script>
     <script src="~/Areas/assets/libs/bootstrap-tagsinput/bootstrap-tagsinput.min.js"></script>
     <script src="~/Areas/assets/libs/multiselect/jquery.multi-select.js"></script>
-    <script src="~/Areas/assets/libs/select2/select2.min.js"></script>
+    @* <script src="~/Areas/assets/libs/select2/select2.min.js"></script>*@
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="~/Areas/assets/libs/jquery-quicksearch/jquery.quicksearch.min.js"></script>
     <script src="~/Areas/assets/libs/jquery-mockjax/jquery.mockjax.min.js"></script>
     <script src="~/Areas/assets/libs/autocomplete/jquery.autocomplete.min.js"></script>
@@ -305,11 +309,12 @@
 
     <!-- Init js-->
     <script src="assets/js/pages/form-advanced.init.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
-
-
-
-
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+    <script src="~/Areas/assets/libs/sweetalert2/sweetalert2.min.js"></script>
+    <script src="~/Areas/assets/js/pages/sweetalerts.init.js"></script>
 
     <script src="~/Areas/assets/libs/summernote/summernote-bs4.min.js"></script>
     <script src="~/Areas/assets/js/pages/form-summernote.init.js"></script>

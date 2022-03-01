@@ -1,4 +1,6 @@
 $(document).ready(function() {
+
+
     //Video 
     $('.video-play-btn').magnificPopup({
         disabledOn: 320,
@@ -143,34 +145,36 @@ $(document).ready(function() {
         }
 
     });
-    let odospan = document.querySelectorAll(".odospan");
 
-    for (let i = 0; i < odospan.length; i++) {
 
-        if (i == 0) {
-            odospan[i].innerText = "3200";
-        } else if (i == 1) {
-            odospan[i].innerText = "5000";
-        } else if (i == 2) {
-            odospan[i].innerText = "2500";
-        } else {
-            odospan[i].innerText = "2800";
-        }
-    }
-    let odospan2 = document.querySelectorAll(".odospan2");
+    // let odospan = document.querySelectorAll(".odospan");
 
-    for (let i = 0; i < odospan2.length; i++) {
+    // for (let i = 0; i < odospan.length; i++) {
 
-        if (i == 0) {
-            odospan2[i].innerText = "95%";
-        } else if (i == 1) {
-            odospan2[i].innerText = "90%";
-        } else if (i == 2) {
-            odospan2[i].innerText = "80%";
-        } else {
-            odospan2[i].innerText = "85%";
-        }
-    }
+    //     if (i == 0) {
+    //         odospan[i].innerText = "";
+    //     } else if (i == 1) {
+    //         odospan[i].innerText = "";
+    //     } else if (i == 2) {
+    //         odospan[i].innerText = "";
+    //     } else {
+    //         odospan[i].innerText = "";
+    //     }
+    // }
+    // let odospan2 = document.querySelectorAll(".odospan2");
+
+    // for (let i = 0; i < odospan2.length; i++) {
+
+    //     if (i == 0) {
+    //         odospan2[i].innerText = "";
+    //     } else if (i == 1) {
+    //         odospan2[i].innerText = "";
+    //     } else if (i == 2) {
+    //         odospan2[i].innerText = "";
+    //     } else {
+    //         odospan2[i].innerText = "";
+    //     }
+    // }
 
 
     //GoUpBtn
@@ -225,6 +229,32 @@ let topHeader = document.querySelector(".top-header");
 let logo = document.querySelector(".logo");
 
 
+
+
+let li = document.querySelectorAll(".accordion ul li");
+let accordionShow = () => {
+    for (let i = 0; i < li.length; i++) {
+        li[i].addEventListener("click", (e) => {
+            e.preventDefault();
+            if (li[i].classList.contains("show")) {
+                li[i].classList.remove("show");
+
+            } else {
+                for (let a = 0; a < li.length; a++) {
+                    li[a].classList.remove("show");
+
+                }
+                li[i].classList.add("show");
+
+            }
+
+            console.log(li[i].lastElementChild);
+        });
+    }
+};
+accordionShow();
+
+
 window.addEventListener("scroll", () => {
         if (window.pageYOffset > 200) {
             customNav.style.position = "fixed";
@@ -269,7 +299,7 @@ let cancelReply = document.querySelector(".cancelReply");
 
 reply.addEventListener("click", function(e) {
     e.preventDefault();
-    replyMessage.style.display = "block ";
+    replyMessage.style.display = "block";
 })
 
 cancelReply.addEventListener("click", function(e) {

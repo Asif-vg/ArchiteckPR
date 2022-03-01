@@ -26,10 +26,13 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
             _context = context;
             _webHostEnvironment = webHostEnvironment;
         }
+        [AllowAnonymous]
+
         public IActionResult Index()
         {
             return View(_context.Projects.OrderByDescending(o => o.CreatedDate).Include(pa => pa.ProjectArchiteck).ToList());
         }
+        [AllowAnonymous]
 
         public IActionResult Create()
         {
@@ -37,6 +40,8 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
             return View();
         }
         [HttpPost]
+        [AllowAnonymous]
+
         public IActionResult Create(Project project)
         {
 
@@ -94,6 +99,7 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
 
             return View(project);
         }
+        [AllowAnonymous]
 
         public IActionResult Update(int? id)
         {
@@ -105,6 +111,8 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
+
         public IActionResult Update(Project project)
         {
             if (ModelState.IsValid)
@@ -151,9 +159,10 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
                         return View(project);
                     }
                 }
+                _context.Entry(project).State = EntityState.Modified;
+                _context.Entry(project).Property("CreatedDate").IsModified = false;
 
-
-                _context.Projects.Update(project);
+                //_context.Projects.Update(project);
                 _context.SaveChanges();
 
 
@@ -166,6 +175,7 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
             return View(project);
         }
 
+        [AllowAnonymous]
 
         public IActionResult Delete(int? id)
         {

@@ -17,6 +17,7 @@ namespace ArchiteckFinalProject.ViewModels
         public string Email { get; set; }
         [MaxLength(50)]
         public string Password { get; set; }
+        public bool RemindMe { get; set; }
         //[MaxLength(3000)]
         //public string Text { get; set; }
         public IFormFile ImageFile { get; set; }

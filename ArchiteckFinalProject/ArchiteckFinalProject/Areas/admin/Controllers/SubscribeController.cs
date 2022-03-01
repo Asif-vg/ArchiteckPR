@@ -22,15 +22,18 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
         {
             _context = context;
         }
+        [AllowAnonymous]
         public IActionResult Index()
         {
             return View(_context.Subscribes.ToList());
         }
+        [AllowAnonymous]
 
         public IActionResult SendMailAll()
         {
             return View(_context.Subscribes.ToList());
         }
+        [AllowAnonymous]
 
         [HttpPost]
         public IActionResult SendMailAll(string MailText)

@@ -12,6 +12,7 @@ namespace ArchiteckFinalProject.ViewModels
         public List<Service> Services { get; set; }
         public List<ServiceComment> ServiceComments { get; set; }
         public List<Project> Projects { get; set; }
+        public List<Indicator> Indicators { get; set; }
         public List<Team> Teams { get; set; }
         public List<Client> Clients { get; set; }
         public List<ClientImage> ClientImages { get; set; }

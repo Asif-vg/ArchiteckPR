@@ -226,6 +226,10 @@ C:\Users\CASPER\Desktop\Architeck-BackEnd\ArchiteckFinalProject\ArchiteckFinalPr
 C:\Users\CASPER\Desktop\Architeck-BackEnd\ArchiteckFinalProject\ArchiteckFinalProject\obj\Debug\net5.0\Razor\Views\Project\Detail.cshtml.g.cs
 C:\Users\CASPER\Desktop\Architeck-BackEnd\ArchiteckFinalProject\ArchiteckFinalProject\obj\Debug\net5.0\Razor\Areas\admin\Views\Subscribe\SendMailAll.cshtml.g.cs
 C:\Users\CASPER\Desktop\Architeck-BackEnd\ArchiteckFinalProject\ArchiteckFinalProject\obj\Debug\net5.0\Razor\Areas\admin\Views\Subscribe\Index.cshtml.g.cs
-C:\Users\CASPER\Desktop\Architeck-BackEnd\ArchiteckFinalProject\ArchiteckFinalProject\obj\Debug\net5.0\Razor\Views\Account\Login.cshtml.g.cs
 C:\Users\CASPER\Desktop\Architeck-BackEnd\ArchiteckFinalProject\ArchiteckFinalProject\obj\Debug\net5.0\Razor\Areas\admin\Views\Account\RoleUpdate.cshtml.g.cs
 C:\Users\CASPER\Desktop\Architeck-BackEnd\ArchiteckFinalProject\ArchiteckFinalProject\obj\Debug\net5.0\Razor\Areas\admin\Views\Account\ForgotPassword.cshtml.g.cs
+C:\Users\CASPER\Desktop\Architeck-BackEnd\ArchiteckFinalProject\ArchiteckFinalProject\obj\Debug\net5.0\Razor\Areas\admin\Views\Account\ChangePassword.cshtml.g.cs
+C:\Users\CASPER\Desktop\Architeck-BackEnd\ArchiteckFinalProject\ArchiteckFinalProject\bin\Debug\net5.0\MailKit.dll
+C:\Users\CASPER\Desktop\Architeck-BackEnd\ArchiteckFinalProject\ArchiteckFinalProject\bin\Debug\net5.0\MimeKit.dll
+C:\Users\CASPER\Desktop\Architeck-BackEnd\ArchiteckFinalProject\ArchiteckFinalProject\bin\Debug\net5.0\BouncyCastle.Crypto.dll
+C:\Users\CASPER\Desktop\Architeck-BackEnd\ArchiteckFinalProject\ArchiteckFinalProject\obj\Debug\net5.0\Razor\Views\ErrorPage\Error1.cshtml.g.cs

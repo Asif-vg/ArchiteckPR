@@ -24,12 +24,14 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
             _webHostEnvironment = webHostEnvironment;
         }
 
-        public IWebHostEnvironment WebHostEnvironment => _webHostEnvironment;
+        //public IWebHostEnvironment WebHostEnvironment => _webHostEnvironment;
+        [AllowAnonymous]
 
         public IActionResult Index()
         {
             return View(_context.PersonPositions.ToList());
         }
+        [AllowAnonymous]
 
         public IActionResult Create()
         {
@@ -37,6 +39,8 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
+
         public IActionResult Create(PersonPosition position)
         {
             if (ModelState.IsValid)
@@ -45,7 +49,7 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
                 {
                     _context.PersonPositions.Add(position);
                     _context.SaveChanges();
-                    return View(position);
+                    return RedirectToAction("Index");
                 }
                 else
                 {
@@ -56,6 +60,7 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
             }
             return View(position);
         }
+        [AllowAnonymous]
 
         public IActionResult Update(int? id)
         {
@@ -75,6 +80,8 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
 
         }
         [HttpPost]
+        [AllowAnonymous]
+
         public IActionResult Update(PersonPosition position)
         {
             if (ModelState.IsValid)
@@ -85,6 +92,8 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
             }
             return View(position);
         }
+        [AllowAnonymous]
+
         public IActionResult Delete(int? id)
         {
             PersonPosition position = null;

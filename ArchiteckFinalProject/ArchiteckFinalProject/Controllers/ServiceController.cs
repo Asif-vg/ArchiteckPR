@@ -104,9 +104,7 @@ namespace ArchiteckFinalProject.Controllers
                 ServiceComment = vmService.ServiceComment,
                 Service = service,
                 Banner = banner,
-                //PopularPosts = popularBlogs,
                 ServiceComments = serviceComments,
-                //CustomUser = custom,
                 ReplyComments = replyComments
             };
 

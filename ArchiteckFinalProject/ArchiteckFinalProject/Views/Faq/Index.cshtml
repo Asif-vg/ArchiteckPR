@@ -26,49 +26,41 @@
                         <h2>We Building Everything That Needed You</h2>
                         <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
                     </div>
-                    <div class="accordion" id="accordionExample">
-                       
+                    <div class="accordion">
+                        <ul>
+                            @{ 
+                                
 
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingOne">
-                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Automobile Manufacturing</button>
-                                </h2>
-                                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don’t look even slightly believable.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingTwo">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Oil Gas & Power Energy Plant</button>
-                                </h2>
-                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don’t look even slightly believable.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingThree">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Petroleum & Refinery</button>
-                                </h2>
-                                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don’t look even slightly believable.</p>
-                                    </div>
-                                </div>
-                            </div>
-                      
+                                foreach (var accordion in Model.Faqs)
+                                {
 
 
+                                   
+                                    <li>
+                                        <a href="">
+                                            <span>@accordion.FaqHead</span>
+                                        </a>
+                                        <p>
+                                            @accordion.FaqText
+                                        </p>
+                                    </li>
+                                }
+                            }
+                            
+
+
+                        </ul>
                     </div>
+
                 </div>
             </div>
 
         </div>
     </div>
 </section>
+
+
+
 <section class="percent">
     <div class="solution-counter">
 
@@ -76,42 +68,23 @@
             <div class="row">
 
                 <div class="count-items" data-aos="fade-right" data-aos-once="true" data-aos-duration="1000" data-aos-delay="0">
-                    <div class="col-lg-3 col-sm-3">
-                        <div class="counter-context">
+                    @{ 
+                        int n = 0;
+                        foreach (var count in Model.CompanyIndicators)
+                        {
+                            n++;
+                            <div class="col-lg-3 col-sm-3" data-aos="fade-right" data-aos-once="true" data-aos-duration="1000" data-aos-delay="@(n)00">
+                                <div class="counter-context">
 
-                            <div class="counter-info">
-                                <span class="odemeter odospan2"></span>
-                                <p>Powerfull Strategy</p>
+                                    <div class="counter-info">
+                                        <span class="countfect" data-num="@count.Count"></span><span>%</span>
+                                        <p>@count.Title</p>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-3" data-aos="fade-right" data-aos-once="true" data-aos-duration="1000" data-aos-delay="100">
-                        <div class="counter-context">
+                        }
+                     }
 
-                            <div class="counter-info">
-                                <span class="odemeter odospan2"></span>
-                                <p>Award Winning</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-3" data-aos="fade-right" data-aos-once="true" data-aos-duration="1000" data-aos-delay="200">
-                        <div class="counter-context">
-
-                            <div class="counter-info">
-                                <span class="odemeter odospan2"></span>
-                                <p>Accurate Testing</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-3" data-aos="fade-right" data-aos-once="true" data-aos-duration="1000" data-aos-delay="300">
-                        <div class="counter-context">
-
-                            <div class="counter-info">
-                                <span class="odemeter odospan2"></span>
-                                <p>High Performance</p>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
             </div>

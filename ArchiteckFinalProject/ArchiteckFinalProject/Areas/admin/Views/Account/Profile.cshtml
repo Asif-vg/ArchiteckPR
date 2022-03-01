@@ -35,6 +35,7 @@
                                         <div class="avatar-xl member-thumb mb-3 mx-auto d-block">
                                             <img src="assets/images/users/avatar-1.jpg" class="rounded-circle img-thumbnail" alt="profile-image">
                                             <i class="mdi mdi-star-circle member-star text-success" title="verified user"></i>
+                                            <a asp-controller="Account" asp-action="ProfileUpdate"><i class=" mdi mdi-account-edit-outline"></i></a>
                                         </div>
 
                                         @if (signInManager.IsSignedIn(User))

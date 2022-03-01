@@ -24,7 +24,7 @@ namespace ArchiteckFinalProject.Controllers
             {
                 Setting = _context.Settings.FirstOrDefault(),
                 Socials = _context.Socials.ToList(),
-                Projects = _context.Projects.ToList(),
+                Projects = _context.Projects.Include(pa => pa.ProjectArchiteck).ToList(),
                 Project = _context.Projects.Include(pa =>pa.ProjectArchiteck).FirstOrDefault(),
                 Banner = _context.Banners.FirstOrDefault(b => b.Page == "project")
             };

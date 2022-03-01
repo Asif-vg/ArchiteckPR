@@ -19,9 +19,13 @@ namespace ArchiteckFinalProject.Models
         [MaxLength(80)]
         public string FullName { get; set; }
         public DateTime CreatedDate { get; set; }
-        [MaxLength(250), Required]
+        [MaxLength(250)]
         public string Password { get; set; }
         [NotMapped]
         public string RoleId { get; set; }
+
+
+        [MaxLength(500)]
+        public string ResetPasswordCode { get; set; }
     }
 }

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace ArchiteckFinalProject.Areas.admin.Controllers
 {
     [Area("admin")]
-    [Authorize]
+    [Authorize(Roles = "Moderator")]
 
     public class SocialController : Controller
     {
@@ -20,16 +20,21 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
         {
             _context = context;
         }
+        //[AllowAnonymous]
+
         public IActionResult Index()
         {
             return View(_context.Socials.ToList());
         }
+        [AllowAnonymous]
 
         public IActionResult Create()
         {
             return View();
         }
         [HttpPost]
+        [AllowAnonymous]
+
         public IActionResult Create(Social social)
         {
 
@@ -47,6 +52,7 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
 
             return View(social);
         }
+        [AllowAnonymous]
 
         public IActionResult Update(int? id)
         {
@@ -56,6 +62,8 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
             return View(social);
         }
         [HttpPost]
+        [AllowAnonymous]
+
         public IActionResult Update(Social social)
         {
             if (ModelState.IsValid)
@@ -69,6 +77,7 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
 
             return View(social);
         }
+        [AllowAnonymous]
 
         public IActionResult Delete(int? id)
         {
