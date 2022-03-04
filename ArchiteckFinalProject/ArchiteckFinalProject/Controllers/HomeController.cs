@@ -22,6 +22,7 @@ namespace ArchiteckFinalProject.Controllers
         }
         public IActionResult Index()
         {
+
             VmHome vmHome = new VmHome() {
                 Setting = _context.Settings.FirstOrDefault(),
                 Socials = _context.Socials.ToList(),

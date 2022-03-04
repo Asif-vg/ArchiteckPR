@@ -33,100 +33,97 @@
                     <h3>@Model.ServiceComments.Count Comment</h3>
                     <ul>
                         @foreach (var comment in Model.ServiceComments)
-                         {
-                        <li>
-                            <div class="comment-info">
-                                <div class="comment-img">
-                                    <img src="~/img/ServiceDetail-img/avatar.png" alt="">
-                                </div>
-                                <div class="comment-box">
-                                    <h5>
-                                        @comment.Name
-                                    </h5>
-                                    <p>
-                                        @comment.Context
-                                    </p>
-                                </div>
-                                <div class="comment-reply">
-                                    <a href="#" class="reply">Reply</a>
-                                </div>
-                            </div>
-
-                            
-                               
-                                <div class="service-comment replyDisplay">
-
-                                    @*@foreach (var item2 in Model.ReplyComments)
-                                    {
-                                        if (item2.ParentId == comment.Id)
-                                        {*@
-
-                                            <h3 class="mt-4">Reply to @comment.Name</h3>
-                                            <a href="#" class="cancelReply">Cancel reply</a>
-                                            <p>Your email address will not be published. Required fields are marked *</p>
-                                            <form asp-controller="Service" asp-action="Reply" method="post">
-                                                <div class="row">
-
-                                                    <div class="col-lg-4">
-                                                        <div class="areas">
-                                                            <input asp-for="@Model.ServiceComment.Name" placeholder="Enter name" required>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-4">
-                                                        <div class="areas">
-                                                            <input asp-for="@Model.ServiceComment.Email" type="email" placeholder="Enter email" required>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-4">
-                                                        <div class="areas">
-                                                            <input asp-for="@Model.ServiceComment.Subject" placeholder="Enter subject" required>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-12">
-                                                        <textarea class="mt-4" asp-for="@Model.ServiceComment.Context" cols="30" rows="6" placeholder="Enter your comment"></textarea>
-                                                    </div>
-                                                    <div class="col-lg-12">
-                                                        <div class="message-button mt-4">
-                                                            <input type="hidden" asp-for="@Model.ServiceComment.ServiceId" value="@Model.Service.Id" />
-                                                            <button type="submit"> Post Comment</button>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                            </form>
-
-
-                                        @*}
-                                    }*@
-                                </div>
-                           
-
-
-
-                            <ul>
+                        {
+                            if (comment.ParentId == null)
+                            {
                                 <li>
                                     <div class="comment-info">
-
                                         <div class="comment-img">
                                             <img src="~/img/ServiceDetail-img/avatar.png" alt="">
                                         </div>
                                         <div class="comment-box">
                                             <h5>
-                                                asif
+                                                @comment.Name
                                             </h5>
-                                            <p>salam</p>
+                                            <p>
+                                                @comment.Context
+                                            </p>
                                         </div>
                                         <div class="comment-reply">
                                             <a href="#" class="reply">Reply</a>
                                         </div>
                                     </div>
 
+                            
+                               
+                                   <div class="service-comment replyDisplay">
+                                           <h3 class="mt-4">Reply to @comment.Name</h3>
+                                           <a href="#" class="cancelReply">Cancel reply</a>
+                                           <p>Your email address will not be published. Required fields are marked *</p>
+                                           <form asp-controller="Service" asp-action="Reply" method="post">
+                                              <div class="row">
+
+                                                 <div class="col-lg-4">
+                                                    <div class="areas">
+                                                      <input asp-for="@Model.ServiceComment.Name" placeholder="Enter name" required>
+                                                    </div>
+                                                 </div>
+                                                 <div class="col-lg-4">
+                                                      <div class="areas">
+                                                            <input asp-for="@Model.ServiceComment.Email" type="email" placeholder="Enter email" required>
+                                                      </div>
+                                                 </div>
+                                                 <div class="col-lg-4">
+                                                    <div class="areas">
+                                                         <input asp-for="@Model.ServiceComment.Subject" placeholder="Enter subject" required>
+                                                    </div>
+                                                 </div>
+                                                 <div class="col-lg-12">
+                                                   <textarea class="mt-4" asp-for="@Model.ServiceComment.Context" cols="30" rows="6" placeholder="Enter your comment"></textarea>
+                                                 </div>
+                                                  <div class="col-lg-12">
+                                                     <div class="message-button mt-4">
+                                                         <input type="hidden" asp-for="@Model.ServiceComment.ServiceId" value="@Model.Service.Id" />
+                                                         <input type="hidden" asp-for="@Model.ServiceComment.ParentId" value="@comment.Id" />
+                                                          <button type="submit"> Post Comment</button>
+                                                     </div>
+                                                  </div>
+
+                                              </div>
+                                           </form>
+                                        </div>
+
+
+                                   <ul>
+                                            @foreach (var item2 in Model.ReplyComments)
+                                            {
+                                                if (item2.ParentId == comment.Id)
+                                                {
+                                                   <li>
+                                                         <div class="comment-info">
+
+                                                            <div class="comment-img">
+                                                                <img src="~/img/ServiceDetail-img/avatar.png" alt="">
+                                                            </div>
+                                                            <div class="comment-box">
+                                                                <h5>
+                                                                   @item2.Name
+                                                                </h5>
+                                                                <p>@item2.Context</p>
+                                                            </div>
+                                                            <div class="comment-reply">
+                                                                <a href="#" class="reply">Reply</a>
+                                                            </div>
+                                                         </div>
+
+                                                    </li>
+                                                }
+                                            }
+                                        </ul>
+
                                 </li>
-                            </ul>
-
-                        </li>
-
-                         }
+                            }
+                        }
                     </ul>
                 </div>
                         <div class="service-comment">
@@ -174,14 +171,7 @@
                                     <button type="submit"><i class="fas fa-search"></i></button>
                                 </form>
                             </div>
-                            @*<div class="service-archive arcca">
-                                <h2>Archives</h2>
-                                <ul>
-                                    <li><a href="#">June 2020</a></li>
-                                    <li><a href="#">May 2020</a></li>
-                                    <li><a href="#">April 2020</a></li>
-                                </ul>
-                            </div>*@
+                           
                             <div class="service-category arcca">
                                 <h2>Categories</h2>
                                 <ul>

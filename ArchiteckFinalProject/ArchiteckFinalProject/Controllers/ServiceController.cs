@@ -42,12 +42,12 @@ namespace ArchiteckFinalProject.Controllers
             return View(vmservice);
         }
 
-        public IActionResult Detail(int? id)
+        public IActionResult Detail(int? id, VmService vmService)
         {
-            if (id == null)
-            {
-                return RedirectToAction("Login", "Account");
-            }
+            //if (id == null)
+            //{
+            //    return RedirectToAction("Index", "Home");
+            //}
             Service service = null;
 
             Setting setting = _context.Settings.FirstOrDefault();
@@ -108,7 +108,7 @@ namespace ArchiteckFinalProject.Controllers
                 ReplyComments = replyComments
             };
 
-            return View("detail", vmService1);
+            return View("detail", new { id = vmService.Service.Id, vmService1 = vmService1 });
         }
 
         [HttpPost]

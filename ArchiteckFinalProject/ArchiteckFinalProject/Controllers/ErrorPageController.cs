@@ -10,6 +10,8 @@ namespace ArchiteckFinalProject.Controllers
     {
         public IActionResult Error1(int code)
         {
+            //ViewBag.ErrorPage = "Admin";
+            //ViewBag.ErrorPagewe = "View";
 
             return View();
         }

@@ -58,7 +58,7 @@
 
                     <li class="dropdown notification-list">
                         <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                            <img src="~/Areas/assets/images/users/avatar-1.jpg" alt="user-image" class="rounded-circle">
+                            @*<img src="~/Areas/assets/images/users/avatar-1.jpg" alt="user-image" class="rounded-circle">*@
                             <span class="d-none d-sm-inline-block ml-1">@userManager.GetUserName(User)</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
@@ -135,9 +135,9 @@
                         </li>
 
                         <li>
-                            <a asp-area="Admin" asp-controller="Account" asp-action="ChangePassword" class="waves-effect waves-light">
+                            <a asp-area="Admin" asp-controller="Category" asp-action="Index" class="waves-effect waves-light">
                                 <i class=" mdi mdi-tag"></i>
-                                <span>  ChangePassword  </span>
+                                <span> Service Category  </span>
                             </a>
                         </li>
                         <li>
@@ -307,6 +307,8 @@
     <script src="~/Areas/assets/libs/bootstrap-maxlength/bootstrap-maxlength.min.js"></script>
     <script src="~/Areas/assets/libs/bootstrap-filestyle2/bootstrap-filestyle.min.js"></script>
 
+
+
     <!-- Init js-->
     <script src="assets/js/pages/form-advanced.init.js"></script>
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
@@ -323,6 +325,8 @@
     <script>
         AOS.init();
     </script>
+    @RenderSection("Scripts", false)
+    @RenderSection("script", false)
     <!-- App js -->
     <script src="~/Areas/assets/js/app.min.js"></script>
     <script src="~/Areas/assets/js/script.js"></script>

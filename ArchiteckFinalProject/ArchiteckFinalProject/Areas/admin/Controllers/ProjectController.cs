@@ -179,39 +179,57 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
 
         public IActionResult Delete(int? id)
         {
-            if (id == null)
+            try
             {
-                HttpContext.Session.SetString("NullIdError", "Id can not be null");
-                return RedirectToAction("Index");
-            }
-
-            Project project = _context.Projects.Find(id);
-            if (project == null)
-            {
-                HttpContext.Session.SetString("NullDataError", "Can not found the data");
-                return RedirectToAction("Index");
-            }
-
-            if (id != null)
-            {
-                string pathFIle = Path.Combine(_webHostEnvironment.WebRootPath, "Uploads", project.Image);
-                if (!string.IsNullOrEmpty(project.Image))
+                if (id == null)
                 {
-                    if (System.IO.File.Exists(pathFIle))
+                    HttpContext.Session.SetString("NullIdError", "Id can not be null");
+                    return RedirectToAction("Index");
+                }
+
+                Project project = _context.Projects.Find(id);
+                if (project == null)
+                {
+                    HttpContext.Session.SetString("NullDataError", "Can not found the data");
+                    return RedirectToAction("Index");
+                }
+
+                if (id != null)
+                {
+                    string pathFIle = Path.Combine(_webHostEnvironment.WebRootPath, "Uploads", project.Image);
+                    if (!string.IsNullOrEmpty(project.Image))
                     {
-                        System.IO.File.Delete(pathFIle);
+                        if (System.IO.File.Exists(pathFIle))
+                        {
+                            System.IO.File.Delete(pathFIle);
+                        }
                     }
                 }
+
+
+                if (project != null)
+                {
+                    _context.Projects.Remove(project);
+                    _context.SaveChanges();
+                    //return RedirectToAction("Index");
+                }
+                return Json(new
+                {
+                    code = 204,
+                    message = "Item has been deleted successfully!"
+                });
             }
 
 
-            if (project != null)
+            catch (Exception)
             {
-                _context.Projects.Remove(project);
-                _context.SaveChanges();
-                return RedirectToAction("Index");
+                return Json(new
+                {
+                    code = 500,
+                    message = "Something went wrong!"
+                });
             }
-            return View(project);
+            //return View(project);
         }
     }
 }

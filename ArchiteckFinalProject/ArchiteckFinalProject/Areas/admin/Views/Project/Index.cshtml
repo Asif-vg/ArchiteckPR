@@ -73,20 +73,20 @@
                                         {
                                             i++;
 
-                                                                        <tr>
-                                                                            <td scope="row">@i</td>
-                                                                            <td> <img class="rounded" alt="" src="~/Uploads/@project.Image" style="width: 100px; height: 66px;"> </td>
-                                                                            <td>@project.Name</td>
-                                                                            <td>@project.ProjectArchiteck.Name</td>
-                                                                            <td>@project.Client</td>
-                                                                            <td>@project.Contractor</td>
+                                            <tr>
+                                                <td scope="row">@i</td>
+                                                <td> <img class="rounded" alt="" src="~/Uploads/@project.Image" style="width: 100px; height: 66px;"> </td>
+                                                <td>@project.Name</td>
+                                                <td>@project.ProjectArchiteck.Name</td>
+                                                <td>@project.Client</td>
+                                                <td>@project.Contractor</td>
 
-                                                                            <td>
-                                                                                <a asp-area="Admin" asp-controller="Project" asp-action="Update" asp-route-id="@project.Id" class="btn btn-warning">Update</a>
-                                                                                <a asp-area="Admin" asp-controller="Project" asp-action="Delete" asp-route-id="@project.Id" id="sweet-delete" class="btn btn-danger">Delete</a>
+                                                <td>
+                                                    <a asp-area="Admin" asp-controller="Project" asp-action="Update" asp-route-id="@project.Id" class="btn btn-warning">Update</a>
+                                                    <a asp-area="Admin" asp-controller="Project" asp-action="Delete" asp-route-id="@project.Id"  class="btn btn-danger delete">Delete</a>
 
-                                                                            </td>
-                                                                        </tr>
+                                                </td>
+                                            </tr>
                                         }
                                     }
 
@@ -104,3 +104,36 @@
 
 
 
+@section Scripts{
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+    $('.delete').on('click', function (e) {
+            e.preventDefault();
+            let url = $(this).attr('href');
+            swal({
+                title: "Are you sure?",
+                text: "Once deleted, you will not be able to recover this imaginary file!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        fetch(url).then(response => response.json()).then(data => {
+                            if (data.code == 204) {
+                                swal(data.message, {
+                                    icon: "success",
+                                });
+                                window.location.reload();
+                            } else {
+                                swal(data.message, {
+                                    icon: "error",
+                                });
+                            }
+                        })
+                    } else {
+                        swal("Item wasn't deleted", { icon: "error" });
+                    }
+                });
+        })</script>
+}

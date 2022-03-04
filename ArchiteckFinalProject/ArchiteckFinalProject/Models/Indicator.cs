@@ -17,7 +17,7 @@ namespace ArchiteckFinalProject.Models
         [MaxLength(30)]
         public string Icon { get; set; }
         [MaxLength(10)]
-        public string Count { get; set; }
+        public int Count { get; set; }
       
         
 

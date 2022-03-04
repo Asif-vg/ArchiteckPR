@@ -92,7 +92,7 @@
                         </div>
                         <div class="project-content">
                             <span>@project.ProjectArchiteck.Name</span>
-                            <a href="./projectDetail.html">@project.Name</a>
+                            <a asp-controller="Project" asp-action="Detail" asp-route-id="@project.Id">@project.Name</a>
                         </div>
 
                     </div>
@@ -129,16 +129,24 @@
         <div class="row" data-aos="fade-up" data-aos-once="true" data-aos-duration="1000" data-aos-delay="0">
             @{ int i = 0;
 
-
+                bool arrow = true;
                 foreach (var process in Model.Processes)
                 {
-                    i++;
 
+                    if (i == 2)
+                    {
+                        arrow = false;
+                    }
+                    i++;
                     <div class="col-lg-4  col-md-6">
                         <div class="works">
-                            <div class="img-arrow">
-                                <img src="./img/Home-img/arrow-2.png" alt="arrow">
-                            </div>
+                            @if (arrow)
+                            {
+                                <div class="img-arrow">
+                                    <img src="./img/Home-img/arrow-2.png" alt="arrow">
+                                </div>
+                            }
+
                             <div class="works-icon">
                                 <i class="@process.Icon"></i>
 

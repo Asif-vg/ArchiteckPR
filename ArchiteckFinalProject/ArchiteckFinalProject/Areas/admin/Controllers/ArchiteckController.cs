@@ -93,14 +93,32 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
         {
             ProjectArchiteck architeck = null;
 
-            if (id != null)
+            try
             {
-                architeck = _context.ProjectArchitecks.Find(id);
-                _context.ProjectArchitecks.Remove(architeck);
-                _context.SaveChanges();
+                if (id != null)
+                {
+                    architeck = _context.ProjectArchitecks.Find(id);
+                    _context.ProjectArchitecks.Remove(architeck);
+                    _context.SaveChanges();
+                }
+               
+                return Json(new
+                {
+                    code = 204,
+                    message = "Item has been deleted successfully!"
+                });
             }
+            catch (Exception)
+            {
+                return Json(new
+                {
+                    code = 500,
+                    message = "Something went wrong!"
+                });
+            }
+           
 
-            return RedirectToAction("Index");
+            //return RedirectToAction("Index");
         }
     }
 }

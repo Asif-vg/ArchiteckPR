@@ -33,6 +33,7 @@
     ".NETCoreApp,Version=v5.0": {
       "ArchiteckFinalProject/1.0.0": {
         "dependencies": {
+          "Chart.js": "2.9.3",
           "MailKit": "3.1.1",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.13",
           "Microsoft.EntityFrameworkCore.SqlServer": "5.0.13",
@@ -323,6 +324,7 @@
           "ArchiteckFinalProject.dll": {}
         }
       },
+      "Chart.js/2.9.3": {},
       "Humanizer.Core/2.8.26": {
         "runtime": {
           "lib/netstandard2.0/Humanizer.dll": {
@@ -3605,6 +3607,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "Chart.js/2.9.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-SY8PuXOJANgsEGMtuXPb/gxazfXdySUuFwTPbQUbw/YKiltR6FJ3mXrLFpr6N2MSCS7oUtfOhTotxLifyJcQNA==",
+      "path": "chart.js/2.9.3",
+      "hashPath": "chart.js.2.9.3.nupkg.sha512"
     },
     "Humanizer.Core/2.8.26": {
       "type": "package",

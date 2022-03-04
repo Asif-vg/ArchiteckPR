@@ -34,13 +34,16 @@ namespace ArchiteckFinalProject
             });
             services.AddControllersWithViews();
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Architeck")));
-            services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
+            services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(x =>
             {
                 x.LoginPath = "/Account/Login";
             });
-
+            //services.Configure<CookieAuthenticationOptions>(options =>
+            //{
+            //    options.AccessDeniedPath = new PathString("/Admin/Account/Login");
+            //});
 
             //services.AddScoped<IAccountRepository, AccountRepository>();
         }

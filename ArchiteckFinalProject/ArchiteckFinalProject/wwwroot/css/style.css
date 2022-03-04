@@ -7001,6 +7001,7 @@ body main .service-detail .container .row .col-lg-8 .service-comment-list ul li 
         position: absolute;
         right: 50px;
     }
+  
 
 body main .service-detail .container .row .col-lg-8 .service-comment-list ul li ul {
   margin-left: 50px;
@@ -7012,6 +7013,9 @@ body main .service-detail .container .row .col-lg-8 .service-comment-list ul li 
 
 body main .service-detail .container .row .col-lg-8 .replyDisplay {
   display: none;
+}
+.showcomment {
+    display: block !important;
 }
 
 body main .service-detail .container .row .col-lg-8 .replyDisplay h3 {

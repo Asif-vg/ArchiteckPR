@@ -53,25 +53,27 @@
                             <h2>Request A Quote</h2>
                         </div>
                         <div class="message-question">
-                            <form asp-controller="Contact" asp-action="Message" method="post">
-                                <div asp-validation-summary="All" class="text-danger"></div>
+                            <form id="sendMessage">
+                                
                                 <div class="row">
                                     <div class="col-lg-6">
-                                        <input asp-for="@Model.Contact.Name" class="put" type="text" placeholder="Enter name">
+                                        <input id="name11" class="put" type="text" placeholder="Enter name">
                                     </div>
                                     <div class="col-lg-6">
-                                        <input asp-for="@Model.Contact.Email" class="put" type="email" placeholder="Enter email">
+                                        <input id="email11" class="put" type="email" placeholder="Enter email">
                                     </div>
                                     <div class="col-lg-12">
-                                        <input asp-for="@Model.Contact.Subject" class="put" type="text" placeholder="Enter subject">
+                                        <input id="subject11" class="put" type="text" placeholder="Enter subject">
                                     </div>
                                     <div class="col-lg-12">
-                                        <textarea asp-for="@Model.Contact.Text" rows="6" class="area" placeholder="Enter your message"></textarea>
+                                        <textarea id="message11" rows="6" class="area" placeholder="Enter your message"></textarea>
 
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="message-button">
-                                            <button type="submit"> Send Message </button>
+                                            <div class="alert alert-success" style="display: none; position: absolute; top: 53px; width: 100%;"></div>
+                                            <div class="alert alert-warning" style="display: none; position: absolute; top: 53px; width: 100%;"></div>
+                                            <button type="submit" id="messageSend"> Send Message </button>
                                         </div>
                                     </div>
                                 </div>

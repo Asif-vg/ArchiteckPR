@@ -33,37 +33,30 @@ namespace ArchiteckFinalProject.Controllers
 
             return View(vmContact);
         }
-        public IActionResult Message()
+        //public IActionResult Message()
+        //{
+        //    return View();
+        //}
+
+        
+        public async Task<IActionResult> Message(string nm, string sbj, string eml, string txt)
         {
-            return View();
-        }
-        [HttpPost]
-        public IActionResult Message(VmContact vmContact)
-        {
-            if (ModelState.IsValid)
-            {
+            VmResponse response = new();
 
-                vmContact.Contact.CreatedDate = DateTime.Now;
-                _context.Messages.Add(vmContact.Contact);
-                _context.SaveChanges();
-                return RedirectToAction("Index");
+            Message message1 = new();
 
-            }
-            Setting setting = _context.Settings.FirstOrDefault();
-            List<Social> socials = _context.Socials.ToList();
-            Banner banner = _context.Banners.FirstOrDefault(b => b.Page == "contact");
-            List<Office> office = _context.Offices.ToList();
-            VmContact vmContact1 = new VmContact()
-            {
-                Setting = setting,
-                Socials = socials,
-                Contact = vmContact.Contact,
-                Banner = banner,
-                Offices = office
-            };
+            message1.Email = eml;
+            message1.Name = nm;
+            message1.Subject = sbj;
+            message1.Text = txt;
+            message1.CreatedDate = DateTime.Now;
 
+             await _context.Messages.AddAsync(message1);
+             await _context.SaveChangesAsync();
 
-            return View("Index", vmContact1);
+            response.Success = true;
+            return Json(response);
+
         }
     }
 }

@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "yi3h124OOFkBz7+PTkwk16miTZdA+0k6UYFoKH42ZzScQOlSObj3qoo2zPcvc2K+qikPwnPf2V7lql5LdTkeqg==",
+  "dgSpecHash": "yTP9s/O98yBEvEgp1ffwPdlnTouolS434Zf+ZajGc65mDUfYqMPDUn8Gtx24A+l4KnV6t3dJ1Hilwe7NdXdlpQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\CASPER\\Desktop\\Architeck-BackEnd\\ArchiteckFinalProject\\ArchiteckFinalProject\\ArchiteckFinalProject.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\CASPER\\.nuget\\packages\\chart.js\\2.9.3\\chart.js.2.9.3.nupkg.sha512",
     "C:\\Users\\CASPER\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\CASPER\\.nuget\\packages\\mailkit\\3.1.1\\mailkit.3.1.1.nupkg.sha512",
     "C:\\Users\\CASPER\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.13\\microsoft.aspnetcore.cryptography.internal.5.0.13.nupkg.sha512",

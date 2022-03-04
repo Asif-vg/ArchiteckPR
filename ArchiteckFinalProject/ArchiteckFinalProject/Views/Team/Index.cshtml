@@ -59,52 +59,27 @@
             <div class="row">
 
                 <div class="count-items" data-aos="fade-right" data-aos-once="true" data-aos-duration="1000" data-aos-delay="0">
-                    <div class="col-lg-3 col-sm-3">
-                        <div class="counter-context">
-                            <div class="counter-icon">
-                                <i class="fal fa-industry-alt"></i>
+                    @{
+                        int d = 0;
+                        foreach (var count in Model.Indicators)
+                        {
+                            d++;
+                                        <div class="col-lg-3 col-sm-3" data-aos="fade-right" data-aos-once="true" data-aos-duration="1000" data-aos-delay="@(d)00">
+                                            <div class="counter-context">
+                                                <div class="counter-icon">
+                                                    <i class="@count.Icon"></i>
 
-                            </div>
-                            <div class="counter-info">
-                                <span class="odemeter odospan"></span>
-                                <p>Project Complated</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-3" data-aos="fade-right" data-aos-once="true" data-aos-duration="1000" data-aos-delay="100">
-                        <div class="counter-context">
-                            <div class="counter-icon">
-                                <i class="fal fa-drafting-compass"></i>
-                            </div>
-                            <div class="counter-info">
-                                <span class="odemeter odospan"></span>
-                                <p>Work Employed</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-3" data-aos="fade-right" data-aos-once="true" data-aos-duration="1000" data-aos-delay="200">
-                        <div class="counter-context">
-                            <div class="counter-icon">
-                                <i class="fal fa-user-hard-hat"></i>
+                                                </div>
+                                                <div class="counter-info">
+                                                    <span class="countfect" data-num="@count.Count"></span>
+                                                    <p>@count.Title</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                        }
+                    }
 
-                            </div>
-                            <div class="counter-info">
-                                <span class="odemeter odospan"></span>
-                                <p>Happy Customers</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-3" data-aos="fade-right" data-aos-once="true" data-aos-duration="1000" data-aos-delay="300">
-                        <div class="counter-context">
-                            <div class="counter-icon">
-                                <i class="fal fa-cogs"></i>
-                            </div>
-                            <div class="counter-info">
-                                <span class="odemeter odospan"></span>
-                                <p>Painting Services</p>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
 
             </div>
@@ -131,138 +106,31 @@
 
         </div>
         <div class="row" data-aos="fade-down" data-aos-once="true" data-aos-duration="1000" data-aos-delay="0">
-            <div class="col-lg-4 col-md-6">
-                <div class="service-box">
-                    <div class="service-img">
-                        <img class="img-fluid" src="./img/Home-img/blog-1.jpg" alt="">
-                        <div class="service-icon">
-                            <i class="fal fa-industry-alt"></i>
+            @foreach (var service in Model.Services)
+            {
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-box">
+                        <div class="service-img">
+                            <img class="img-fluid" src="~/Uploads/@service.ServiceImage" alt="">
+                            <div class="service-icon">
+                                <i class="@service.Icon"></i>
+                            </div>
+                        </div>
+                        <div class="service-context">
+                            <h4>@service.Name</h4>
+                            <p>@Html.Raw(service.Text.Length > 220 ? service.Text.Substring(0, 220) + "..." : service.Text)</p>
+                            <a asp-controller="Service" asp-action="Detail" asp-route-id="@service.Id">
+                                <div class="button-box">
+                                    <span class="line-left"></span>
+                                    <span class="lineB">Read More</span>
+                                    <span class="line-right"></span>
+                                    <i class="fas fa-caret-right"></i>
+                                </div>
+                            </a>
                         </div>
                     </div>
-                    <div class="service-context">
-                        <h4>Construction Management</h4>
-                        <p>Lorem Ipsum is simply dummy text of the printing Ipsum has been the standard .</p>
-                        <a href="./serviceDetail.html">
-                            <div class="button-box">
-                                <span class="line-left"></span>
-                                <span class="lineB">Read More</span>
-                                <span class="line-right"></span>
-                                <i class="fas fa-caret-right"></i>
-                            </div>
-                        </a>
-                    </div>
                 </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="service-box">
-                    <div class="service-img">
-                        <img class="img-fluid" src="./img/Home-img/blog-2.jpg" alt="">
-                        <div class="service-icon">
-                            <i class="fal fa-robot"></i>
-                        </div>
-                    </div>
-                    <div class="service-context">
-                        <h4>Expert Mechanical</h4>
-                        <p>Lorem Ipsum is simply dummy text of the printing Ipsum has been the standard .</p>
-                        <a href="./serviceDetail.html">
-                            <div class="button-box">
-                                <span class="line-left"></span>
-                                <span class="lineB">Read More</span>
-                                <span class="line-right"></span>
-                                <i class="fas fa-caret-right"></i>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-12">
-                <div class="service-box">
-                    <div class="service-img">
-                        <img class="img-fluid" src="./img/Home-img/blog-3.jpg" alt="">
-                        <div class="service-icon">
-                            <i class="fal fa-map-marker"></i>
-                        </div>
-                    </div>
-                    <div class="service-context">
-                        <h4>Architecture & Building </h4>
-                        <p>Lorem Ipsum is simply dummy text of the printing Ipsum has been the standard .</p>
-                        <a href="./serviceDetail.html">
-                            <div class="button-box">
-                                <span class="line-left"></span>
-                                <span class="lineB">Read More</span>
-                                <span class="line-right"></span>
-                                <i class="fas fa-caret-right"></i>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="service-box">
-                    <div class="service-img">
-                        <img class="img-fluid" src="./img/Home-img/blog-4.jpg" alt="">
-                        <div class="service-icon">
-                            <i class="fal fa-ruler-combined"></i>
-                        </div>
-                    </div>
-                    <div class="service-context">
-                        <h4>Tiling & Painiting</h4>
-                        <p>Lorem Ipsum is simply dummy text of the printing Ipsum has been the standard .</p>
-                        <a href="./serviceDetail.html">
-                            <div class="button-box">
-                                <span class="line-left"></span>
-                                <span class="lineB">Read More</span>
-                                <span class="line-right"></span>
-                                <i class="fas fa-caret-right"></i>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="service-box">
-                    <div class="service-img">
-                        <img class="img-fluid" src="./img/Home-img/blog-6.jpg" alt="">
-                        <div class="service-icon">
-                            <i class="fal fa-cog"></i>
-                        </div>
-                    </div>
-                    <div class="service-context">
-                        <h4>Apartment Design</h4>
-                        <p>Lorem Ipsum is simply dummy text of the printing Ipsum has been the standard .</p>
-                        <a href="./serviceDetail.html">
-                            <div class="button-box">
-                                <span class="line-left"></span>
-                                <span class="lineB">Read More</span>
-                                <span class="line-right"></span>
-                                <i class="fas fa-caret-right"></i>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-12">
-                <div class="service-box">
-                    <div class="service-img">
-                        <img class="img-fluid" src="./img/Home-img/blog-7.jpg" alt="">
-                        <div class="service-icon">
-                            <i class="fal fa-tools"></i>
-                        </div>
-                    </div>
-                    <div class="service-context">
-                        <h4>Facade Engineering</h4>
-                        <p>Lorem Ipsum is simply dummy text of the printing Ipsum has been the standard .</p>
-                        <a href="./serviceDetail.html">
-                            <div class="button-box">
-                                <span class="line-left"></span>
-                                <span class="lineB">Read More</span>
-                                <span class="line-right"></span>
-                                <i class="fas fa-caret-right"></i>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
+            }
         </div>
     </div>
 </section>

@@ -14,6 +14,6 @@ namespace ArchiteckFinalProject.Models
         public string Title { get; set; }
       
         [MaxLength(10)]
-        public string Count { get; set; }
+        public int Count { get; set; }
     }
 }

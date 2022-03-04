@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace ArchiteckFinalProject.Areas.admin.Controllers
 {
     [Area("admin")]
-    //[Authorize]
+    [Authorize(Roles = "Admin")]
 
     public class HomeController : Controller
     {
@@ -22,23 +22,28 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
         }
         public IActionResult Index()
         {
+
             return View();
         }
-        //public IActionResult ChartArchiteck()
-        //{
-        //    return Json(Statistic());
-        //}
+        public IActionResult ChartArchiteck()
+        {
+            return Json(Statistic());
+        }
 
-        //public List<Service> Statistic()
-        //{
-        //    List<Service> services =new List<Service>();
-        //    services = _context.Services.Select(x => new Service
-        //    {
-        //        Name=x.Name,
+        public List<Indicator> Statistic()
+        {
+            var list = new List<Indicator>();
+            list.Add(new Indicator { Title = "asif", Count = 1200 });
+            //List<Indicator> indicator = new List<Indicator>();
+            //indicator = _context.Indicators.Select(x => new Indicator
+            //{
+            //    Count = x.Count,
+            //    Title = x.Title,
 
-        //    }).ToList();
-        //    return services;
-        //}
+            //}).ToList();
+            //return indicator;
+            return list;
+        }
     }
 }
 
