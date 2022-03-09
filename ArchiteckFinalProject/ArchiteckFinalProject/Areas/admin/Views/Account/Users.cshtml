@@ -67,7 +67,7 @@
                                                 <th scope="row">@i</th>
                                                 <td>@user.FullName</td>
                                                 <td>@user.Email</td>
-                                                <td>
+                                                <td >
                                                     @{
                                                         var role = "";
                                                         var userRole = Model.UserRoles.FirstOrDefault(u => u.UserId == user.Id);
@@ -77,10 +77,10 @@
                                                             role = Model.Roles.FirstOrDefault(r => r.Id == userRole.RoleId).Name;
 
                                                         }
-              
+                                                      
                                                     }
 
-                                                  
+
                                                 </td>
                                                 <td>
                                                     <a class="btn btn-warning" asp-area="Admin" asp-controller="Account" asp-action="UpdateUser" asp-route-id="@user.Id">Update</a>

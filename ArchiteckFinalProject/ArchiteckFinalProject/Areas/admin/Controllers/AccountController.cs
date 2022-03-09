@@ -20,7 +20,7 @@ using System.Threading.Tasks;
 namespace ArchiteckFinalProject.Areas.admin.Controllers
 {
     [Area("admin")]
-    [Authorize]
+    //[Authorize]
 
     public class AccountController : Controller
     {
@@ -57,31 +57,31 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
                 //    {
                 //        vmRegister.ImageFile.CopyTo(stream);
                 //    }
-                    CustomUser newUser = new CustomUser()
-                    {
-                        FullName = vmRegister.Name +" " + vmRegister.Surname,
-                        CreatedDate = DateTime.Now,
-                        Email = vmRegister.Email,
-                        UserName = vmRegister.Email,
-                        Password=vmRegister.Password
-                        //Image = fileName
-                    };
+                CustomUser newUser = new CustomUser()
+                {
+                    FullName = vmRegister.Name + " " + vmRegister.Surname,
+                    CreatedDate = DateTime.Now,
+                    Email = vmRegister.Email,
+                    UserName = vmRegister.Email,
+                    Password = vmRegister.Password
+                    //Image = fileName
+                };
 
-                    var result = await _userManager.CreateAsync(newUser, vmRegister.Password);
+                var result = await _userManager.CreateAsync(newUser, vmRegister.Password);
 
-                    if (result.Succeeded)
+                if (result.Succeeded)
+                {
+                    await _signInManager.SignInAsync(newUser, false);
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    foreach (var item in result.Errors)
                     {
-                        await _signInManager.SignInAsync(newUser, false);
-                        return RedirectToAction("Index", "Home");
+                        ModelState.AddModelError("", item.Description);
                     }
-                    else
-                    {
-                        foreach (var item in result.Errors)
-                        {
-                            ModelState.AddModelError("", item.Description);
-                        }
-                        return View(vmRegister);
-                    }
+                    return View(vmRegister);
+                }
                 //}
 
             }
@@ -124,7 +124,7 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
             return View(vmRegister);
         }
 
-     
+
 
         public async Task<IActionResult> Logout()
         {
@@ -162,13 +162,13 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
                 user.FullName = model.FullName;
 
                 IdentityUserRole<string> userRole = _context.UserRoles.FirstOrDefault(u => u.UserId == model.Id);
-               
+
                 if (userRole != null)
                 {
                     string oldRole = _context.Roles.Find(userRole.RoleId).Name;
                     await _userManager.RemoveFromRoleAsync(user, oldRole);
                 }
-             
+
 
                 IdentityRole selectedRole = _context.Roles.Find(model.RoleId);
 
@@ -203,7 +203,7 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
             return RedirectToAction("Roles");
         }
 
-       
+
 
         public IActionResult RoleDelete(string? id)
         {
@@ -268,7 +268,7 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
 
             emailbody = emailbody.Replace("{{UserName}}", $"{customUser.UserName}").Replace("{{url}}", $"{url}");
 
-            using(MailMessage message =new MailMessage())
+            using (MailMessage message = new MailMessage())
             {
                 message.From = new MailAddress("quluyevasifcode@gmail.com");
                 message.To.Add(customUser.Email);
@@ -350,7 +350,7 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
         }
 
 
-    
+
 
 
     }

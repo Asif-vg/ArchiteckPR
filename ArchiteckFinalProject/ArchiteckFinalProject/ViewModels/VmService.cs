@@ -20,6 +20,6 @@ namespace ArchiteckFinalProject.ViewModels
 
         public VmSearch Search { get; set; }
 
-
+      
     }
 }

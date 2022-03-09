@@ -42,7 +42,7 @@ namespace ArchiteckFinalProject.Controllers
             return View(vmservice);
         }
 
-        public IActionResult Detail(int? id, VmService vmService)
+        public IActionResult Detail(int? id, ServiceComment Scomment )
         {
             //if (id == null)
             //{
@@ -69,7 +69,9 @@ namespace ArchiteckFinalProject.Controllers
                 //Services =_context.Services.Include(sc => sc.ServiceCatagory).ToList(), 
                 ServiceComments = serviceComments,
                 Banner = banner,
-                ReplyComments = replyComments
+                ReplyComments = replyComments,
+                ServiceComment=Scomment
+
             };
 
             vmservice.ServiceCatagories = _context.ServiceCatagories.ToList();
@@ -79,8 +81,10 @@ namespace ArchiteckFinalProject.Controllers
         }
 
         [HttpPost]
-        public IActionResult Comment(VmService vmService)
+        public IActionResult Comment( VmService vmService)
         {
+            //VmResponse response = new();
+
             Setting setting = _context.Settings.FirstOrDefault();
             List<Social> socials = _context.Socials.ToList();
             Banner banner = _context.Banners.FirstOrDefault(b => b.Page == "sdetail");
@@ -94,8 +98,10 @@ namespace ArchiteckFinalProject.Controllers
                 vmService.ServiceComment.CreatedDate = DateTime.Now;
                 _context.ServiceComments.Add(vmService.ServiceComment);
                 _context.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Detail", new { id = vmService.ServiceComment.ServiceId} );
             }
+
+            
 
             VmService vmService1 = new VmService()
             {
@@ -106,9 +112,11 @@ namespace ArchiteckFinalProject.Controllers
                 Banner = banner,
                 ServiceComments = serviceComments,
                 ReplyComments = replyComments
+               
             };
 
-            return View("detail", new { id = vmService.Service.Id, vmService1 = vmService1 });
+            return RedirectToAction("Detail", new { id = vmService.ServiceComment.ServiceId, Scomment = vmService });
+            
         }
 
         [HttpPost]
@@ -124,7 +132,7 @@ namespace ArchiteckFinalProject.Controllers
                 vmService.ServiceComment.CreatedDate = DateTime.Now;
                 _context.ServiceComments.Add(vmService.ServiceComment);
                 _context.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Detail", new { id = vmService.ServiceComment.ServiceId });
             }
 
             VmService vmService1 = new VmService()
@@ -135,7 +143,7 @@ namespace ArchiteckFinalProject.Controllers
                 Service = vmService.Service,
                 Services = services
             };
-            return View("Index", vmService1);
+            return RedirectToAction("Detail", new { id = vmService.ServiceComment.ServiceId, Scomment = vmService });
         }
 
     }
