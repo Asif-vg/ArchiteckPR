@@ -125,116 +125,155 @@
                         <li>
                             <a href="javascript: void(0);" class="waves-effect waves-light">
                                 <i class="mdi mdi-comment-text-outline"></i>
-                                <span>  Service  </span>
+                                <span>  Services  </span>
                                 <span class="menu-arrow"></span>
                             </a>
                             <ul class="nav-second-level" aria-expanded="false">
-                                <li><a asp-area="Admin" asp-controller="Service" asp-action="Index">Dashboard</a></li>
-                                <li><a asp-area="Admin" asp-controller="Service" asp-action="Create">Add Service</a></li>
+                                <li>
+                                    <a asp-area="Admin" asp-controller="Service" asp-action="Index">
+                                        <i class=" mdi mdi-server-plus"></i>
+                                        <span>Service</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a asp-area="Admin" asp-controller="Category" asp-action="Index" class="waves-effect waves-light">
+                                        <i class=" mdi mdi-tag"></i>
+                                        <span> Service Category  </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript: void(0);" class="waves-effect waves-light">
+                                <i class=" mdi mdi-file-presentation-box"></i>
+                                <span>  Projects  </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <ul class="nav-second-level" aria-expanded="false">
+                                <li>
+                                    <a asp-area="Admin" asp-controller="Project" asp-action="Index" class="waves-effect waves-light">
+                                        <i class=" mdi mdi-projector-screen"></i>
+                                        <span>  Project  </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a asp-area="Admin" asp-controller="Architeck" asp-action="Index" class="waves-effect waves-light">
+                                        <i class=" mdi mdi-tag"></i>
+                                        <span>  Project Architeck </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript: void(0);" class="waves-effect waves-light">
+                                <i class=" mdi mdi-account-plus"></i>
+                                <span>  Persons  </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <ul class="nav-second-level" aria-expanded="false">
+                                <li>
+                                    <a asp-area="Admin" asp-controller="Team" asp-action="Index" class="waves-effect waves-light">
+                                        <i class=" mdi mdi-account-group"></i>
+                                        <span>  Team  </span>
+                                    </a>
+
+                                </li>
+                                <li>
+                                    <a asp-area="Admin" asp-controller="Position" asp-action="Index" class="waves-effect waves-light">
+                                        <i class=" mdi mdi-police-badge"></i>
+                                        <span>  Position  </span>
+                                    </a>
+
+                                </li>
+                                <li>
+                                    <a asp-area="Admin" asp-controller="PersonSocial" asp-action="Index" class="waves-effect waves-light">
+                                        <i class=" mdi mdi-web"></i>
+                                        <span>  PersonSocial  </span>
+                                    </a>
+
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript: void(0);" class="waves-effect waves-light">
+                                <i class=" mdi mdi-resize-bottom-right"></i>
+                                <span>  Others  </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <ul class="nav-second-level" aria-expanded="false">
+                                <li>
+                                    <a asp-area="Admin" asp-controller="About" asp-action="Index" class="waves-effect waves-light">
+                                        <i class=" mdi mdi-alphabetical"></i>
+                                        <span>  About  </span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a asp-area="Admin" asp-controller="Client" asp-action="Index" class="waves-effect waves-light">
+                                        <i class=" mdi mdi-alpha-c-circle"></i>
+                                        <span>  Client </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a asp-area="Admin" asp-controller="Office" asp-action="Index" class="waves-effect waves-light">
+                                        <i class="mdi mdi-home-map-marker"></i>
+                                        <span>  Office  </span>
+                                    </a>
+
+                                </li>
+                                <li>
+                                    <a asp-area="Admin" asp-controller="HomeBanner" asp-action="Index" class="waves-effect waves-light">
+                                        <i class="mdi mdi-bandcamp"></i>
+                                        <span>  Home Banner </span>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a asp-area="Admin" asp-controller="Social" asp-action="Index" class="waves-effect waves-light">
+                                        <i class=" mdi mdi-web"></i>
+                                        <span>  Social  </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a asp-area="Admin" asp-controller="Setting" asp-action="Index" class="waves-effect waves-light">
+                                        <i class="mdi mdi-settings noti-icon"></i>
+                                        <span>  Setting  </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a asp-area="Admin" asp-controller="Solution" asp-action="Index" class="waves-effect waves-light">
+                                        <i class=" mdi mdi-select-group"></i>
+                                        <span>  Solution  </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a asp-area="Admin" asp-controller="Indicator" asp-action="Index" class="waves-effect waves-light">
+                                        <i class=" mdi mdi-window-shutter"></i>
+                                        <span>  Indicator </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a asp-area="Admin" asp-controller="Process" asp-action="Index" class="waves-effect waves-light">
+                                        <i class=" mdi mdi-progress-check"></i>
+                                        <span>  Process  </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a asp-area="Admin" asp-controller="CompanyIndicator" asp-action="Index" class="waves-effect waves-light">
+                                        <i class=" mdi mdi-window-shutter"></i>
+                                        <span>  Company Indicator </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a asp-area="Admin" asp-controller="Faq" asp-action="Index" class="waves-effect waves-light">
+                                        <i class=" mdi mdi-cursor-default"></i>
+                                        <span>  Faq  </span>
+                                    </a>
+
+                                </li>
                             </ul>
                         </li>
 
-                        <li>
-                            <a asp-area="Admin" asp-controller="Category" asp-action="Index" class="waves-effect waves-light">
-                                <i class=" mdi mdi-tag"></i>
-                                <span> Service Category  </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a asp-area="Admin" asp-controller="Process" asp-action="Index" class="waves-effect waves-light">
-                                <i class=" mdi mdi-progress-check"></i>
-                                <span>  Process  </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a asp-area="Admin" asp-controller="Office" asp-action="Index" class="waves-effect waves-light">
-                                <i class="mdi mdi-home-map-marker"></i>
-                                <span>  Office  </span>
-                            </a>
-
-                        </li>
-                        <li>
-                            <a asp-area="Admin" asp-controller="Faq" asp-action="Index" class="waves-effect waves-light">
-                                <i class=" mdi mdi-cursor-default"></i>
-                                <span>  Faq  </span>
-                            </a>
-
-                        </li>
-                        <li>
-                            <a asp-area="Admin" asp-controller="Team" asp-action="Index" class="waves-effect waves-light">
-                                <i class=" mdi mdi-account-group"></i>
-                                <span>  Team  </span>
-                            </a>
-
-                        </li>
-                        <li>
-                            <a asp-area="Admin" asp-controller="Position" asp-action="Index" class="waves-effect waves-light">
-                                <i class=" mdi mdi-police-badge"></i>
-                                <span>  Position  </span>
-                            </a>
-
-                        </li>
-                        <li>
-                            <a asp-area="Admin" asp-controller="PersonSocial" asp-action="Index" class="waves-effect waves-light">
-                                <i class=" mdi mdi-web"></i>
-                                <span>  PersonSocial  </span>
-                            </a>
-
-                        </li>
-                        <li>
-                            <a asp-area="Admin" asp-controller="Social" asp-action="Index" class="waves-effect waves-light">
-                                <i class=" mdi mdi-web"></i>
-                                <span>  Social  </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a asp-area="Admin" asp-controller="Setting" asp-action="Index" class="waves-effect waves-light">
-                                <i class="mdi mdi-settings noti-icon"></i>
-                                <span>  Setting  </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a asp-area="Admin" asp-controller="Solution" asp-action="Index" class="waves-effect waves-light">
-                                <i class=" mdi mdi-select-group"></i>
-                                <span>  Solution  </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a asp-area="Admin" asp-controller="About" asp-action="Index" class="waves-effect waves-light">
-                                <i class=" mdi mdi-alphabetical"></i>
-                                <span>  About  </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a asp-area="Admin" asp-controller="Project" asp-action="Index" class="waves-effect waves-light">
-                                <i class=" mdi mdi-projector-screen"></i>
-                                <span>  Project  </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a asp-area="Admin" asp-controller="Architeck" asp-action="Index" class="waves-effect waves-light">
-                                <i class=" mdi mdi-tag"></i>
-                                <span>  Project Architeck </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a asp-area="Admin" asp-controller="HomeBanner" asp-action="Index" class="waves-effect waves-light">
-                                <i class="mdi mdi-bandcamp"></i>
-                                <span>  Home Banner </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a asp-area="Admin" asp-controller="Indicator" asp-action="Index" class="waves-effect waves-light">
-                                <i class=" mdi mdi-window-shutter"></i>
-                                <span>  Indicator </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a asp-area="Admin" asp-controller="Client" asp-action="Index" class="waves-effect waves-light">
-                                <i class=" mdi mdi-alpha-c-circle"></i>
-                                <span>  Client </span>
-                            </a>
-                        </li>
                         <li>
                             <a asp-area="Admin" asp-controller="Account" asp-action="Users" class="waves-effect waves-light">
                                 <i class=" mdi mdi-account-lock"></i>
@@ -247,12 +286,7 @@
                                 <span>  Roles </span>
                             </a>
                         </li>
-                        <li>
-                            <a asp-area="Admin" asp-controller="CompanyIndicator" asp-action="Index" class="waves-effect waves-light">
-                                <i class=" mdi mdi-window-shutter"></i>
-                                <span>  Company Indicator </span>
-                            </a>
-                        </li>
+
                         <li>
                             <a asp-area="Admin" asp-controller="Subscribe" asp-action="Index" class="waves-effect waves-light">
                                 <i class=" mdi mdi-email"></i>

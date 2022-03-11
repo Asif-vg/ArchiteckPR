@@ -39,7 +39,7 @@
                 <form class="forms" asp-controller="Project" asp-action="Index" method="get">
                     <div>
                         @*<label for="" name="search"></label>*@
-                        <input asp-for="@Model.Search.searchData" class="form-control search-home" placeholder="Search...">
+                        <input asp-for="@Model.Search.searchData" class="form-control search-home" placeholder="Search Project name...">
                         <input asp-for="@Model.Search arcId" hidden />
 
                     </div>
@@ -152,7 +152,7 @@
                     </div>
                     <div class="col-lg-6">
                         <form id="mc4wp-form-1" class="mc4wp-form mc4wp-form-7" asp-controller="home" asp-action="Subscribe" method="post" style="position:relative;">
-                            <input type="email" name="email" class="email" autocomplete="off" placeholder="Your email address">
+                            <input id="email21" type="email"  name="email" class="email" autocomplete="off" required placeholder="Your email address">
                             <div class="alert alert-success" style="display: none; position: absolute; top: 53px; width: 100%;"></div>
                             <div class="alert alert-warning" style="display: none; position: absolute; top: 53px; width: 100%;"></div>
                             <button type="submit" class="submit" id="submitBtn" value="subscribe">Sign up</button>

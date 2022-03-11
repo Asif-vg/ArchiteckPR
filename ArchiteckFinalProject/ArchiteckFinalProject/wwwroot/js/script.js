@@ -148,36 +148,6 @@ $(document).ready(function() {
     });
 
 
-    // let odospan = document.querySelectorAll(".odospan");
-
-    // for (let i = 0; i < odospan.length; i++) {
-
-    //     if (i == 0) {
-    //         odospan[i].innerText = "";
-    //     } else if (i == 1) {
-    //         odospan[i].innerText = "";
-    //     } else if (i == 2) {
-    //         odospan[i].innerText = "";
-    //     } else {
-    //         odospan[i].innerText = "";
-    //     }
-    // }
-    // let odospan2 = document.querySelectorAll(".odospan2");
-
-    // for (let i = 0; i < odospan2.length; i++) {
-
-    //     if (i == 0) {
-    //         odospan2[i].innerText = "";
-    //     } else if (i == 1) {
-    //         odospan2[i].innerText = "";
-    //     } else if (i == 2) {
-    //         odospan2[i].innerText = "";
-    //     } else {
-    //         odospan2[i].innerText = "";
-    //     }
-    // }
-
-
     //GoUpBtn
     let goUpbtn = $(".circle")[0];
 
@@ -361,13 +331,5 @@ for (let i = 0; i < reply.length; i++) {
     });
 }
 
-
-//cancelReply.addEventListener("click", function (e) {
-   
-//        e.preventDefault();
-//        replyMessage.style.display = "none"
-    
-   
-//})
 
 

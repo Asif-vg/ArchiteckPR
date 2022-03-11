@@ -33,11 +33,7 @@ namespace ArchiteckFinalProject.Controllers
 
             return View(vmContact);
         }
-        //public IActionResult Message()
-        //{
-        //    return View();
-        //}
-
+       
         
         public async Task<IActionResult> Message(string nm, string sbj, string eml, string txt)
         {

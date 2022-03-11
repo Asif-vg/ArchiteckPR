@@ -2,6 +2,7 @@
 using ArchiteckFinalProject.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 namespace ArchiteckFinalProject.Areas.admin.Controllers
 {
     [Area("admin")]
-    [Authorize]
+    [Authorize(Roles = "Admin")]
 
     public class PositionController : Controller
     {
@@ -25,13 +26,13 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
         }
 
         //public IWebHostEnvironment WebHostEnvironment => _webHostEnvironment;
-        [AllowAnonymous]
+      
 
         public IActionResult Index()
         {
             return View(_context.PersonPositions.ToList());
         }
-        [AllowAnonymous]
+       
 
         public IActionResult Create()
         {
@@ -39,7 +40,7 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
         }
 
         [HttpPost]
-        [AllowAnonymous]
+       
 
         public IActionResult Create(PersonPosition position)
         {
@@ -60,7 +61,7 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
             }
             return View(position);
         }
-        [AllowAnonymous]
+       
 
         public IActionResult Update(int? id)
         {
@@ -80,7 +81,7 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
 
         }
         [HttpPost]
-        [AllowAnonymous]
+        
 
         public IActionResult Update(PersonPosition position)
         {
@@ -92,10 +93,23 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
             }
             return View(position);
         }
-        [AllowAnonymous]
+       
 
         public IActionResult Delete(int? id)
         {
+
+            if (id == null)
+            {
+                HttpContext.Session.SetString("NullIdError", "Id can not be null");
+                return RedirectToAction("Index");
+            }
+
+            PersonPosition personposition = _context.PersonPositions.Find(id);
+            if (personposition == null)
+            {
+                HttpContext.Session.SetString("NullDataError", "Can not found the data");
+                return RedirectToAction("Index");
+            }
             PersonPosition position = null;
 
             if (id != null)

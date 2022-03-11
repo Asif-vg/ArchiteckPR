@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 namespace ArchiteckFinalProject.Areas.admin.Controllers
 {
     [Area("admin")]
-    [Authorize]
+    [Authorize(Roles = "Admin")]
 
     public class HomeBannerController : Controller
     {
@@ -25,20 +25,20 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
             _context = context;
             _webHostEnvironment = webHostEnvironment;
         }
-        [AllowAnonymous]
+       
 
         public IActionResult Index()
         {
             return View(_context.HomeBanners.ToList());
         }
-        [AllowAnonymous]
+       
 
         public IActionResult Create()
         {
             return View();
         }
         [HttpPost]
-        [AllowAnonymous]
+       
 
         public IActionResult Create(HomeBanner homeBanner)
         {
@@ -89,8 +89,7 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
 
             return View(homeBanner);
         }
-        [AllowAnonymous]
-
+       
         public IActionResult Update(int? id)
         {
             HomeBanner homeBanner = _context.HomeBanners.Find(id);
@@ -98,7 +97,7 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
         }
 
         [HttpPost]
-        [AllowAnonymous]
+     
 
         public IActionResult Update(HomeBanner homeBanner)
         {
@@ -145,7 +144,7 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
             }
             return View(homeBanner);
         }
-        [AllowAnonymous]
+        
 
         public IActionResult Delete(int? id)
         {

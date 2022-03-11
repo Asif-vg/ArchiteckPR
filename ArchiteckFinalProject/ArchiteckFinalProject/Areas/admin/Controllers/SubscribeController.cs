@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace ArchiteckFinalProject.Areas.admin.Controllers
 {
     [Area("admin")]
-    [Authorize]
+    [Authorize(Roles = "Admin ,Moderator")]
 
     public class SubscribeController : Controller
     {
@@ -22,18 +22,17 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
         {
             _context = context;
         }
-        [AllowAnonymous]
+       
         public IActionResult Index()
         {
             return View(_context.Subscribes.ToList());
         }
-        [AllowAnonymous]
-
+        
         public IActionResult SendMailAll()
         {
             return View(_context.Subscribes.ToList());
         }
-        [AllowAnonymous]
+        
 
         [HttpPost]
         public IActionResult SendMailAll(string MailText)

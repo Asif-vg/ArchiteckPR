@@ -1,0 +1,11 @@
+Users
+1. Email - asif@gmail.com(Admin)   		Password - !Asif1234
+2. Email - resad@gmail.com(Moderator)		Password - !Resad1234
+
+------------------------------------------------------------------------------
+
+Roles 
+1. Admin - [Admin has permission to access everywhere]
+2. Moderator - [Moderator has permission to access Social and Subscribe]
+
+------------------------------------------------------------------------------

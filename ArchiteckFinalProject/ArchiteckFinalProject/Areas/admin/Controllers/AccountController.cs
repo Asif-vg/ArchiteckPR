@@ -45,6 +45,7 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
             return View();
         }
         [HttpPost]
+        
         public async Task<IActionResult> Register(VmRegister vmRegister)
         {
             if (ModelState.IsValid)
@@ -131,12 +132,15 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
             await _signInManager.SignOutAsync();
             return View();
         }
+        [Authorize(Roles = "Admin")]
+
         public IActionResult Profile()
         {
             CustomUser model = _context.CustomUsers.FirstOrDefault();
 
             return View(model);
         }
+        [Authorize(Roles = "Admin")]
         public IActionResult Users()
         {
             VmUser model = new VmUser();
@@ -145,7 +149,7 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
             model.UserRoles = _context.UserRoles.ToList();
             return View(model);
         }
-
+        [Authorize(Roles = "Admin")]
         public IActionResult UpdateUser(string id)
         {
             CustomUser user = _context.CustomUsers.Find(id);
@@ -154,6 +158,8 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
+
         public async Task<IActionResult> UpdateUser(CustomUser model)
         {
             if (ModelState.IsValid)
@@ -183,6 +189,7 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = "Admin")]
 
         public IActionResult Roles()
         {
@@ -190,6 +197,7 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
             return View(roles);
         }
 
+        [Authorize(Roles = "Admin")]
 
         public IActionResult RoleCreate()
         {
@@ -197,6 +205,8 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
+
         public async Task<IActionResult> RoleCreate(IdentityRole model)
         {
             await _roleManager.CreateAsync(model);
@@ -204,6 +214,7 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
         }
 
 
+        [Authorize(Roles = "Admin")]
 
         public IActionResult RoleDelete(string? id)
         {

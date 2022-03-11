@@ -31,5 +31,7 @@ namespace ArchiteckFinalProject.Models
         [ForeignKey("ProjectArchiteck")]
         public int ProjectArchiteckId { get; set; }
         public ProjectArchiteck ProjectArchiteck { get; set; }
+
+
     }
 }

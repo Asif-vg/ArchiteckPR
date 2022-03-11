@@ -1,5 +1,6 @@
 ﻿using ArchiteckFinalProject.Data;
 using ArchiteckFinalProject.Models;
+using ArchiteckFinalProject.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -14,7 +15,7 @@ using System.Threading.Tasks;
 namespace ArchiteckFinalProject.Areas.admin.Controllers
 {
     [Area("admin")]
-    [Authorize]
+    //[Authorize]
 
     public class ProjectController : Controller
     {
@@ -26,21 +27,20 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
             _context = context;
             _webHostEnvironment = webHostEnvironment;
         }
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin, Moderator")]
 
         public IActionResult Index()
         {
             return View(_context.Projects.OrderByDescending(o => o.CreatedDate).Include(pa => pa.ProjectArchiteck).ToList());
         }
-        [AllowAnonymous]
-
+        [Authorize(Roles = "Admin, Moderator")]
         public IActionResult Create()
         {
             ViewBag.Architeck = _context.ProjectArchitecks.ToList();
             return View();
         }
         [HttpPost]
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin, Moderator")]
 
         public IActionResult Create(Project project)
         {
@@ -99,8 +99,7 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
 
             return View(project);
         }
-        [AllowAnonymous]
-
+        [Authorize(Roles = "Admin")]
         public IActionResult Update(int? id)
         {
             Project project = _context.Projects.Find(id);
@@ -111,8 +110,7 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
         }
 
         [HttpPost]
-        [AllowAnonymous]
-
+        [Authorize(Roles = "Admin")]
         public IActionResult Update(Project project)
         {
             if (ModelState.IsValid)
@@ -175,8 +173,7 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
             return View(project);
         }
 
-        [AllowAnonymous]
-
+        [Authorize(Roles = "Admin")]
         public IActionResult Delete(int? id)
         {
             try
@@ -230,6 +227,29 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
                 });
             }
             //return View(project);
+        }
+        [Authorize(Roles = "Admin")]
+
+        public IActionResult Detail(int? id)
+        {
+            Project project = null;
+
+            List<Project> projects = _context.Projects.ToList();
+
+            if (id != null)
+            {
+                project = _context.Projects.Find(id);
+            }
+
+            VmProject vmProject = new VmProject()
+            {
+                Project = project,
+                Projects = projects,
+            };
+
+            vmProject.ProjectArchitecks = _context.ProjectArchitecks.ToList();
+
+            return View(vmProject);
         }
     }
 }

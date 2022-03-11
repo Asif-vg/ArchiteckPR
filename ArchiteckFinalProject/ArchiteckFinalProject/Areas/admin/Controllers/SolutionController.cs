@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 namespace ArchiteckFinalProject.Areas.admin.Controllers
 {
     [Area("admin")]
-    [Authorize]
+    [Authorize(Roles = "Admin")]
 
     public class SolutionController : Controller
     {
@@ -25,20 +25,19 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
             _context = context;
             _webHostEnvironment = webHostEnvironment;
         }
-        [AllowAnonymous]
+       
 
         public IActionResult Index()
         {
             return View(_context.Solutions.ToList());
         }
-        [AllowAnonymous]
+      
 
         public IActionResult Create()
         {
             return View();
         }
-        [AllowAnonymous]
-
+        
         [HttpPost]
         public IActionResult Create(Solution solution)
         {
@@ -88,14 +87,14 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
             ModelState.AddModelError("", "Please all data enter");
             return View(solution);
         }
-        [AllowAnonymous]
+        
 
         public IActionResult Update(int? id)
         {
             Solution solution = _context.Solutions.Find(id);
             return View(solution);
         }
-        [AllowAnonymous]
+      
 
         [HttpPost]
         public IActionResult Update(Solution solution)
@@ -143,7 +142,7 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
             }
             return View(solution);
         }
-        [AllowAnonymous]
+        
 
         public IActionResult Delete(int? id)
         {

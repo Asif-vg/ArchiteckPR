@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace ArchiteckFinalProject.Areas.admin.Controllers
 {
     [Area("admin")]
-    [Authorize]
+    [Authorize(Roles = "Admin")]
 
     public class PersonSocialController : Controller
     {
@@ -20,21 +20,21 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
         {
             _context = context;
         }
-        [AllowAnonymous]
+       
 
         public IActionResult Index()
         {
             return View(_context.PersonSocials.ToList());
         }
 
-        [AllowAnonymous]
+        
 
         public IActionResult Create()
         {
             return View();
         }
         [HttpPost]
-        [AllowAnonymous]
+       
 
         public IActionResult Create(PersonSocial personSocial)
         {
@@ -56,7 +56,7 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
             ModelState.AddModelError("", "Please all data enter");
             return View(personSocial);
         }
-        [AllowAnonymous]
+        
 
         public IActionResult Update(int? id)
         {
@@ -76,7 +76,7 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
 
         }
         [HttpPost]
-        [AllowAnonymous]
+      
 
         public IActionResult Update(PersonSocial personSocial)
         {
@@ -88,7 +88,7 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
             }
             return View(personSocial);
         }
-        [AllowAnonymous]
+       
 
         public IActionResult Delete(int? id)
         {

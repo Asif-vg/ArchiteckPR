@@ -1,4 +1,6 @@
-﻿@model List<Service> 
+﻿@model List<Service>
+@inject IHttpContextAccessor HttpContextAccessor
+
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
@@ -23,7 +25,28 @@
             </div>
             <!-- end page title -->
 
+            <div class="col-lg-12">
+                <a class="btn btn-primary mb-3" asp-area="Admin" asp-controller="Service" asp-action="Create">Create</a>
+            </div>
 
+            <div class="col-lg-12">
+                @if (HttpContextAccessor.HttpContext.Session.GetString("NullIdError") != null)
+                {
+                    <div class="alert alert-danger">
+                        @HttpContextAccessor.HttpContext.Session.GetString("NullIdError")
+                    </div>
+                    HttpContextAccessor.HttpContext.Session.Remove("NullIdError");
+                }
+
+                @if (HttpContextAccessor.HttpContext.Session.GetString("NullDataError") != null)
+                {
+                    <div class="alert alert-danger">
+                        @HttpContextAccessor.HttpContext.Session.GetString("NullDataError")
+                    </div>
+                    HttpContextAccessor.HttpContext.Session.Remove("NullDataError");
+                }
+            </div>
+            <hr />
             <!-- end row -->
 
             <div class="row">
@@ -50,26 +73,26 @@
                                         {
                                             i++;
 
-                                                                        <tr>
-                                                                            <td scope="row">@i</td>
+                                            <tr>
+                                                <td scope="row">@i</td>
 
-                                                                            <td>
-
-
-                                                                                <img class="rounded" alt="" src="~/Uploads/@service.ServiceImage" style="width: 100px; height: 66px;">
+                                                <td>
 
 
-                                                                            </td>
-                                                                            <td>@service.Name</td>
-                                                                            <td>@Html.Raw(service.Text!=null && service.Text.Length > 220 ? service.Text.Substring(0, 220) + " ..." : service.Text)</td>
-                                                                            <td><i class="@service.Icon"></i></td>
-                                                                            <td>@service.ServiceCatagory.Name </td>
-                                                                            <td class="d-flex">
-                                                                                <a asp-area="Admin" asp-controller="Service" asp-action="Update" asp-route-id="@service.Id" class="btn btn-warning mx-2">Update</a>
-                                                                                <a asp-area="Admin" asp-controller="Service" asp-action="Delete" asp-route-id="@service.Id" id="sweet-delete" class="btn btn-danger">Delete</a>
+                                                    <img class="rounded" alt="" src="~/Uploads/@service.ServiceImage" style="width: 100px; height: 66px;">
 
-                                                                            </td>
-                                                                        </tr>
+
+                                                </td>
+                                                <td>@service.Name</td>
+                                                <td>@Html.Raw(service.Text != null && service.Text.Length > 220 ? service.Text.Substring(0, 220) + " ..." : service.Text)</td>
+                                                <td><i class="@service.Icon"></i></td>
+                                                <td>@service.ServiceCatagory.Name </td>
+                                                <td class="d-flex">
+                                                    <a asp-area="Admin" asp-controller="Service" asp-action="Update" asp-route-id="@service.Id" class="btn btn-warning mx-2">Update</a>
+                                                    <a asp-area="Admin" asp-controller="Service" asp-action="Delete" asp-route-id="@service.Id" id="sweet-delete" class="btn btn-danger">Delete</a>
+
+                                                </td>
+                                            </tr>
                                         }
                                     }
 

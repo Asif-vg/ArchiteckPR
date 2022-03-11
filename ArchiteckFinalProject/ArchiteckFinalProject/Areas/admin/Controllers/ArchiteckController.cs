@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace ArchiteckFinalProject.Areas.admin.Controllers
 {
     [Area("admin")]
-    [Authorize]
+    [Authorize(Roles = "Admin")]
 
     public class ArchiteckController : Controller
     {
@@ -20,21 +20,20 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
         {
             _context = context;
         }
-        [AllowAnonymous]
+       
 
         public IActionResult Index()
         {
             return View(_context.ProjectArchitecks.ToList());
         }
-        [AllowAnonymous]
-
+      
         public IActionResult Create()
         {
             return View();
         }
 
         [HttpPost]
-        [AllowAnonymous]
+        
 
         public IActionResult Create(ProjectArchiteck architeck)
         {
@@ -55,7 +54,7 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
             }
             return View(architeck);
         }
-        [AllowAnonymous]
+      
 
         public IActionResult Update(int? id)
         {
@@ -75,8 +74,7 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
 
         }
         [HttpPost]
-        [AllowAnonymous]
-
+        
         public IActionResult Update(ProjectArchiteck architeck)
         {
             if (ModelState.IsValid)
@@ -87,8 +85,7 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
             }
             return View(architeck);
         }
-        [AllowAnonymous]
-
+       
         public IActionResult Delete(int? id)
         {
             ProjectArchiteck architeck = null;

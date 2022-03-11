@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 namespace ArchiteckFinalProject.Areas.admin.Controllers
 {
     [Area("admin")]
-    [Authorize]
+    [Authorize(Roles = "Admin")]
 
     public class OfficeController : Controller
     {
@@ -26,21 +26,20 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
             _context = context;
             _webHostEnvironment = webHostEnvironment;
         }
-        [AllowAnonymous]
+       
 
         public IActionResult Index()
         {
             return View(_context.Offices.ToList());
         }
-        [AllowAnonymous]
+       
 
         public IActionResult Create()
         {
             return View();
         }
         [HttpPost]
-        [AllowAnonymous]
-
+       
         public IActionResult Create(Office office)
         {
 
@@ -91,7 +90,7 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
             return View(office);
         }
 
-        [AllowAnonymous]
+       
 
         public IActionResult Update(int? id)
         {
@@ -100,8 +99,7 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
         }
 
         [HttpPost]
-        [AllowAnonymous]
-
+       
         public IActionResult Update(Office office)
         {
             if (ModelState.IsValid)
@@ -147,8 +145,7 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
             }
             return View(office);
         }
-        [AllowAnonymous]
-
+        
         public IActionResult Delete(int? id)
         {
             if (id == null)

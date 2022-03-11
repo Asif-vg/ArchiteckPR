@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace ArchiteckFinalProject.Areas.admin.Controllers
 {
     [Area("admin")]
-    [Authorize]
+    [Authorize(Roles = "Admin")]
 
     public class CategoryController : Controller
     {
@@ -20,13 +20,13 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
         {
             _context = context;
         }
-        [AllowAnonymous]
+       
 
         public IActionResult Index()
         {
             return View(_context.ServiceCatagories.ToList());
         }
-        [AllowAnonymous]
+        
 
         public IActionResult Create()
         {
@@ -34,7 +34,7 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
         }
 
         [HttpPost]
-        [AllowAnonymous]
+      
 
         public IActionResult Create(ServiceCatagory model)
         {
@@ -55,8 +55,7 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
             }
             return View(model);
         }
-        [AllowAnonymous]
-
+       
         public IActionResult Update(int? id)
         {
             ServiceCatagory catagory = null;
@@ -75,7 +74,7 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
 
         }
         [HttpPost]
-        [AllowAnonymous]
+       
 
         public IActionResult Update(ServiceCatagory catagory)
         {
@@ -87,7 +86,6 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
             }
             return View(catagory);
         }
-        [AllowAnonymous]
 
         public IActionResult Delete(int? id)
         {

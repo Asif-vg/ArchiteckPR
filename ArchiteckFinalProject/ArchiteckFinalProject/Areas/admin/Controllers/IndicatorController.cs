@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace ArchiteckFinalProject.Areas.admin.Controllers
 {
     [Area("admin")]
-    [Authorize]
+    [Authorize(Roles = "Admin")]
 
     public class IndicatorController : Controller
     {
@@ -23,21 +23,20 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
             _context = context;
             _webHostEnvironment = webHostEnvironment;
         }
-        [AllowAnonymous]
+       
 
         public IActionResult Index()
         {
             return View(_context.Indicators.ToList());
         }
-        [AllowAnonymous]
-
+       
         public IActionResult Create()
         {
             return View();
         }
 
         [HttpPost]
-        [AllowAnonymous]
+       
 
         public IActionResult Create(Indicator indicator)
         {
@@ -51,7 +50,7 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
              ModelState.AddModelError("", "Please all data enter");
                 return View(indicator);
         }
-        [AllowAnonymous]
+        
 
         public IActionResult Update(int? id)
         {
@@ -71,7 +70,7 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
 
         }
         [HttpPost]
-        [AllowAnonymous]
+       
 
         public IActionResult Update(Indicator indicator)
         {
@@ -83,8 +82,7 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
             }
             return View(indicator);
         }
-        [AllowAnonymous]
-
+       
         public IActionResult Delete(int? id)
         {
             Indicator indicator = null;

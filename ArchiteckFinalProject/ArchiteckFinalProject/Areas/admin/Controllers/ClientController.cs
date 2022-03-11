@@ -32,14 +32,14 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
         {
             return View(_context.Clients.Include(ci => ci.ClientImages).ToList());
         }
-        [AllowAnonymous]
+       
 
         public IActionResult Create()
         {
             return View();
         }
         [HttpPost]
-        [AllowAnonymous]
+     
 
         public IActionResult Create(Client client)
         {
@@ -92,8 +92,7 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
 
 
         }
-        [AllowAnonymous]
-
+      
         public IActionResult Update(int? id)
         {
             Client client = _context.Clients.Include(ci =>ci.ClientImages).FirstOrDefault(i => i.Id == id);
@@ -102,7 +101,7 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
             return View(client);
         }
         [HttpPost]
-        [AllowAnonymous]
+     
 
         public IActionResult Update(Client client)
         {
@@ -167,8 +166,7 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
 
             return View(client);
         }
-        [AllowAnonymous]
-
+       
         public IActionResult Delete(int? id)
         {
             if (id == null)

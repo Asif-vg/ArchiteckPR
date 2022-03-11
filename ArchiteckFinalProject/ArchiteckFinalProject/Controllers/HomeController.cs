@@ -42,18 +42,18 @@ namespace ArchiteckFinalProject.Controllers
             return View(vmHome);
         }
 
-        public IActionResult Subscribe(string email)
+        public IActionResult Subscribe(string eml)
         {
             VmSubscribeResponse response = new VmSubscribeResponse();
 
-            if (string.IsNullOrEmpty(email))
-            {
-                response.Status = false;
-                response.Message = "Subscription failed! You must enter your email";
-                return Json(response);
-            }
+            //if (string.IsNullOrEmpty(eml))
+            //{
+            //    response.Status = false;
+            //    response.Message = "Subscription failed! You must enter your email";
+            //    return Json(response);
+            //}
 
-            bool isExist = _context.Subscribes.Any(s => s.Email == email);
+            bool isExist = _context.Subscribes.Any(s => s.Email == eml);
 
             if (isExist)
             {
@@ -64,12 +64,12 @@ namespace ArchiteckFinalProject.Controllers
 
             Subscribe subscribe = new Subscribe();
             subscribe.CreatedDate = DateTime.Now;
-            subscribe.Email = email;
+            subscribe.Email = eml;
             _context.Subscribes.Add(subscribe);
             _context.SaveChanges();
 
             response.Status = true;
-            response.Message = "You subscribe successfully!";
+            //response.Message = "You subscribe successfully!";
             return Json(response);
         }
 

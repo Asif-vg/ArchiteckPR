@@ -31,14 +31,12 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
         {
             return View(_context.Abouts.ToList());
         }
-        [AllowAnonymous]
 
         public IActionResult Create()
         {
             return View();
         }
         [HttpPost]
-        [AllowAnonymous]
 
         public IActionResult Create(About about)
         {
@@ -91,7 +89,6 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
             ModelState.AddModelError("", "Please all data enter");
             return View(about);
         }
-        [AllowAnonymous]
 
         public IActionResult Update(int? id)
         {
@@ -100,7 +97,6 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
         }
 
         [HttpPost]
-        [AllowAnonymous]
 
         public IActionResult Update(About about)
         {
@@ -149,7 +145,6 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
             return View(about);
         }
 
-        [AllowAnonymous]
 
         public IActionResult Delete(int? id)
         {
