@@ -1,4 +1,4 @@
-﻿@model List<Project>
+﻿@model VmProject
 @inject IHttpContextAccessor HttpContextAccessor
 
 @{
@@ -53,39 +53,39 @@
 
             <div class="row">
                 @{
-                    foreach (var project in Model)
+                    foreach (var project in Model.Projects)
                     {
                         <div class="col-lg-4 col-sm-6">
-                                            <div class="property-card card">
-                                                @*<div class="property-image" style="background: url(~/wwwroot/Uploads/) center center / cover no-repeat;">
-            <span class="property-label badge badge-warning">@project.ProjectArchiteck.Name</span>
-        </div>*@
-                                                <img src="~/Uploads/@project.Image" />
-                                                <span class="property-label badge badge-warning">@project.ProjectArchiteck.Name</span>
+                            <div class="property-card card">
+                                @*<div class="property-image" style="background: url(~/wwwroot/Uploads/) center center / cover no-repeat;">
+                                <span class="property-label badge badge-warning">@project.ProjectArchiteck.Name</span>
+                            </div>*@
+                                <img src="~/Uploads/@project.Image" />
+                                <span class="property-label badge badge-warning">@project.ProjectArchiteck.Name</span>
 
-                                                <div class="property-content card-body">
-                                                    <div class="listingInfo">
-                                                        <div class="">
-                                                            <h5 class="text-success font-18 mt-0">@project.CreatedDate.ToString("MMM dd yyyy")</h5>
-                                                        </div>
-                                                        <div class="">
-                                                            <h5 class="text-overflow"><a href="#" class="text-dark">@project.Name</a></h5>
-                                                            <p class="text-muted text-overflow">@project.Client <span>,</span> @project.Contractor</p>
+                                <div class="property-content card-body">
+                                    <div class="listingInfo">
+                                        <div class="">
+                                            <h5 class="text-success font-18 mt-0">@project.CreatedDate.ToString("MMM dd yyyy")</h5>
+                                        </div>
+                                        <div class="">
+                                            <h5 class="text-overflow"><a href="#" class="text-dark">@project.Name</a></h5>
+                                            <p class="text-muted text-overflow">@project.Client <span>,</span> @project.Contractor</p>
 
-                                                            <a asp-area="Admin" asp-controller="Project" asp-action="Update" asp-route-id="@project.Id" class="btn btn-warning" style="margin-right: 130px;">Update</a>
-                                                            <a asp-area="Admin" asp-controller="Project" asp-action="Delete" asp-route-id="@project.Id" class="btn btn-danger delete">Delete</a>
+                                            <a asp-area="Admin" asp-controller="Project" asp-action="Update" asp-route-id="@project.Id" class="btn btn-warning" style="margin-right: 130px;">Update</a>
+                                            <a asp-area="Admin" asp-controller="Project" asp-action="Delete" asp-route-id="@project.Id" class="btn btn-danger delete">Delete</a>
 
 
-                                                            <div class="mt-3">
-                                                                <a  class="btn btn-success btn-block waves-effect waves-light" asp-controller="Project" asp-action="Detail" asp-route-id="@project.Id">View Detail</a>
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                    <!-- end. Card actions -->
-                                                </div>
-                                                <!-- /inner row -->
+                                            <div class="mt-3">
+                                                <a class="btn btn-success btn-block waves-effect waves-light" asp-controller="Project" asp-action="Detail" asp-route-id="@project.Id">View Detail</a>
                                             </div>
+
+                                        </div>
+                                    </div>
+                                    <!-- end. Card actions -->
+                                </div>
+                                <!-- /inner row -->
+                            </div>
                             <!-- End property item -->
                         </div>
 
@@ -97,7 +97,20 @@
             </div>
             <!-- end row -->
 
-
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item @(ViewBag.Page==1?"disabled":"")">
+                        <a class="page-link" asp-controller="Project" asp-action="index" asp-route-page="@(ViewBag.Page-1)">Previous</a>
+                    </li>
+                    @for (int i = 0; i < ViewBag.PageCount; i++)
+                    {
+                        <li class="page-item @(ViewBag.Page==(i+1)?"active":"")"><a class="page-link" asp-controller="Project" asp-action="index" asp-route-page="@(i+1)">@(i+1)</a></li>
+                    }
+                    <li class="page-item @(ViewBag.Page==ViewBag.PageCount?"disabled":"")">
+                        <a class="page-link" asp-controller="Project" asp-action="index" asp-route-page="@(ViewBag.Page+1)">Next</a>
+                    </li>
+                </ul>
+            </nav>
 
         </div>
         <!-- end container-fluid -->

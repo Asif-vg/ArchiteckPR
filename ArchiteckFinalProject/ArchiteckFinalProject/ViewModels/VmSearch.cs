@@ -11,5 +11,6 @@ namespace ArchiteckFinalProject.ViewModels
         public int? catId { get; set; }
         public int? arcId { get; set; }
         public int? id { get; set; }
+        public int? page { get; set; }
     }
 }

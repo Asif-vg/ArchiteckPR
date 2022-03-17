@@ -29,9 +29,30 @@ namespace ArchiteckFinalProject.Areas.admin.Controllers
         }
         [Authorize(Roles = "Admin, Moderator")]
 
-        public IActionResult Index()
+        public IActionResult Index(VmSearch search)
         {
-            return View(_context.Projects.OrderByDescending(o => o.CreatedDate).Include(pa => pa.ProjectArchiteck).ToList());
+            VmProject project = new VmProject();
+            if (search == null || search.page == null)
+            {
+                search.page = 1;
+            }
+
+            double itemCount = 3;
+            List<Project> projects = _context.Projects
+                                                      .OrderByDescending(o => o.CreatedDate)
+                                                      .Include(pa => pa.ProjectArchiteck)
+                                                      .ToList();
+
+            int pageCount = (int)Math.Ceiling(Convert.ToDecimal(projects.Count / itemCount));
+
+            project.Projects = projects.Skip(((int)search.page - 1) * (int)itemCount).Take((int)itemCount).ToList();
+
+            ViewBag.PageCount = pageCount;
+            ViewBag.Page = search.page;
+
+            project.ProjectArchitecks = _context.ProjectArchitecks.ToList();
+
+            return View(project);
         }
         [Authorize(Roles = "Admin, Moderator")]
         public IActionResult Create()
